@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>车迟国 · 漫画分镜 · 阅读导读</title>
+<style>
+  :root{
+    --ink:#1c1714; --paper:#f4ead2; --paper2:#ead9b6;
+    --red:#b5302a; --gold:#c9971f; --jade:#3c7d5a;
+    --line:#2a2018;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 20% 10%, #fbf3df 0%, transparent 55%),
+      radial-gradient(circle at 80% 90%, #efe1c2 0%, transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"KaiTi","STKaiti","Songti SC","SimSun",serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;z-index:0;
+    background-image:repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 3px);
+  }
+  .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:26px 18px 60px;}
+  .back-link{display:inline-block;margin:0 0 14px;color:var(--red);text-decoration:none;font-size:14px;
+    border:1.5px solid var(--red);border-radius:16px;padding:4px 14px;transition:background .15s,color .15s;}
+  .back-link:hover{background:var(--red);color:#fff;}
+  .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
+
+  .masthead{
+    display:flex;align-items:flex-end;gap:16px;justify-content:center;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+  }
+  .title-v{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:40px;font-weight:700;letter-spacing:6px;color:var(--red);
+    text-shadow:1px 1px 0 #fff,2px 2px 0 rgba(0,0,0,.15);
+  }
+  .title-sub{font-size:15px;color:#6b5a44;line-height:1.7;text-align:left;}
+  .title-sub b{color:var(--ink);font-size:17px;}
+  .seal{
+    align-self:center;width:58px;height:58px;border:2px solid var(--red);border-radius:6px;
+    color:var(--red);display:flex;align-items:center;justify-content:center;
+    font-size:13px;line-height:1.1;text-align:center;transform:rotate(-6deg);
+    box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
+  }
+
+  .lead{
+    background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    border:2px solid var(--line);border-left:7px solid var(--red);
+    border-radius:8px;padding:16px 20px;margin-bottom:22px;line-height:1.85;font-size:15px;
+    box-shadow:3px 4px 0 rgba(0,0,0,.12);
+  }
+  .lead h2{margin:0 0 8px;font-size:18px;color:var(--red);letter-spacing:2px;}
+  .lead p{margin:0 0 8px;}
+  .lead .q{color:var(--jade);font-weight:700;}
+
+  .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .panel{position:relative;border:4px solid var(--line);background:#17120e;
+    box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
+  .panel.span2{grid-column:1 / -1;}
+  .panel .shot{position:absolute;inset:0;background-repeat:no-repeat;background-color:#17120e;
+    background-position:center;background-size:contain;}
+  .panel .scan{position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px);mix-blend-mode:multiply;opacity:.25;}
+  .panel .vig{position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.45);}
+  .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
+    font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
+
+  .caption{position:absolute;top:8px;left:8px;max-width:74%;
+    background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
+    padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
+
+  .bubble{position:absolute;z-index:5;max-width:62%;
+    background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
+    padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
+    box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .bubble::after{content:"";position:absolute;width:0;height:0;
+    border:9px solid transparent;border-top-color:var(--line);
+    bottom:-16px;left:24px;}
+  .bubble::before{content:"";position:absolute;width:0;height:0;
+    border:7px solid transparent;border-top-color:#fffdf6;bottom:-11px;left:26px;z-index:1;}
+  .bubble .who{display:block;font-size:11px;color:var(--red);font-weight:700;margin-bottom:2px;letter-spacing:1px;}
+  .bubble.demon{border-color:var(--red);background:#fff4f1;}
+  .bubble.demon .who{color:var(--red);}
+  .bubble.demon::after{border-top-color:var(--red);}
+  .bubble.god{border-color:var(--gold);background:#fffaf0;}
+  .bubble.god .who{color:var(--gold);}
+  .bubble.god::after{border-top-color:var(--gold);}
+  .bubble.r::after{left:auto;right:24px;} .bubble.r::before{left:auto;right:26px;}
+  .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
+  .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
+
+  .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
+    transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
+    letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
+
+  .toolbar{display:flex;gap:10px;justify-content:center;margin:24px 0 8px;flex-wrap:wrap;}
+  .toolbar button{font-family:inherit;font-size:14px;padding:8px 18px;cursor:pointer;
+    background:var(--red);color:#fff;border:none;border-radius:20px;box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .toolbar button.ghost{background:#fff;color:var(--red);border:2px solid var(--red);}
+  .toolbar button:active{transform:translate(1px,1px);}
+
+  .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
+
+  .studies{display:none;margin-top:18px;}
+  .studies.open{display:block;}
+  .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
+    margin-bottom:16px;overflow:hidden;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .study-card .head{display:flex;align-items:center;gap:12px;background:var(--ink);color:#f4ead2;padding:8px 14px;}
+  .study-card .head b{font-size:15px;color:#f4ead2;letter-spacing:1px;}
+  .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
+  .study-card .body{padding:14px 18px;}
+
+  .sec{margin-bottom:13px;}
+  .sec:last-child{margin-bottom:0;}
+  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+    border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
+  .sec p{margin:0;line-height:1.8;font-size:14px;}
+  .sec ul{margin:4px 0 0;padding-left:20px;}
+  .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
+  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
+
+  .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
+    border-bottom:2px solid var(--line);padding-bottom:6px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
+    box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .card h3{margin:0 0 8px;font-size:16px;color:var(--red);text-align:center;
+    border-bottom:1px dashed var(--gold);padding-bottom:6px;}
+  .card p{margin:0;font-size:13.5px;line-height:1.8;}
+
+  .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
+  .prose h3:first-child{margin-top:0;}
+  .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
+
+  .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
+    align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
+  .lightbox.open{display:flex;}
+  .lb-stage{display:flex;gap:0;width:min(1120px,95vw);max-height:90vh;
+    background:var(--paper);border:4px solid var(--line);border-radius:6px;overflow:hidden;
+    box-shadow:0 0 44px rgba(0,0,0,.6);}
+  .lb-figure{flex:1 1 52%;min-width:0;background:#111;display:flex;align-items:center;justify-content:center;padding:12px;}
+  .lb-figure img{max-width:100%;max-height:86vh;border:3px solid #fff;box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-study{flex:1 1 48%;min-width:0;overflow-y:auto;padding:18px 20px;background:var(--paper);}
+  .lb-study .lb-h{font-size:17px;color:var(--red);letter-spacing:1px;margin:0 0 12px;
+    border-bottom:2px solid var(--gold);padding-bottom:6px;}
+  .lb-close{position:absolute;top:14px;right:18px;z-index:53;width:40px;height:40px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.75);background:rgba(20,16,12,.55);color:#f4ead2;font-size:24px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+  .lb-close:hover{background:rgba(181,48,42,.92);}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:52;
+    width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,.75);
+    background:rgba(20,16,12,.55);color:#f4ead2;font-size:30px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;user-select:none;
+    transition:background .15s,transform .15s,box-shadow .15s;}
+  .lb-nav:hover{background:rgba(181,48,42,.92);transform:translateY(-50%) scale(1.08);box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-nav.prev{left:18px;} .lb-nav.next{right:18px;}
+  .lb-count{position:absolute;top:16px;left:0;right:0;text-align:center;color:#f4ead2;
+    font-size:13px;letter-spacing:2px;opacity:.9;text-shadow:0 1px 3px rgba(0,0,0,.7);z-index:52;}
+
+  @media(max-width:760px){
+    .comic{grid-template-columns:1fr;} .panel.span2{grid-column:auto;}
+    .cards{grid-template-columns:1fr;}
+    .lb-stage{flex-direction:column;max-height:94vh;}
+    .lb-figure img{max-height:38vh;}
+    .lb-study{max-height:none;}
+    .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .panel{transition:transform .15s ease;}
+    .panel:hover{transform:translateY(-2px);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="index.html">← 返回《西游记》路线图</a>
+  <div class="masthead">
+    <div class="title-v">车迟国</div>
+    <div class="title-sub">西游记 · 第 17 站 · 原著第四十四至四十六回<br>三国师斗法，求雨破邪<br><span style="color:#b5302a">漫画分镜 + 阅读导读</span></div>
+    <div class="seal">西游导读</div>
+  </div>
+
+  <div class="lead"><h2>整回导读 · 读前想一想</h2><p>车迟国，虎力、鹿力、羊力三位大仙以"求雨"等方术迷惑国王，做了国师，欺压僧人。悟空带八戒、沙僧与三妖公开斗法：求雨、坐禅、隔板猜物、剖腹、下油锅，一一胜之，三妖现出本相（虎鹿羊）死去。这一站是"真本事对假方术"。</p><p>读这一站，看<b>"一场场比试"</b>：把大故事拆成一连串小擂台，最是好看。</p><p class="q">带着问题读：① 三国师凭什么唬住国王？② 悟空怎么一一破法？③ "求真"和"求权"区别在哪？</p></div>
+
+  <div class="comic" id="comic"></div>
+
+  <div class="toolbar">
+    <button id="replay">↺ 从头看</button>
+    <button id="toggleStudy" class="ghost">📖 展开逐格研读笔记</button>
+  </div>
+  <div class="note">
+    点击任意分镜可进入<b>研读模式</b>（大图 + 导读卡），用底部 <b>‹ ›</b> 或键盘 <b>← →</b> 翻看上一张 / 下一张，<b>Esc</b> 或点击背景关闭。<br>
+    也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
+  </div>
+
+  <div class="studies" id="studies"></div>
+
+  <div class="section-title">人物小档案</div>
+  <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄，也是"擂台王"。求雨、坐禅、油锅全上，靠真本事破假方术。说明<b>真金不怕火炼</b>。</p></div><div class="card"><h3>虎力 / 鹿力 / 羊力大仙</h3><p>车迟国三国师，本相虎鹿羊，以方术窃权欺僧。代表<b>"披官衣的伪权威"</b>。</p></div><div class="card"><h3>车迟国王</h3><p>被方术迷惑、役使僧人的国王。是<b>"盲信权力者"</b>的典型——醒悟后终归正道。</p></div></div>
+
+  <div class="section-title">主题探究</div>
+  <div class="prose"><h3>① 伪必露形</h3><p>虎鹿羊再像人也是兽。靠装得来的地位，一场真比试就垮。</p><h3>② 真本事胜假术</h3><p>悟空接的是正牌天庭。求真，才求得到；求权，求来的是空。</p><h3>③ 分项见爽感</h3><p>一难拆多台，赢一场是一场。好故事会"分段给甜头"。</p></div>
+
+  <div class="section-title">阅读小贴士</div>
+  <div class="prose"><ul><li><b>读"擂台结构"：</b>把每场比试当一小关，列个清单，读着像闯关。</li><li><b>辨"官与理"：</b>三国师有权无理。看人别被"职位"晃了眼。</li><li><b>学"分段写"：</b>写作文讲一件事，也可拆成几步，步步有看点。</li></ul></div>
+</div>
+
+<div class="lightbox" id="lb">
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
+  <div class="lb-stage">
+    <div class="lb-figure"><img id="lbImg" alt=""></div>
+    <div class="lb-study" id="lbStudy"></div>
+  </div>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-close" id="lbClose" type="button" aria-label="关闭">×</button>
+</div>
+
+<script>
+const DATA = {"panels":[{"img":"assets/scenes/comic-17-1.png","span":true,"size":"cover","pos":"center","caption":"车迟国，三位国师（虎鹿羊三妖）立于高台，国王跪拜，僧人被役使做苦工。","bubbles":[{"who":"虎力大仙","text":"我国师能呼风唤雨，陛下当信我等。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"邪压正\"：国师掌权、僧人受苦。妖靠\"方术+权位\"双保险惑众，局面一边倒。","appreciate":"作者用<b>\"以势惑众\"</b>设局：妖不止会法术，还会\"当官\"。提醒读者——披着官衣的歪理，最易骗人。","think":["三国师为何能唬住一国？","\"有权\"就等于\"有理\"吗？"],"phrases":["车迟国","三位国师","欺僧役使"]}},{"img":"assets/scenes/comic-17-2.png","size":"cover","pos":"center","caption":"第一擂台：求雨。悟空暗中搅乱，雷公电母听悟空调度，妖师求不来雨。","bubbles":[{"who":"孙悟空","text":"老官儿们，雨听俺的，下！","side":"l"}],"sfx":{"t":"哗啦——","x":"54%","y":"16%"},"study":{"intro":"斗法开场：求雨。妖师的\"令牌\"失效，因为风雨本归天庭，悟空打通了\"上层\"。假术遇真权，露馅。","appreciate":"这一格写<b>\"假钥匙开不了真锁\"</b>：三国师的法术是冒牌，悟空接的是正牌天庭。求真，才求得到。","think":["为什么妖师求不来雨，悟空能？","\"真\"和\"像真的\"差别在哪？"],"phrases":["第一擂台","求雨","风雨听调"]}},{"img":"assets/scenes/comic-17-3.png","size":"cover","pos":"center","caption":"接连比试：坐禅、隔板猜物、剖腹、下油锅，悟空皆胜，三妖渐露破绽。","bubbles":[{"who":"猪八戒","text":"油锅俺老猪都不怕，何况你！","side":"r"}],"sfx":{"t":"咕嘟嘟","x":"58%","y":"22%"},"study":{"intro":"连台好戏：作者把大难拆成数个\"小项目\"，一项项比，节奏快、爽感强。这种\"分项赛\"结构，是《西游记》的拿手好戏。","appreciate":"这里写<b>\"擂台式结构\"</b>：一回里塞多场比试，像连续剧。读时跟着\"赢一场是一场\"，最是过瘾。","think":["为什么作者要把一难拆成好几场比试？","你写作文，能不能也用\"分项\"来讲清一件事？"],"phrases":["坐禅猜物","剖腹油锅","悟空皆胜"]}},{"img":"assets/scenes/comic-17-4.png","size":"cover","pos":"center","caption":"三妖现出虎鹿羊本相死去，国王醒悟，僧人得释，车迟重见天日。","bubbles":[{"who":"车迟国王","text":"原来国师竟是畜类，错信矣！","side":"l"}],"study":{"intro":"收尾：假面具撕下，国王认错，僧人解放。邪靠\"装\"撑着，一旦现形，土崩瓦解。","appreciate":"结局点出<b>\"伪必露形\"</b>：虎鹿羊再像人，终究是兽。靠伪装得来的地位，经不起一场真比试。","think":["\"现出本相\"为什么大快人心？","你见过\"装得很像\"却最终露馅的事吗？"],"phrases":["现出本相","国王醒悟","僧人得释"]}}]};
+
+/* ============ 研读卡 HTML ============ */
+function studyHTML(p){
+  let h = '<div class="sec"><h4>📖 导读</h4><p>'+p.study.intro+'</p></div>';
+  h += '<div class="sec"><h4>🔍 赏析</h4><p>'+p.study.appreciate+'</p></div>';
+  h += '<div class="sec"><h4>💡 思考</h4><ul>';
+  p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
+  h += '</ul></div>';
+  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+  h += '</p></div>';
+  return h;
+}
+
+/* ============ 渲染漫画 ============ */
+function build(){
+  const root = document.getElementById('comic');
+  root.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const el = document.createElement('div');
+    el.className = 'panel' + (p.span ? ' span2' : '');
+    const shot = document.createElement('div');
+    shot.className = 'shot';
+    shot.style.backgroundImage = `url("${p.img}")`;
+    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
+    shot.style.backgroundSize = 'contain';
+    shot.style.backgroundPosition = 'center';
+    el.appendChild(shot);
+    (function (p, shot, el) {
+      const im = new Image();
+      im.onerror = function () {
+        shot.style.backgroundImage = 'none';
+        shot.style.background = 'linear-gradient(135deg,#d8b25a,#b5302a)';
+        if (!el.querySelector('.missing-lab')) {
+          const lab = document.createElement('div');
+          lab.className = 'missing-lab';
+          lab.textContent = '分镜示意图（AI 图待生成）';
+          el.appendChild(lab);
+        }
+      };
+      im.src = p.img;
+    })(p, shot, el);
+    const scan = document.createElement('div'); scan.className='scan'; el.appendChild(scan);
+    const vig = document.createElement('div'); vig.className='vig'; el.appendChild(vig);
+    const badge = document.createElement('div'); badge.className='badge'; badge.textContent='第 '+(i+1)+' 格 · 研读'; el.appendChild(badge);
+
+    if(p.caption){
+      const c = document.createElement('div'); c.className='caption'; c.textContent = p.caption;
+      el.appendChild(c);
+    }
+    (p.bubbles||[]).forEach(b=>{
+      const d = document.createElement('div');
+      d.className = 'bubble' + (b.kind?(' '+b.kind):'') + (' '+(b.side||'l'));
+      d.innerHTML = '<span class="who">'+(b.who||'')+'</span>'+b.text;
+      d.style.left = (b.side==='r'?null:'8%');
+      d.style.right = (b.side==='r'?'8%':null);
+      d.style.bottom = '14%';
+      el.appendChild(d);
+    });
+    if(p.sfx && p.sfx.t){
+      const s = document.createElement('div'); s.className='sfx'; s.textContent = p.sfx.t;
+      s.style.left = p.sfx.x; s.style.top = p.sfx.y; el.appendChild(s);
+    }
+    el.addEventListener('click', ()=>openLB(i));
+    root.appendChild(el);
+  });
+}
+
+/* ============ 主页面研读笔记 ============ */
+function buildStudies(){
+  const box = document.getElementById('studies');
+  box.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const card = document.createElement('div');
+    card.className = 'study-card';
+    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
+    card.innerHTML =
+      '<div class="head"><img src="'+p.img+'" alt="">'+
+      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<div class="body">'+ studyHTML(p) +'</div>';
+    box.appendChild(card);
+  });
+}
+
+/* ============ 放大层（研读模式）+ 翻页 ============ */
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbStudy = document.getElementById('lbStudy');
+const lbCount = document.getElementById('lbCount');
+let lbIdx = 0;
+
+function showLB(i){
+  lbIdx = (i % DATA.panels.length + DATA.panels.length) % DATA.panels.length;
+  const p = DATA.panels[lbIdx];
+  lbImg.src = p.img;
+  lbStudy.innerHTML = '<div class="lb-h">第 '+(lbIdx+1)+' 格 · 研读</div>' + studyHTML(p);
+  lbStudy.scrollTop = 0;
+  lbCount.textContent = '第 ' + (lbIdx + 1) + ' / ' + DATA.panels.length + ' 格';
+}
+function openLB(i){ showLB(i); lb.classList.add('open'); }
+
+document.getElementById('lbPrev').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx - 1); });
+document.getElementById('lbNext').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx + 1); });
+document.getElementById('lbClose').addEventListener('click', (e)=>{ e.stopPropagation(); lb.classList.remove('open'); });
+lb.addEventListener('click', (e)=>{ if(e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', (e)=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'ArrowLeft'){ showLB(lbIdx - 1); }
+  else if(e.key === 'ArrowRight'){ showLB(lbIdx + 1); }
+  else if(e.key === 'Escape'){ lb.classList.remove('open'); }
+});
+
+const studyBtn = document.getElementById('toggleStudy');
+studyBtn.addEventListener('click', ()=>{
+  const box = document.getElementById('studies');
+  box.classList.toggle('open');
+  studyBtn.textContent = box.classList.contains('open') ? '📕 收起逐格研读笔记' : '📖 展开逐格研读笔记';
+  if(box.classList.contains('open')) box.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+document.getElementById('replay').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+build();
+buildStudies();
+</script>
+</body>
+</html>

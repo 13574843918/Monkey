@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>场景样板Ⅲ · AI 国潮插画 + 分镜</title>
+<style>
+  :root{--ink:#2b2118;--gold:#c9a23a;--gold-d:#9c7a23;--red:#b23a2e;--jade:#3f9e8c;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#fbf4e2,#ece0c4 60%,#e2d2af 100%);
+    color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;padding:28px 16px 60px;}
+  .frame{max-width:1040px;margin:0 auto;}
+  .titlebar{display:flex;align-items:center;gap:14px;margin:0 4px 14px;}
+  .seal{width:62px;height:62px;flex:none;border-radius:12px;background:linear-gradient(160deg,var(--red),#7d211a);
+    color:#ffe9c8;display:grid;place-items:center;text-align:center;font-weight:800;font-size:15px;line-height:1.05;
+    box-shadow:0 6px 18px rgba(140,40,30,.4),inset 0 0 0 2px rgba(255,225,180,.35);letter-spacing:1px;}
+  .titlebar h1{font-size:24px;margin:0;letter-spacing:2px;}
+  .titlebar p{margin:4px 0 0;font-size:13px;color:#7a6a4e;}
+  .act-bar{display:flex;align-items:center;gap:10px;margin:0 4px 8px;}
+  .act-num{font-weight:800;color:#fff;background:linear-gradient(160deg,var(--red),#812019);
+    padding:4px 12px;border-radius:999px;font-size:13px;letter-spacing:1px;box-shadow:0 3px 8px rgba(140,40,30,.35);}
+  .act-title{font-size:15px;color:#6b4e16;letter-spacing:1px;}
+  .stage{position:relative;height:540px;border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 50px rgba(60,40,10,.35),inset 0 0 0 1px rgba(120,90,30,.25);background:#1c2230;}
+  .stage img.scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transform-origin:50% 55%;transition:transform 1s cubic-bezier(.4,0,.2,1);will-change:transform;}
+  .stage.swap img.scene{filter:brightness(.7);}
+  .bubbles{position:absolute;inset:0;pointer-events:none;}
+  .bubble{position:absolute;max-width:240px;padding:9px 13px;border-radius:14px;background:rgba(255,248,236,.95);
+    color:#2b2118;font-size:14px;line-height:1.5;box-shadow:0 8px 20px rgba(0,0,0,.4);
+    border:1px solid rgba(150,110,40,.45);transform:translate(-50%,-50%) scale(.8);opacity:0;
+    transition:opacity .35s ease .15s,transform .35s cubic-bezier(.2,1.4,.4,1);}
+  .bubble.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  .bubble:after{content:"";position:absolute;width:14px;height:14px;background:rgba(255,248,236,.95);
+    border-right:1px solid rgba(150,110,40,.45);border-bottom:1px solid rgba(150,110,40,.45);transform:rotate(45deg);}
+  .bubble.tl:after{left:22px;bottom:-8px;}.bubble.tr:after{right:22px;bottom:-8px;}.bubble.bl:after{left:22px;top:-8px;transform:rotate(225deg);}
+  .bubble.name{font-weight:800;color:var(--red);font-size:12.5px;display:block;margin-bottom:2px;letter-spacing:1px;}
+  .controls{display:flex;justify-content:center;align-items:center;gap:14px;margin:16px 0 0;}
+  .controls button{width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(160deg,#fbf1d8,#e8d3a4);color:#6b4e16;font-size:17px;
+    box-shadow:0 5px 14px rgba(90,60,15,.28),inset 0 0 0 1px rgba(150,110,40,.4);transition:.12s;}
+  .controls button:hover{filter:brightness(1.06);transform:translateY(-2px);}
+  .controls button:active{transform:translateY(1px);}
+  .controls .play{width:56px;height:56px;font-size:20px;background:linear-gradient(160deg,var(--red),#812019);color:#ffe9c8;
+    box-shadow:0 6px 16px rgba(140,40,30,.4),inset 0 0 0 1px rgba(255,225,180,.35);}
+  .dots{display:flex;gap:9px;margin-left:6px;}
+  .dots i{width:10px;height:10px;border-radius:50%;background:#cdb98a;cursor:pointer;transition:.2s;}
+  .dots i.on{background:var(--red);transform:scale(1.3);}
+  .note{margin:20px 4px 0;font-size:12.5px;color:#8a785a;line-height:1.7;border-top:1px dashed rgba(140,100,40,.4);padding-top:14px;}
+  @media (prefers-reduced-motion: reduce){.stage img.scene{transition:transform .01s;}.bubble{transition:opacity .01s;}}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="titlebar">
+    <div class="seal">AI<br>样板</div>
+    <div><h1>白虎岭 · 三打白骨精</h1>
+    <p>方案：AI 生成的国潮插画作场景底图 + 镜头推拉 + 漫画对白（同一张图聚焦不同人物，模拟动画）</p></div>
+  </div>
+
+  <div class="act-bar">
+    <span class="act-num" id="actNum">第一幕</span>
+    <span class="act-title" id="actTitle">荒岭遇妖</span>
+  </div>
+
+  <div class="stage" id="stage">
+    <img class="scene" id="scene" src="assets/scenes/baihuling.png" alt="白虎岭 AI 国潮插画" />
+    <div class="bubbles" id="bubbles"></div>
+  </div>
+
+  <div class="controls">
+    <button id="prev" title="上一幕">⏮</button>
+    <button id="play" class="play" title="播放/暂停">▶</button>
+    <button id="next" title="下一幕">⏭</button>
+    <button id="replay" title="重播">↺</button>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <p class="note">
+    这是用 AI 出的<b>一张</b>国潮插画（约 5–10 积分），接进"分镜 + 镜头 + 对白"框架：四幕通过<b>镜头推拉聚焦</b>不同人物（悟空 / 白骨原形 / 唐僧）并配漫画气泡，
+    用一张静帧做出"动画感"。确认后，42 站每站可生成<b>专属 AI 插画</b>（也可对重点几幕用 VideoGen 出真正会动的短片）。
+    注：样图右下角带平台水印，正式批量生成时可去水印或接受。
+  </p>
+</div>
+
+<script>
+var BEATS = [
+  { num:'第一幕', title:'荒岭遇妖', cam:{ox:'50%',oy:'56%',s:1.05},
+    bubbles:[ {name:'白骨精', x:50, y:30, dir:'tl', t:'长老，荒山寂寂，奴家特送斋饭一钵，万望笑纳～'} ] },
+  { num:'第二幕', title:'火眼识破', cam:{ox:'24%',oy:'40%',s:1.8},
+    bubbles:[ {name:'孙悟空', x:30, y:74, dir:'bl', t:'妖精！休要害人，吃俺老孙一棒！'} ] },
+  { num:'第三幕', title:'原形毕露', cam:{ox:'52%',oy:'64%',s:1.7},
+    bubbles:[ {name:'白骨精', x:50, y:24, dir:'tl', t:'哈哈，这蠢和尚已被我惑住，唐僧肉吃得成了！'} ] },
+  { num:'第四幕', title:'圣僧惊怒', cam:{ox:'82%',oy:'50%',s:1.8},
+    bubbles:[ {name:'唐僧', x:72, y:74, dir:'bl', t:'悟空，你又行凶滥杀，全无一点慈悲！'} ] }
+];
+
+var scene=document.getElementById('scene'), bubblesBox=document.getElementById('bubbles');
+var actNum=document.getElementById('actNum'), actTitle=document.getElementById('actTitle');
+var idx=0, playing=false, holdTimer=null;
+
+var dots=document.getElementById('dots');
+dots.innerHTML=BEATS.map(function(_,i){return '<i data-n="'+i+'"></i>';}).join('');
+dots.querySelectorAll('i').forEach(function(d){d.addEventListener('click',function(){stepTo(+d.dataset.n);});});
+function updateDots(n){dots.querySelectorAll('i').forEach(function(d,i){d.classList.toggle('on',i===n);});}
+function updatePlay(){document.getElementById('play').textContent=playing?'❚❚':'▶';}
+
+function render(n){
+  var b=BEATS[n];
+  scene.style.transformOrigin=b.cam.ox+' '+b.cam.oy;
+  scene.style.transform='scale('+b.cam.s+')';
+  actNum.textContent=b.num; actTitle.textContent=b.title;
+  bubblesBox.innerHTML=b.bubbles.map(function(bu){
+    return '<div class="bubble '+(bu.dir||'tl')+'"><span class="name">'+bu.name+'</span>'+bu.t+'</div>';
+  }).join('');
+  Array.prototype.forEach.call(bubblesBox.children,function(el,i){
+    el.style.left=b.bubbles[i].x+'%'; el.style.top=b.bubbles[i].y+'%';
+    requestAnimationFrame(function(){el.classList.add('show');});
+  });
+  updateDots(n);
+}
+function step(d){playing=false;updatePlay();idx=Math.max(0,Math.min(BEATS.length-1,idx+d));render(idx);}
+function stepTo(n){playing=false;updatePlay();idx=n;render(idx);}
+function next(){if(idx<BEATS.length-1)step(1);else{playing=false;updatePlay();}}
+function playLoop(){
+  if(!playing)return;
+  if(idx<BEATS.length-1){idx++;render(idx);holdTimer=setTimeout(playLoop,4200);}
+  else{playing=false;updatePlay();}
+}
+function toggle(){
+  if(playing){playing=false;updatePlay();if(holdTimer){clearTimeout(holdTimer);holdTimer=null;}return;}
+  playing=true;updatePlay();
+  if(idx>=BEATS.length-1){idx=0;render(0);}
+  holdTimer=setTimeout(function(){if(playing)playLoop();},1000);
+}
+document.getElementById('prev').addEventListener('click',function(){step(-1);});
+document.getElementById('next').addEventListener('click',function(){next();});
+document.getElementById('play').addEventListener('click',toggle);
+document.getElementById('replay').addEventListener('click',function(){playing=true;updatePlay();idx=0;render(0);holdTimer=setTimeout(playLoop,4200);});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft')step(-1);
+  else if(e.key==='ArrowRight')next();
+  else if(e.key===' '){e.preventDefault();toggle();}
+});
+render(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平顶山莲花洞 · 漫画分镜 · 阅读导读</title>
+<style>
+  :root{
+    --ink:#1c1714; --paper:#f4ead2; --paper2:#ead9b6;
+    --red:#b5302a; --gold:#c9971f; --jade:#3c7d5a;
+    --line:#2a2018;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 20% 10%, #fbf3df 0%, transparent 55%),
+      radial-gradient(circle at 80% 90%, #efe1c2 0%, transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"KaiTi","STKaiti","Songti SC","SimSun",serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;z-index:0;
+    background-image:repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 3px);
+  }
+  .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:26px 18px 60px;}
+  .back-link{display:inline-block;margin:0 0 14px;color:var(--red);text-decoration:none;font-size:14px;
+    border:1.5px solid var(--red);border-radius:16px;padding:4px 14px;transition:background .15s,color .15s;}
+  .back-link:hover{background:var(--red);color:#fff;}
+  .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
+
+  .masthead{
+    display:flex;align-items:flex-end;gap:16px;justify-content:center;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+  }
+  .title-v{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:40px;font-weight:700;letter-spacing:6px;color:var(--red);
+    text-shadow:1px 1px 0 #fff,2px 2px 0 rgba(0,0,0,.15);
+  }
+  .title-sub{font-size:15px;color:#6b5a44;line-height:1.7;text-align:left;}
+  .title-sub b{color:var(--ink);font-size:17px;}
+  .seal{
+    align-self:center;width:58px;height:58px;border:2px solid var(--red);border-radius:6px;
+    color:var(--red);display:flex;align-items:center;justify-content:center;
+    font-size:13px;line-height:1.1;text-align:center;transform:rotate(-6deg);
+    box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
+  }
+
+  .lead{
+    background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    border:2px solid var(--line);border-left:7px solid var(--red);
+    border-radius:8px;padding:16px 20px;margin-bottom:22px;line-height:1.85;font-size:15px;
+    box-shadow:3px 4px 0 rgba(0,0,0,.12);
+  }
+  .lead h2{margin:0 0 8px;font-size:18px;color:var(--red);letter-spacing:2px;}
+  .lead p{margin:0 0 8px;}
+  .lead .q{color:var(--jade);font-weight:700;}
+
+  .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .panel{position:relative;border:4px solid var(--line);background:#17120e;
+    box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
+  .panel.span2{grid-column:1 / -1;}
+  .panel .shot{position:absolute;inset:0;background-repeat:no-repeat;background-color:#17120e;
+    background-position:center;background-size:contain;}
+  .panel .scan{position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px);mix-blend-mode:multiply;opacity:.25;}
+  .panel .vig{position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.45);}
+  .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
+    font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
+
+  .caption{position:absolute;top:8px;left:8px;max-width:74%;
+    background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
+    padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
+
+  .bubble{position:absolute;z-index:5;max-width:62%;
+    background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
+    padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
+    box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .bubble::after{content:"";position:absolute;width:0;height:0;
+    border:9px solid transparent;border-top-color:var(--line);
+    bottom:-16px;left:24px;}
+  .bubble::before{content:"";position:absolute;width:0;height:0;
+    border:7px solid transparent;border-top-color:#fffdf6;bottom:-11px;left:26px;z-index:1;}
+  .bubble .who{display:block;font-size:11px;color:var(--red);font-weight:700;margin-bottom:2px;letter-spacing:1px;}
+  .bubble.demon{border-color:var(--red);background:#fff4f1;}
+  .bubble.demon .who{color:var(--red);}
+  .bubble.demon::after{border-top-color:var(--red);}
+  .bubble.god{border-color:var(--gold);background:#fffaf0;}
+  .bubble.god .who{color:var(--gold);}
+  .bubble.god::after{border-top-color:var(--gold);}
+  .bubble.r::after{left:auto;right:24px;} .bubble.r::before{left:auto;right:26px;}
+  .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
+  .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
+
+  .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
+    transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
+    letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
+
+  .toolbar{display:flex;gap:10px;justify-content:center;margin:24px 0 8px;flex-wrap:wrap;}
+  .toolbar button{font-family:inherit;font-size:14px;padding:8px 18px;cursor:pointer;
+    background:var(--red);color:#fff;border:none;border-radius:20px;box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .toolbar button.ghost{background:#fff;color:var(--red);border:2px solid var(--red);}
+  .toolbar button:active{transform:translate(1px,1px);}
+
+  .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
+
+  .studies{display:none;margin-top:18px;}
+  .studies.open{display:block;}
+  .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
+    margin-bottom:16px;overflow:hidden;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .study-card .head{display:flex;align-items:center;gap:12px;background:var(--ink);color:#f4ead2;padding:8px 14px;}
+  .study-card .head b{font-size:15px;color:#f4ead2;letter-spacing:1px;}
+  .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
+  .study-card .body{padding:14px 18px;}
+
+  .sec{margin-bottom:13px;}
+  .sec:last-child{margin-bottom:0;}
+  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+    border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
+  .sec p{margin:0;line-height:1.8;font-size:14px;}
+  .sec ul{margin:4px 0 0;padding-left:20px;}
+  .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
+  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
+
+  .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
+    border-bottom:2px solid var(--line);padding-bottom:6px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
+    box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .card h3{margin:0 0 8px;font-size:16px;color:var(--red);text-align:center;
+    border-bottom:1px dashed var(--gold);padding-bottom:6px;}
+  .card p{margin:0;font-size:13.5px;line-height:1.8;}
+
+  .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
+  .prose h3:first-child{margin-top:0;}
+  .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
+
+  .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
+    align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
+  .lightbox.open{display:flex;}
+  .lb-stage{display:flex;gap:0;width:min(1120px,95vw);max-height:90vh;
+    background:var(--paper);border:4px solid var(--line);border-radius:6px;overflow:hidden;
+    box-shadow:0 0 44px rgba(0,0,0,.6);}
+  .lb-figure{flex:1 1 52%;min-width:0;background:#111;display:flex;align-items:center;justify-content:center;padding:12px;}
+  .lb-figure img{max-width:100%;max-height:86vh;border:3px solid #fff;box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-study{flex:1 1 48%;min-width:0;overflow-y:auto;padding:18px 20px;background:var(--paper);}
+  .lb-study .lb-h{font-size:17px;color:var(--red);letter-spacing:1px;margin:0 0 12px;
+    border-bottom:2px solid var(--gold);padding-bottom:6px;}
+  .lb-close{position:absolute;top:14px;right:18px;z-index:53;width:40px;height:40px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.75);background:rgba(20,16,12,.55);color:#f4ead2;font-size:24px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+  .lb-close:hover{background:rgba(181,48,42,.92);}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:52;
+    width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,.75);
+    background:rgba(20,16,12,.55);color:#f4ead2;font-size:30px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;user-select:none;
+    transition:background .15s,transform .15s,box-shadow .15s;}
+  .lb-nav:hover{background:rgba(181,48,42,.92);transform:translateY(-50%) scale(1.08);box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-nav.prev{left:18px;} .lb-nav.next{right:18px;}
+  .lb-count{position:absolute;top:16px;left:0;right:0;text-align:center;color:#f4ead2;
+    font-size:13px;letter-spacing:2px;opacity:.9;text-shadow:0 1px 3px rgba(0,0,0,.7);z-index:52;}
+
+  @media(max-width:760px){
+    .comic{grid-template-columns:1fr;} .panel.span2{grid-column:auto;}
+    .cards{grid-template-columns:1fr;}
+    .lb-stage{flex-direction:column;max-height:94vh;}
+    .lb-figure img{max-height:38vh;}
+    .lb-study{max-height:none;}
+    .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .panel{transition:transform .15s ease;}
+    .panel:hover{transform:translateY(-2px);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="index.html">← 返回《西游记》路线图</a>
+  <div class="masthead">
+    <div class="title-v">平顶山莲花洞</div>
+    <div class="title-sub">西游记 · 第 13 站 · 原著第三十二至三十五回<br>五件宝贝，假葫破真<br><span style="color:#b5302a">漫画分镜 + 阅读导读</span></div>
+    <div class="seal">西游导读</div>
+  </div>
+
+  <div class="lead"><h2>整回导读 · 读前想一想</h2><p>平顶山莲花洞，金角、银角两大王原是太上老君看金炉银炉的童子，奉命下界试炼取经人，手持五件宝贝（紫金红葫芦、羊脂玉净瓶等）。银角用移山术压悟空，悟空以毫毛分身脱困，又变老道骗得妖怪的葫芦，再以"假葫芦胜真葫芦"反将一军。最终太上老君收回二童。</p><p>读这一站，重点看<b>"智斗法宝"</b>：法宝厉害，人心更巧。</p><p class="q">带着问题读：① 二妖为何是"老君的童子"？② 悟空怎么破葫芦？③ 法宝与脑子，哪个更关键？</p></div>
+
+  <div class="comic" id="comic"></div>
+
+  <div class="toolbar">
+    <button id="replay">↺ 从头看</button>
+    <button id="toggleStudy" class="ghost">📖 展开逐格研读笔记</button>
+  </div>
+  <div class="note">
+    点击任意分镜可进入<b>研读模式</b>（大图 + 导读卡），用底部 <b>‹ ›</b> 或键盘 <b>← →</b> 翻看上一张 / 下一张，<b>Esc</b> 或点击背景关闭。<br>
+    也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
+  </div>
+
+  <div class="studies" id="studies"></div>
+
+  <div class="section-title">人物小档案</div>
+  <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄。这一回把"智"用到极致：分身、变化、骗宝、以假乱真。说明<b>真法宝是那颗会转弯的脑子</b>。</p></div><div class="card"><h3>金角大王 / 银角大王</h3><p>太上老君金炉银炉童子，持五件法宝下界试炼。代表<b>"带装备的考题"</b>——凶，却非真敌。</p></div><div class="card"><h3>太上老君</h3><p>道教尊神，二童之主。安排试炼又亲自收回，是<b>"出题与收卷"的幕后手</b>。</p></div></div>
+
+  <div class="section-title">主题探究</div>
+  <div class="prose"><h3>① 法宝不如脑子</h3><p>葫芦再真，怕"更大的葫芦"。遇强敌，先想巧劲，别只比装备。</p><h3>② 难是安排好的考</h3><p>二童奉命试炼。许多"灾"，其实是来考你是不是真行。</p><h3>③ 以假亦可胜真</h3><p>悟空的"假葫芦"靠的是心理战。会读人心，胜过会用法宝。</p></div>
+
+  <div class="section-title">阅读小贴士</div>
+  <div class="prose"><ul><li><b>数"法宝"：</b>五件宝贝逐一出场，读时列单，像收集闪卡。</li><li><b>学"心理战"：</b>悟空胜在唬得住妖。写作文也写"攻心"不写"攻力"。</li><li><b>想"考试说"：</b>把一难当一考，读书和处世都轻松些。</li></ul></div>
+</div>
+
+<div class="lightbox" id="lb">
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
+  <div class="lb-stage">
+    <div class="lb-figure"><img id="lbImg" alt=""></div>
+    <div class="lb-study" id="lbStudy"></div>
+  </div>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-close" id="lbClose" type="button" aria-label="关闭">×</button>
+</div>
+
+<script>
+const DATA = {"panels":[{"img":"assets/scenes/comic-13-1.png","span":true,"size":"cover","pos":"center","caption":"平顶山莲花洞，金角、银角二王据洞而立，洞中宝光流转，五件法宝陈列。","bubbles":[{"who":"银角大王","text":"听说那唐僧肉好吃，且设计擒来！","side":"r","kind":"demon"}],"study":{"intro":"起笔先亮\"家底\"：二妖有五件宝贝，阵容豪华。读者立刻明白——这回拼的不是蛮力，是法宝。","appreciate":"作者用<b>\"亮宝设局\"</b>：先把妖的装备摆全，吊足胃口，再让悟空一件件破。读时数\"宝贝\"，像看装备展。","think":["为什么作者先列五件法宝？","装备强的妖，和武艺强的妖，哪个更难对付？"],"phrases":["平顶山","莲花洞","五件法宝"]}},{"img":"assets/scenes/comic-13-2.png","size":"cover","pos":"center","caption":"银角唤来须弥、峨眉二山压顶，悟空以毫毛分身脱困，仍被压得狼狈。","bubbles":[{"who":"银角大王","text":"移山压你，看往哪里逃！","side":"l","kind":"demon"}],"sfx":{"t":"轰隆——","x":"56%","y":"14%"},"study":{"intro":"危机：移山术把山当石头扔。悟空再能打，也扛不住两座山。法宝的\"不讲理\"，在此刻最明显。","appreciate":"这一格写<b>\"绝境中的灵\"</b>：悟空被压却不死，靠毫毛分身。再绝的路，总有一根\"毫毛\"是退路——关键是别慌。","think":["悟空被山压住，靠什么脱困？","当你被\"两座大山\"压住，你的\"毫毛\"是什么？"],"phrases":["移山压顶","毫毛分身","狼狈脱困"]}},{"img":"assets/scenes/comic-13-3.png","size":"cover","pos":"center","caption":"悟空变老道骗得真葫芦，又用假葫芦唬住银角——以假胜真。","bubbles":[{"who":"孙悟空","text":"你的葫芦装人，俺的葫芦装天！","side":"r"}],"study":{"intro":"智斗高潮：悟空不抢而骗，拿真葫芦、造假葫芦，把妖怪唬得团团转。\"以假胜真\"，是全回最妙一笔。","appreciate":"这里写<b>\"脑子胜法宝\"</b>：你葫芦再真，我编个更大的\"装天葫芦\"就破。读神话，要读出\"巧\"字。","think":["\"假葫芦胜真葫芦\"妙在哪？","遇到比自己\"装备强\"的对手，你能想到\"以巧破\"吗？"],"phrases":["变老道","骗得真葫","以假胜真"]}},{"img":"assets/scenes/comic-13-4.png","size":"cover","pos":"center","caption":"太上老君现身，收回金角银角二童，原来是一场试炼。","bubbles":[{"who":"太上老君","text":"二童归位，此乃试他道心。","side":"r","kind":"god"}],"study":{"intro":"收尾揭底：二妖是老君的童子，下界是\"奉命试炼\"。难，原来是\"安排好的考试\"。","appreciate":"结局点出<b>\"难即考\"</b>：取经路上的许多妖，本就是上界设的题。过关不是消灭，是证明自己配得上。","think":["二妖是\"童子\"，这设定改变了你怎么看这一难？","把困难当\"考试\"，你的心态会怎样变？"],"phrases":["老君现身","收回二童","原来试炼"]}}]};
+
+/* ============ 研读卡 HTML ============ */
+function studyHTML(p){
+  let h = '<div class="sec"><h4>📖 导读</h4><p>'+p.study.intro+'</p></div>';
+  h += '<div class="sec"><h4>🔍 赏析</h4><p>'+p.study.appreciate+'</p></div>';
+  h += '<div class="sec"><h4>💡 思考</h4><ul>';
+  p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
+  h += '</ul></div>';
+  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+  h += '</p></div>';
+  return h;
+}
+
+/* ============ 渲染漫画 ============ */
+function build(){
+  const root = document.getElementById('comic');
+  root.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const el = document.createElement('div');
+    el.className = 'panel' + (p.span ? ' span2' : '');
+    const shot = document.createElement('div');
+    shot.className = 'shot';
+    shot.style.backgroundImage = `url("${p.img}")`;
+    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
+    shot.style.backgroundSize = 'contain';
+    shot.style.backgroundPosition = 'center';
+    el.appendChild(shot);
+    (function (p, shot, el) {
+      const im = new Image();
+      im.onerror = function () {
+        shot.style.backgroundImage = 'none';
+        shot.style.background = 'linear-gradient(135deg,#d8b25a,#b5302a)';
+        if (!el.querySelector('.missing-lab')) {
+          const lab = document.createElement('div');
+          lab.className = 'missing-lab';
+          lab.textContent = '分镜示意图（AI 图待生成）';
+          el.appendChild(lab);
+        }
+      };
+      im.src = p.img;
+    })(p, shot, el);
+    const scan = document.createElement('div'); scan.className='scan'; el.appendChild(scan);
+    const vig = document.createElement('div'); vig.className='vig'; el.appendChild(vig);
+    const badge = document.createElement('div'); badge.className='badge'; badge.textContent='第 '+(i+1)+' 格 · 研读'; el.appendChild(badge);
+
+    if(p.caption){
+      const c = document.createElement('div'); c.className='caption'; c.textContent = p.caption;
+      el.appendChild(c);
+    }
+    (p.bubbles||[]).forEach(b=>{
+      const d = document.createElement('div');
+      d.className = 'bubble' + (b.kind?(' '+b.kind):'') + (' '+(b.side||'l'));
+      d.innerHTML = '<span class="who">'+(b.who||'')+'</span>'+b.text;
+      d.style.left = (b.side==='r'?null:'8%');
+      d.style.right = (b.side==='r'?'8%':null);
+      d.style.bottom = '14%';
+      el.appendChild(d);
+    });
+    if(p.sfx && p.sfx.t){
+      const s = document.createElement('div'); s.className='sfx'; s.textContent = p.sfx.t;
+      s.style.left = p.sfx.x; s.style.top = p.sfx.y; el.appendChild(s);
+    }
+    el.addEventListener('click', ()=>openLB(i));
+    root.appendChild(el);
+  });
+}
+
+/* ============ 主页面研读笔记 ============ */
+function buildStudies(){
+  const box = document.getElementById('studies');
+  box.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const card = document.createElement('div');
+    card.className = 'study-card';
+    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
+    card.innerHTML =
+      '<div class="head"><img src="'+p.img+'" alt="">'+
+      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<div class="body">'+ studyHTML(p) +'</div>';
+    box.appendChild(card);
+  });
+}
+
+/* ============ 放大层（研读模式）+ 翻页 ============ */
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbStudy = document.getElementById('lbStudy');
+const lbCount = document.getElementById('lbCount');
+let lbIdx = 0;
+
+function showLB(i){
+  lbIdx = (i % DATA.panels.length + DATA.panels.length) % DATA.panels.length;
+  const p = DATA.panels[lbIdx];
+  lbImg.src = p.img;
+  lbStudy.innerHTML = '<div class="lb-h">第 '+(lbIdx+1)+' 格 · 研读</div>' + studyHTML(p);
+  lbStudy.scrollTop = 0;
+  lbCount.textContent = '第 ' + (lbIdx + 1) + ' / ' + DATA.panels.length + ' 格';
+}
+function openLB(i){ showLB(i); lb.classList.add('open'); }
+
+document.getElementById('lbPrev').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx - 1); });
+document.getElementById('lbNext').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx + 1); });
+document.getElementById('lbClose').addEventListener('click', (e)=>{ e.stopPropagation(); lb.classList.remove('open'); });
+lb.addEventListener('click', (e)=>{ if(e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', (e)=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'ArrowLeft'){ showLB(lbIdx - 1); }
+  else if(e.key === 'ArrowRight'){ showLB(lbIdx + 1); }
+  else if(e.key === 'Escape'){ lb.classList.remove('open'); }
+});
+
+const studyBtn = document.getElementById('toggleStudy');
+studyBtn.addEventListener('click', ()=>{
+  const box = document.getElementById('studies');
+  box.classList.toggle('open');
+  studyBtn.textContent = box.classList.contains('open') ? '📕 收起逐格研读笔记' : '📖 展开逐格研读笔记';
+  if(box.classList.contains('open')) box.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+document.getElementById('replay').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+build();
+buildStudies();
+</script>
+</body>
+</html>

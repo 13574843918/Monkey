@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两界山 · 漫画分镜 · 阅读导读</title>
+<style>
+  :root{
+    --ink:#1c1714; --paper:#f4ead2; --paper2:#ead9b6;
+    --red:#b5302a; --gold:#c9971f; --jade:#3c7d5a;
+    --line:#2a2018;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 20% 10%, #fbf3df 0%, transparent 55%),
+      radial-gradient(circle at 80% 90%, #efe1c2 0%, transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"KaiTi","STKaiti","Songti SC","SimSun",serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;z-index:0;
+    background-image:repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 3px);
+  }
+  .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:26px 18px 60px;}
+  .back-link{display:inline-block;margin:0 0 14px;color:var(--red);text-decoration:none;font-size:14px;
+    border:1.5px solid var(--red);border-radius:16px;padding:4px 14px;transition:background .15s,color .15s;}
+  .back-link:hover{background:var(--red);color:#fff;}
+  .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
+
+  .masthead{
+    display:flex;align-items:flex-end;gap:16px;justify-content:center;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+  }
+  .title-v{
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-size:40px;font-weight:700;letter-spacing:6px;color:var(--red);
+    text-shadow:1px 1px 0 #fff,2px 2px 0 rgba(0,0,0,.15);
+  }
+  .title-sub{font-size:15px;color:#6b5a44;line-height:1.7;text-align:left;}
+  .title-sub b{color:var(--ink);font-size:17px;}
+  .seal{
+    align-self:center;width:58px;height:58px;border:2px solid var(--red);border-radius:6px;
+    color:var(--red);display:flex;align-items:center;justify-content:center;
+    font-size:13px;line-height:1.1;text-align:center;transform:rotate(-6deg);
+    box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
+  }
+
+  .lead{
+    background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    border:2px solid var(--line);border-left:7px solid var(--red);
+    border-radius:8px;padding:16px 20px;margin-bottom:22px;line-height:1.85;font-size:15px;
+    box-shadow:3px 4px 0 rgba(0,0,0,.12);
+  }
+  .lead h2{margin:0 0 8px;font-size:18px;color:var(--red);letter-spacing:2px;}
+  .lead p{margin:0 0 8px;}
+  .lead .q{color:var(--jade);font-weight:700;}
+
+  .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .panel{position:relative;border:4px solid var(--line);background:#17120e;
+    box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
+  .panel.span2{grid-column:1 / -1;}
+  .panel .shot{position:absolute;inset:0;background-repeat:no-repeat;background-color:#17120e;
+    background-position:center;background-size:contain;}
+  .panel .scan{position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px);mix-blend-mode:multiply;opacity:.25;}
+  .panel .vig{position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.45);}
+  .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
+    font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
+
+  .caption{position:absolute;top:8px;left:8px;max-width:74%;
+    background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
+    padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
+
+  .bubble{position:absolute;z-index:5;max-width:62%;
+    background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
+    padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
+    box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .bubble::after{content:"";position:absolute;width:0;height:0;
+    border:9px solid transparent;border-top-color:var(--line);
+    bottom:-16px;left:24px;}
+  .bubble::before{content:"";position:absolute;width:0;height:0;
+    border:7px solid transparent;border-top-color:#fffdf6;bottom:-11px;left:26px;z-index:1;}
+  .bubble .who{display:block;font-size:11px;color:var(--red);font-weight:700;margin-bottom:2px;letter-spacing:1px;}
+  .bubble.demon{border-color:var(--red);background:#fff4f1;}
+  .bubble.demon .who{color:var(--red);}
+  .bubble.demon::after{border-top-color:var(--red);}
+  .bubble.god{border-color:var(--gold);background:#fffaf0;}
+  .bubble.god .who{color:var(--gold);}
+  .bubble.god::after{border-top-color:var(--gold);}
+  .bubble.r::after{left:auto;right:24px;} .bubble.r::before{left:auto;right:26px;}
+  .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
+  .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
+
+  .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
+    transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
+    letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
+
+  .toolbar{display:flex;gap:10px;justify-content:center;margin:24px 0 8px;flex-wrap:wrap;}
+  .toolbar button{font-family:inherit;font-size:14px;padding:8px 18px;cursor:pointer;
+    background:var(--red);color:#fff;border:none;border-radius:20px;box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .toolbar button.ghost{background:#fff;color:var(--red);border:2px solid var(--red);}
+  .toolbar button:active{transform:translate(1px,1px);}
+
+  .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
+
+  .studies{display:none;margin-top:18px;}
+  .studies.open{display:block;}
+  .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
+    margin-bottom:16px;overflow:hidden;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .study-card .head{display:flex;align-items:center;gap:12px;background:var(--ink);color:#f4ead2;padding:8px 14px;}
+  .study-card .head b{font-size:15px;color:#f4ead2;letter-spacing:1px;}
+  .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
+  .study-card .body{padding:14px 18px;}
+
+  .sec{margin-bottom:13px;}
+  .sec:last-child{margin-bottom:0;}
+  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+    border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
+  .sec p{margin:0;line-height:1.8;font-size:14px;}
+  .sec ul{margin:4px 0 0;padding-left:20px;}
+  .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
+  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
+
+  .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
+    border-bottom:2px solid var(--line);padding-bottom:6px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
+    box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .card h3{margin:0 0 8px;font-size:16px;color:var(--red);text-align:center;
+    border-bottom:1px dashed var(--gold);padding-bottom:6px;}
+  .card p{margin:0;font-size:13.5px;line-height:1.8;}
+
+  .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
+    padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
+  .prose h3:first-child{margin-top:0;}
+  .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
+
+  .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
+    align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
+  .lightbox.open{display:flex;}
+  .lb-stage{display:flex;gap:0;width:min(1120px,95vw);max-height:90vh;
+    background:var(--paper);border:4px solid var(--line);border-radius:6px;overflow:hidden;
+    box-shadow:0 0 44px rgba(0,0,0,.6);}
+  .lb-figure{flex:1 1 52%;min-width:0;background:#111;display:flex;align-items:center;justify-content:center;padding:12px;}
+  .lb-figure img{max-width:100%;max-height:86vh;border:3px solid #fff;box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-study{flex:1 1 48%;min-width:0;overflow-y:auto;padding:18px 20px;background:var(--paper);}
+  .lb-study .lb-h{font-size:17px;color:var(--red);letter-spacing:1px;margin:0 0 12px;
+    border-bottom:2px solid var(--gold);padding-bottom:6px;}
+  .lb-close{position:absolute;top:14px;right:18px;z-index:53;width:40px;height:40px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.75);background:rgba(20,16,12,.55);color:#f4ead2;font-size:24px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+  .lb-close:hover{background:rgba(181,48,42,.92);}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:52;
+    width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,.75);
+    background:rgba(20,16,12,.55);color:#f4ead2;font-size:30px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;user-select:none;
+    transition:background .15s,transform .15s,box-shadow .15s;}
+  .lb-nav:hover{background:rgba(181,48,42,.92);transform:translateY(-50%) scale(1.08);box-shadow:0 0 18px rgba(0,0,0,.5);}
+  .lb-nav.prev{left:18px;} .lb-nav.next{right:18px;}
+  .lb-count{position:absolute;top:16px;left:0;right:0;text-align:center;color:#f4ead2;
+    font-size:13px;letter-spacing:2px;opacity:.9;text-shadow:0 1px 3px rgba(0,0,0,.7);z-index:52;}
+
+  @media(max-width:760px){
+    .comic{grid-template-columns:1fr;} .panel.span2{grid-column:auto;}
+    .cards{grid-template-columns:1fr;}
+    .lb-stage{flex-direction:column;max-height:94vh;}
+    .lb-figure img{max-height:38vh;}
+    .lb-study{max-height:none;}
+    .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .panel{transition:transform .15s ease;}
+    .panel:hover{transform:translateY(-2px);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="index.html">← 返回《西游记》路线图</a>
+  <div class="masthead">
+    <div class="title-v">两界山</div>
+    <div class="title-sub">西游记 · 第 3 站 · 原著第十四回<br>五行山下，收第一位徒弟<br><span style="color:#b5302a">漫画分镜 + 阅读导读</span></div>
+    <div class="seal">西游导读</div>
+  </div>
+
+  <div class="lead"><h2>整回导读 · 读前想一想</h2><p>还记得大闹天宫的齐天大圣吗？他因反天被压在五行山（两界山）下五百年。这一站，取经路上的唐僧恰好路过，揭去山顶如来压帖，放出了孙悟空——取经队伍的第一位徒弟，就这样"收"到了。</p><p>读这一站，要想：<b>压五百年是惩罚还是磨砺？</b>从"齐天大圣"变成"徒弟行者"，悟空失去了什么，又得到了什么？</p><p class="q">带问题读：① 悟空为什么会被压五百年？② 唐僧揭帖放他，靠的是"力气"还是"缘法"？③ "大圣"变"行者"，名字变了什么？</p></div>
+
+  <div class="comic" id="comic"></div>
+
+  <div class="toolbar">
+    <button id="replay">↺ 从头看</button>
+    <button id="toggleStudy" class="ghost">📖 展开逐格研读笔记</button>
+  </div>
+  <div class="note">
+    点击任意分镜可进入<b>研读模式</b>（大图 + 导读卡），用底部 <b>‹ ›</b> 或键盘 <b>← →</b> 翻看上一张 / 下一张，<b>Esc</b> 或点击背景关闭。<br>
+    也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
+  </div>
+
+  <div class="studies" id="studies"></div>
+
+  <div class="section-title">人物小档案</div>
+  <div class="cards"><div class="card"><h3>孙悟空</h3><p>花果山美猴王、齐天大圣。因大闹天宫被压五行山五百年，经观音点化，拜唐僧为徒，称"孙行者"。<b>神通广大、忠心嫉恶，却急躁好胜</b>，是取经队的主战力。</p></div><div class="card"><h3>唐僧</h3><p>取经人。奉唐王之命西行，路过两界山放出悟空。他<b>慈悲坚定</b>，却"肉眼凡胎"，常看不破妖怪，也压不住徒弟的性子。</p></div><div class="card"><h3>刘伯钦</h3><p>两界山下的猎户，护送唐僧过山，并告知山中压猴之事。是<b>推动情节的小角色</b>——小人物，往往是大事件的引子。</p></div></div>
+
+  <div class="section-title">主题探究</div>
+  <div class="prose"><h3>① 自由与责任</h3><p>压五百年是"无法无天"的代价。真正的自由，不是想做什么就做什么，而是能担起该担的责任。</p><h3>② 解困靠"缘法"</h3><p>悟空自己挣不出山，须等唐僧揭帖。人生很多困局，也需外力与时机——所谓"贵人"与"时机"。</p><h3>③ 名字即成长</h3><p>"大圣"到"行者"，名字变了，路也变了。你愿意自己的"代号"代表怎样的人？</p></div>
+
+  <div class="section-title">阅读小贴士</div>
+  <div class="prose"><ul><li><b>前情要勾连：</b>读这一站，先回想"大闹天宫"。前后勾连，人物才立得起来。</li><li><b>抓"反转"写法的妙：</b>作者最爱用"今昔对比"制造张力，读时圈出前后反差处。</li><li><b>想"如果"：</b>如果唐僧没揭帖，故事会怎样？多问"如果"，能读出作者的匠心。</li></ul></div>
+</div>
+
+<div class="lightbox" id="lb">
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
+  <div class="lb-stage">
+    <div class="lb-figure"><img id="lbImg" alt=""></div>
+    <div class="lb-study" id="lbStudy"></div>
+  </div>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-close" id="lbClose" type="button" aria-label="关闭">×</button>
+</div>
+
+<script>
+const DATA = {"panels":[{"img":"assets/scenes/comic-03-1.png","span":true,"size":"cover","pos":"center","caption":"两界山（原五行山）山势险绝，唐僧在猎户刘伯钦护送下至此。","bubbles":[{"who":"刘伯钦","text":"长老，前方便是两界山，山里压着个神通广大的妖猴。","side":"l"}],"study":{"intro":"起笔先写环境之险与\"山里压着个猴\"的伏笔。读者已知那是齐天大圣，主角唐僧却还不知道——这种\"读者知道、角色不知\"的错位，最吊人胃口。","appreciate":"作者善用<b>草蛇灰线</b>：前文大闹天宫，此处轻轻一提\"压着个妖猴\"，前后呼应。环境\"险绝\"也暗示：此处将发生大事。","think":["为什么作者要让唐僧\"不知情\"地走近悟空？这样写有什么效果？","刘伯钦这个\"引路人\"在故事里起什么作用？"],"phrases":["山势险绝","两界山","压着个妖猴"]}},{"img":"assets/scenes/comic-03-2.png","size":"cover","pos":"center","caption":"山石下伸出一只毛手，崖间露出猴脸——竟是五百年前大闹天宫的孙悟空！","bubbles":[{"who":"孙悟空","text":"师父！救人一命，胜造七级浮屠，救我出去罢！","side":"r"}],"study":{"intro":"师徒初遇。曾经不可一世的齐天大圣，如今只从石缝里伸出一只手、露一张脸求助。巨大的反差，是这一格的张力所在。","appreciate":"写法上是<b>反差</b>：昔日的\"大\"与今日的\"困\"对照，既可怜又可笑，又让人唏嘘。悟空开口那句\"救人一命\"，已不是当年的狂傲，而是求生的卑微。","think":["从\"大闹天宫\"到\"石缝求救\"，悟空的变化让你有什么感受？","一个人落难时的样子，能不能代表他的全部？"],"phrases":["伸出毛手","露出猴脸","救人一命，胜造七级浮屠"]}},{"img":"assets/scenes/comic-03-3.png","size":"cover","pos":"center","caption":"唐僧揭下如来\"唵嘛呢叭咪吽\"压帖，山石崩裂，齐天大圣破封腾跃而出！","bubbles":[{"who":"孙悟空","text":"俺老孙出来也！","side":"r"}],"sfx":{"t":"轰——","x":"60%","y":"22%"},"study":{"intro":"高潮：揭帖、山崩、破封。一句\"俺老孙出来也\"，把憋了五百年的劲儿全释放了。注意那帖子上写的是如来真言——能放他的，终究是\"佛\"。","appreciate":"这一格用<b>动作与声响</b>造势：揭、崩、跃，三个动词连成一气；\"轰——\"的拟声把画面\"喊\"出了声音。读图时，注意作者如何用\"动\"写\"力\"。","think":["压帖是如来贴的，也由唐僧揭——这暗示了什么？","\"破封而出\"这个画面，除了写悟空，还象征什么？"],"phrases":["揭下压帖","山石崩裂","破封腾跃"]}},{"img":"assets/scenes/comic-03-4.png","size":"cover","pos":"center","caption":"悟空拜唐僧为师，自此护送西行——取经队伍有了第一位徒弟。","bubbles":[{"who":"孙悟空","text":"弟子愿保师父西去，誓不成佛不罢休！","side":"l"}],"study":{"intro":"收尾：从\"妖猴\"到\"徒弟\"。悟空束手立誓，身份彻底转变。取经队伍的第一块拼图，拼上了。","appreciate":"名字是<b>命运的隐喻</b>：\"齐天大圣\"是反抗的代号，\"孙行者\"是修行的代号。从\"大圣\"到\"行者\"，失去的是张扬，得到的是方向。","think":["\"大圣\"与\"行者\"两个名字，分别代表了悟空哪两面？","师徒相遇，谁更需要谁？说说你的理由。"],"phrases":["拜师西行","第一位徒弟","誓不成佛不罢休"]}}]};
+
+/* ============ 研读卡 HTML ============ */
+function studyHTML(p){
+  let h = '<div class="sec"><h4>📖 导读</h4><p>'+p.study.intro+'</p></div>';
+  h += '<div class="sec"><h4>🔍 赏析</h4><p>'+p.study.appreciate+'</p></div>';
+  h += '<div class="sec"><h4>💡 思考</h4><ul>';
+  p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
+  h += '</ul></div>';
+  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+  h += '</p></div>';
+  return h;
+}
+
+/* ============ 渲染漫画 ============ */
+function build(){
+  const root = document.getElementById('comic');
+  root.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const el = document.createElement('div');
+    el.className = 'panel' + (p.span ? ' span2' : '');
+    const shot = document.createElement('div');
+    shot.className = 'shot';
+    shot.style.backgroundImage = `url("${p.img}")`;
+    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
+    shot.style.backgroundSize = 'contain';
+    shot.style.backgroundPosition = 'center';
+    el.appendChild(shot);
+    (function (p, shot, el) {
+      const im = new Image();
+      im.onerror = function () {
+        shot.style.backgroundImage = 'none';
+        shot.style.background = 'linear-gradient(135deg,#d8b25a,#b5302a)';
+        if (!el.querySelector('.missing-lab')) {
+          const lab = document.createElement('div');
+          lab.className = 'missing-lab';
+          lab.textContent = '分镜示意图（AI 图待生成）';
+          el.appendChild(lab);
+        }
+      };
+      im.src = p.img;
+    })(p, shot, el);
+    const scan = document.createElement('div'); scan.className='scan'; el.appendChild(scan);
+    const vig = document.createElement('div'); vig.className='vig'; el.appendChild(vig);
+    const badge = document.createElement('div'); badge.className='badge'; badge.textContent='第 '+(i+1)+' 格 · 研读'; el.appendChild(badge);
+
+    if(p.caption){
+      const c = document.createElement('div'); c.className='caption'; c.textContent = p.caption;
+      el.appendChild(c);
+    }
+    (p.bubbles||[]).forEach(b=>{
+      const d = document.createElement('div');
+      d.className = 'bubble' + (b.kind?(' '+b.kind):'') + (' '+(b.side||'l'));
+      d.innerHTML = '<span class="who">'+(b.who||'')+'</span>'+b.text;
+      d.style.left = (b.side==='r'?null:'8%');
+      d.style.right = (b.side==='r'?'8%':null);
+      d.style.bottom = '14%';
+      el.appendChild(d);
+    });
+    if(p.sfx && p.sfx.t){
+      const s = document.createElement('div'); s.className='sfx'; s.textContent = p.sfx.t;
+      s.style.left = p.sfx.x; s.style.top = p.sfx.y; el.appendChild(s);
+    }
+    el.addEventListener('click', ()=>openLB(i));
+    root.appendChild(el);
+  });
+}
+
+/* ============ 主页面研读笔记 ============ */
+function buildStudies(){
+  const box = document.getElementById('studies');
+  box.innerHTML = '';
+  DATA.panels.forEach((p, i)=>{
+    const card = document.createElement('div');
+    card.className = 'study-card';
+    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
+    card.innerHTML =
+      '<div class="head"><img src="'+p.img+'" alt="">'+
+      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<div class="body">'+ studyHTML(p) +'</div>';
+    box.appendChild(card);
+  });
+}
+
+/* ============ 放大层（研读模式）+ 翻页 ============ */
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbStudy = document.getElementById('lbStudy');
+const lbCount = document.getElementById('lbCount');
+let lbIdx = 0;
+
+function showLB(i){
+  lbIdx = (i % DATA.panels.length + DATA.panels.length) % DATA.panels.length;
+  const p = DATA.panels[lbIdx];
+  lbImg.src = p.img;
+  lbStudy.innerHTML = '<div class="lb-h">第 '+(lbIdx+1)+' 格 · 研读</div>' + studyHTML(p);
+  lbStudy.scrollTop = 0;
+  lbCount.textContent = '第 ' + (lbIdx + 1) + ' / ' + DATA.panels.length + ' 格';
+}
+function openLB(i){ showLB(i); lb.classList.add('open'); }
+
+document.getElementById('lbPrev').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx - 1); });
+document.getElementById('lbNext').addEventListener('click', (e)=>{ e.stopPropagation(); showLB(lbIdx + 1); });
+document.getElementById('lbClose').addEventListener('click', (e)=>{ e.stopPropagation(); lb.classList.remove('open'); });
+lb.addEventListener('click', (e)=>{ if(e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', (e)=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'ArrowLeft'){ showLB(lbIdx - 1); }
+  else if(e.key === 'ArrowRight'){ showLB(lbIdx + 1); }
+  else if(e.key === 'Escape'){ lb.classList.remove('open'); }
+});
+
+const studyBtn = document.getElementById('toggleStudy');
+studyBtn.addEventListener('click', ()=>{
+  const box = document.getElementById('studies');
+  box.classList.toggle('open');
+  studyBtn.textContent = box.classList.contains('open') ? '📕 收起逐格研读笔记' : '📖 展开逐格研读笔记';
+  if(box.classList.contains('open')) box.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+document.getElementById('replay').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+build();
+buildStudies();
+</script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西游记 · 西天取经动态路线图</title>
+<meta name="description" content="新中式国潮风格《西游记》西天取经动态路线图：贞观十三年至二十七年，四十二处原著地名、九九八十一难难簿、神仙谱系反查与援助雷达。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== 背景层：宣纸纹理 / 云气 / 金尘 ===== -->
+<canvas id="paperCanvas" aria-hidden="true"></canvas>
+<div class="paper-vignette" aria-hidden="true"></div>
+<div class="cloud-band cloud-a" aria-hidden="true"></div>
+<div class="cloud-band cloud-b" aria-hidden="true"></div>
+<canvas id="dustCanvas" aria-hidden="true"></canvas>
+
+<div class="app-shell">
+
+  <!-- ===== 顶部栏 ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="seal" aria-hidden="true"><span>西</span><span>游</span></div>
+      <div class="brand-text">
+        <h1>西天取经图</h1>
+        <p>大唐长安 → 西天灵山 · 十万八千里 · 九九八十一难</p>
+      </div>
+    </div>
+
+    <div class="top-metrics">
+      <div class="metric">
+        <span class="metric-label">取经纪年</span>
+        <strong id="mYear">贞观十三年</strong>
+        <small id="mYearNum">公元 639 年</small>
+      </div>
+      <div class="metric">
+        <span class="metric-label">行至</span>
+        <strong id="mPlace">大唐长安</strong>
+        <small id="mCount">第 1 / 42 站</small>
+      </div>
+      <div class="calamity-box">
+        <svg class="calamity-ring" viewBox="0 0 54 54" aria-hidden="true">
+          <circle class="ring-bg" cx="27" cy="27" r="22"></circle>
+          <circle class="ring-fg" id="ringFg" cx="27" cy="27" r="22"></circle>
+          <text x="27" y="31" id="ringText">0</text>
+        </svg>
+        <div class="calamity-info">
+          <span class="metric-label">九九八十一难</span>
+          <strong id="mCalamity">已历 0 难 / 81</strong>
+          <div class="calamity-bar"><i id="calamityFill"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="search-wrap">
+        <input type="search" id="searchInput" placeholder="⌕ 搜地点 / 神仙 / 妖怪 / 回目" autocomplete="off"
+               aria-label="检索原著地点、神仙、妖怪、回目与难名" aria-controls="searchResults">
+        <div class="search-results" id="searchResults" role="listbox"></div>
+      </div>
+      <a class="chip comic-cta-top" href="comic-index.html" title="初中名著阅读 · 四十二站漫画分镜阅读导读总览">📖 漫画导读</a>
+      <button class="chip" id="btnCodex" type="button" title="第九十九回八十一难难簿，可逐条点开">☷ 难簿</button>
+      <button class="chip active" id="btnAid" type="button" title="援助线：聚焦当前站 → 全览 → 关闭">✧ 雷达·聚焦</button>
+      <button class="chip active" id="btnSound" type="button" title="开启 / 关闭国风音效">♫ 音效</button>
+      <button class="chip" id="btnHelp" type="button" title="操作说明">? 指引</button>
+    </div>
+  </header>
+
+  <!-- ===== 主舞台 ===== -->
+  <main class="stage" id="stage">
+
+    <!-- 取经团队 -->
+    <section class="team-panel" id="teamPanel" aria-label="取经团队状态">
+      <div class="panel-title"><span class="title-mark">◆</span> 取经团队 <small id="teamCount">1 / 5</small></div>
+      <div class="team-list" id="teamList"></div>
+      <div class="team-note" id="teamNote">玄奘奉旨，只身西行</div>
+    </section>
+
+    <!-- 地图 -->
+    <div class="map-area" id="mapArea">
+      <svg id="map" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="西游记西天取经路线地图，共四十二站">
+        <defs>
+          <!-- 路线渐变：长安端暖金 → 灵山端明金 -->
+          <linearGradient id="gradRoute" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%"   stop-color="#b8862f"/>
+            <stop offset="38%"  stop-color="#e4b34c"/>
+            <stop offset="70%"  stop-color="#f6d780"/>
+            <stop offset="100%" stop-color="#ffefbb"/>
+          </linearGradient>
+          <linearGradient id="gradRed" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="#9b2c22"/>
+            <stop offset="100%" stop-color="#d0563a"/>
+          </linearGradient>
+          <radialGradient id="gradHalo">
+            <stop offset="0%"   stop-color="#fff0c0" stop-opacity=".95"/>
+            <stop offset="55%"  stop-color="#e6b453" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#e6b453" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gradSun">
+            <stop offset="0%" stop-color="#fff3cf" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#fff3cf" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="gradAid" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7a5ca8" stop-opacity=".1"/>
+            <stop offset="100%" stop-color="#7a5ca8" stop-opacity=".85"/>
+          </linearGradient>
+          <!-- 三大地理色区：左右边缘淡出，避免生硬色块 -->
+          <linearGradient id="gradRegionJade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#6d8c79" stop-opacity="0"/><stop offset="14%" stop-color="#6d8c79" stop-opacity=".19"/>
+            <stop offset="86%" stop-color="#6d8c79" stop-opacity=".19"/><stop offset="100%" stop-color="#6d8c79" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gradRegionOchre" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#c28a45" stop-opacity="0"/><stop offset="10%" stop-color="#c28a45" stop-opacity=".22"/>
+            <stop offset="90%" stop-color="#c28a45" stop-opacity=".22"/><stop offset="100%" stop-color="#c28a45" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gradRegionGold" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#d9a83c" stop-opacity="0"/><stop offset="16%" stop-color="#d9a83c" stop-opacity=".20"/>
+            <stop offset="84%" stop-color="#d9a83c" stop-opacity=".20"/><stop offset="100%" stop-color="#d9a83c" stop-opacity="0"/>
+          </linearGradient>
+          <!-- 氛围层：径向晕染，四边自然淡出，避免出现矩形色块 -->
+          <radialGradient id="gradFireHalo">
+            <stop offset="0%" stop-color="#c2482e" stop-opacity=".30"/>
+            <stop offset="52%" stop-color="#d6654b" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#d6654b" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gradIceHalo">
+            <stop offset="0%" stop-color="#7fa9bd" stop-opacity=".30"/>
+            <stop offset="54%" stop-color="#cfe2e6" stop-opacity=".14"/>
+            <stop offset="100%" stop-color="#cfe2e6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gradDark">
+            <stop offset="0%" stop-color="#39143f" stop-opacity=".58"/>
+            <stop offset="58%" stop-color="#4a1b48" stop-opacity=".28"/>
+            <stop offset="100%" stop-color="#4a1b48" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gradHoly">
+            <stop offset="0%" stop-color="#fff3c4" stop-opacity=".78"/>
+            <stop offset="45%" stop-color="#f1cb72" stop-opacity=".32"/>
+            <stop offset="100%" stop-color="#f1cb72" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gradPetal">
+            <stop offset="0%" stop-color="#e7a0a8" stop-opacity=".34"/>
+            <stop offset="100%" stop-color="#e7a0a8" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="fGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="fSoft" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+
+          <!-- ===== 地形 / 建筑 Icon（描边取 currentColor，由 CSS 控制状态色） ===== -->
+          <symbol id="i-capital" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 32h34M6 32V19h28v13M4 19l5-5h22l5 5M7 14h26M20 7v7"/>
+              <path d="M14 32v-7a6 6 0 0 1 12 0v7M20 19v13"/>
+              <path d="M3 14l3-3h28l3 3"/>
+            </g>
+            <circle cx="20" cy="5" r="2" fill="currentColor"/>
+          </symbol>
+          <symbol id="i-city" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 33h34M6 33V18h28v15M4 18l4-5h24l4 5M7 13h26"/>
+              <path d="M14 33v-8a6 6 0 0 1 12 0v8"/>
+              <path d="M20 3v10M20 3h9l-2.5 3L29 9h-9"/>
+            </g>
+          </symbol>
+          <symbol id="i-temple" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 33h32M8 33V23h24v10M5 23l5-5h20l5 5M9 18l4-5h14l4 5M12 13l3-5h10l3 5M20 4v4"/>
+              <path d="M16 33v-6h8v6"/>
+            </g>
+            <circle cx="20" cy="3" r="1.8" fill="currentColor"/>
+          </symbol>
+          <symbol id="i-mountain" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 33L13 12l7 11 5-8 13 18z"/>
+              <path d="M8 22l5-10 4 7M25 23l3-4 5 6M2 33h36"/>
+            </g>
+          </symbol>
+          <symbol id="i-water" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+              <path d="M3 17c4-4 8 4 12 0s8 4 12 0 7 2 10 0"/>
+              <path d="M3 24c4-4 8 4 12 0s8 4 12 0 7 2 10 0"/>
+              <path d="M3 31c4-4 8 4 12 0s8 4 12 0 7 2 10 0"/>
+              <path d="M15 8a5 5 0 0 1 8 4"/>
+            </g>
+          </symbol>
+          <symbol id="i-cave" viewBox="0 0 40 40">
+            <path d="M6 33c0-13 6-21 14-21s14 8 14 21z" fill="currentColor" opacity=".16"/>
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 33h34M6 33c0-13 6-21 14-21s14 8 14 21"/>
+              <path d="M13 33c0-8 3-13 7-13s7 5 7 13"/>
+              <path d="M3 21l4-6 4 4 4-9 5 7 4-6 4 8 4-4 5 6"/>
+            </g>
+          </symbol>
+          <symbol id="i-demon" viewBox="0 0 40 40">
+            <path d="M20 3c6 7 11 11 11 18a11 11 0 0 1-22 0C9 14 14 10 20 3z" fill="currentColor" opacity=".18"/>
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 3c6 7 11 11 11 18a11 11 0 0 1-22 0C9 14 14 10 20 3z"/>
+              <path d="M15 27l2-3 3 2 3-2 2 3M7 35c4-3 9 2 13 0s9-3 13 0"/>
+            </g>
+            <circle cx="16" cy="20" r="2.1" fill="currentColor"/>
+            <circle cx="24" cy="20" r="2.1" fill="currentColor"/>
+          </symbol>
+          <symbol id="i-destination" viewBox="0 0 40 40">
+            <circle cx="20" cy="19" r="17" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity=".8"/>
+            <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 33h28M10 33V22h20v11M7 22l5-5h16l5 5M11 17l3-5h12l3 5M20 8V3"/>
+              <path d="M16 33v-6h8v6M4 36c5-3 9 2 16 0s11-3 16 0"/>
+            </g>
+            <circle cx="20" cy="3" r="2" fill="currentColor"/>
+          </symbol>
+          <symbol id="i-heaven" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 30c-2-4 2-7 5-5 0-4 5-5 7-2 2-5 9-5 11 0 3-3 8-1 8 3 3-1 5 2 3 5"/>
+              <path d="M9 30v-8h22v8M7 22l4-4h18l4 4M11 18l3-4h12l3 4M20 10v4"/>
+              <path d="M15 30v-5h10v5"/>
+            </g>
+          </symbol>
+          <symbol id="i-sea" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 20c-7 0-11-4-11-8 4-1 7 1 11 8zM20 20c7 0 11-4 11-8-4-1-7 1-11 8z"/>
+              <path d="M20 20c-4 0-7 3-7 6h14c0-3-3-6-7-6zM8 26h24l-2 4H10z"/>
+              <path d="M2 34c4-3 8 3 12 0s8 3 12 0 8 3 12 0"/>
+            </g>
+          </symbol>
+
+          <!-- ===== 团队头像 ===== -->
+          <symbol id="av-tang" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 16c1-9 19-9 20 0M12 17h16l-1 4H13z"/>
+              <circle cx="20" cy="24" r="6"/>
+              <path d="M13 34c1-5 13-5 14 0M17 23h.01M23 23h.01"/>
+              <path d="M16 28c2 2 6 2 8 0"/>
+            </g>
+          </symbol>
+          <symbol id="av-wukong" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 15c-2-3-1-7 2-7M32 15c2-3 1-7-2-7"/>
+              <path d="M10 16c0-8 20-8 20 0 0 10-4 15-10 15s-10-5-10-15z"/>
+              <path d="M9 15h22M14 12c2-4 10-4 12 0"/>
+              <path d="M14 22c2-2 4-2 6 0M20 22c2-2 4-2 6 0M16 27c2 2 6 2 8 0"/>
+            </g>
+          </symbol>
+          <symbol id="av-bajie" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 13L4 9l1 9c0 3 3 5 6 5M31 13l5-4-1 9c0 3-3 5-6 5"/>
+              <path d="M10 17c0-8 20-8 20 0v7c0 8-20 8-20 0z"/>
+              <ellipse cx="20" cy="24" rx="7" ry="4.5"/>
+              <circle cx="17.5" cy="24" r="1.2" fill="currentColor"/>
+              <circle cx="22.5" cy="24" r="1.2" fill="currentColor"/>
+              <path d="M14 14c3-3 9-3 12 0"/>
+            </g>
+          </symbol>
+          <symbol id="av-sha" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 16c0-8 18-8 18 0v8c0 6-18 6-18 0z"/>
+              <path d="M13 13c4-4 10-4 14 0M15 21h.01M25 21h.01"/>
+              <path d="M14 30c3 3 9 3 12 0"/>
+              <circle cx="12" cy="33" r="2"/><circle cx="20" cy="35" r="2.4"/><circle cx="28" cy="33" r="2"/>
+            </g>
+          </symbol>
+          <symbol id="av-horse" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 10l4 6-2 3M28 9l-3 7 2 3"/>
+              <path d="M13 16c0-4 4-6 7-6s8 3 8 8l-2 6-5 5-8-2-3-6z"/>
+              <path d="M28 18l4 3-2 6-5 2M16 24l-3 9M24 27l2 6"/>
+              <circle cx="24" cy="19" r="1.3" fill="currentColor"/>
+              <path d="M13 21l-4 2 4 2"/>
+            </g>
+          </symbol>
+        </defs>
+
+        <g id="regionLayer"></g>  <!-- 三大地理色区（最底层） -->
+        <g id="worldLayer"></g>   <!-- 山水云纹背景 -->
+        <g id="atmosLayer"></g>   <!-- 氛围：热浪 / 冰面 / 妖氛 / 佛光 -->
+        <g id="aidLayer"></g>     <!-- 神仙援助虚线 -->
+        <g id="routeLayer"></g>   <!-- 路线四层 -->
+        <g id="anchorLayer"></g>  <!-- 天庭 / 南海 -->
+        <g id="nodeLayer"></g>    <!-- 地点节点 -->
+        <g id="penLayer"></g>     <!-- 笔尖 -->
+      </svg>
+
+      <!-- 妖气粒子：跟随 SVG 视口投影，只绘制焦点附近的妖穴 -->
+      <canvas id="auraCanvas" aria-hidden="true"></canvas>
+      <!-- 整体气候染色，随当前氛围平滑过渡 -->
+      <div class="mood-wash" id="moodWash" aria-hidden="true"></div>
+
+      <div class="map-tools">
+        <button type="button" id="btnZoomIn" aria-label="放大">＋</button>
+        <button type="button" id="btnZoomOut" aria-label="缩小">－</button>
+        <button type="button" id="btnCamera" class="tool-on" aria-label="卷轴镜头：播放时跟随笔尖" title="卷轴镜头：播放时跟随笔尖">◎</button>
+        <button type="button" id="btnReset" aria-label="复位视图">复位</button>
+      </div>
+
+      <!-- 地望匾额：当前地理色区 + 气候 -->
+      <div class="region-plaque" id="regionPlaque" aria-live="polite">
+        <span class="rp-mark">地望</span>
+        <b id="rpRegion">东土大唐</b>
+        <small id="rpSub">关中 · 河西</small>
+        <em id="rpMood"></em>
+      </div>
+
+      <!-- 原著引文卷轴：重点劫难自动浮现，可手动关闭 / 回放 -->
+      <figure class="quote-scroll" id="quoteScroll" aria-live="polite">
+        <button class="qs-close" id="btnCloseQuote" type="button" aria-label="收起引文">×</button>
+        <div class="qs-head">
+          <span class="qs-seal">原<br>著</span>
+          <div class="qs-title"><b id="quoteTitle">大唐长安</b><small id="quoteSource">第十三回 · 开篇诗</small></div>
+        </div>
+        <blockquote id="quoteText">自今别驾投西去，秉教迦持悟大空。</blockquote>
+        <figcaption><span id="quoteTag">奉旨西行</span><button type="button" id="btnQuoteReplay">↺ 回放此劫</button></figcaption>
+      </figure>
+
+      <!-- 劫难回放控制条 -->
+      <div class="replay-bar" id="replayBar" role="status">
+        <span class="rb-seal">回<br>放</span>
+        <div class="rb-main">
+          <b id="rbTitle">劫难回放</b>
+          <small id="rbInfo">前后三站慢镜复演</small>
+          <div class="rb-track"><i id="rbFill"></i></div>
+        </div>
+        <button type="button" id="btnReplayExit">退出回放 ×</button>
+      </div>
+
+      <div class="compass" aria-hidden="true"><span class="c-w">西</span><span class="c-axis">◇</span><span class="c-e">东</span></div>
+
+      <div class="legend">
+        <span><i class="lg lg-city"></i> 城邦 / 寺观</span>
+        <span><i class="lg lg-mountain"></i> 山岭 / 河涧</span>
+        <span><i class="lg lg-demon"></i> 妖魔巢穴</span>
+        <span><i class="lg lg-aid"></i> 神仙援助</span>
+      </div>
+
+      <div class="map-hint"><span class="hint-wide">拖拽平移 · 滚轮缩放 · 点击地名查阅档案</span><span class="hint-narrow">← 拖动长卷 · 「复位」跟随当前站</span></div>
+    </div>
+
+    <!-- ===== 可折叠档案侧栏 ===== -->
+    <aside class="sidebar" id="sidebar" aria-label="劫难档案">
+      <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-expanded="false">
+        <span class="toggle-text">劫难档案</span><span class="toggle-arrow">‹</span>
+      </button>
+      <div class="sidebar-body" id="cardBody"></div>
+    </aside>
+  </main>
+
+  <!-- ===== 底部时间轴 ===== -->
+  <footer class="timeline">
+    <div class="tl-controls">
+      <button class="play-btn" id="btnPlay" type="button" aria-label="播放 / 暂停取经进度"><span id="playIcon">▶</span></button>
+      <button class="replay-btn" id="btnReplay" type="button">↺ 重播全程</button>
+    </div>
+
+    <div class="tl-main">
+      <div class="tl-head">
+        <span id="tlHeadText">逐站行程 · 贞观十三年 — 贞观二十七年（42 站）</span>
+        <strong id="tlNow">公元 639 年</strong>
+      </div>
+      <div class="slider-wrap">
+        <input type="range" id="yearSlider" min="1" max="42" step="1" value="1" aria-label="取经站点滑块（第 1 至 42 站）">
+        <div class="tl-ticks" id="yearTicks"></div>
+      </div>
+      <div class="tl-events" id="tlEvents"></div>
+    </div>
+
+    <div class="tl-side">
+      <span class="tl-side-label">当前进度</span>
+      <strong id="tlStatus">长安启程</strong>
+      <small id="tlSub">第 4 难 · 第 1 / 42 站</small>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== 悬浮层 ===== -->
+<div class="tooltip" id="tooltip" role="tooltip"></div>
+
+<div class="modal" id="helpModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" id="btnCloseHelp" type="button">×</button>
+    <h2>观图指引</h2>
+    <ul>
+      <li><b>路线生长</b>　开场金线自长安向灵山如画笔延展；底部「逐站行程」滑块共 42 档，可回溯任意一站，年份仅作刻度。</li>
+      <li><b>检索</b>　顶部搜索框可查地点、妖怪、神仙、回目（如「59」「第五十九回」）与难名；按 <b>/</b> 快速聚焦，回车直达首条结果。点「难簿」或顶部八十一难环，可逐条点开 81 难。</li>
+      <li><b>神仙谱反查</b>　档案卡里的神仙标签、搜索结果里的神仙条目都可点开，列出该神仙出手过的全部地点，例如「观世音菩萨」十四处、「昴日星官」两处。</li>
+      <li><b>地点档案</b>　悬停查看妖魔、解厄者与回目；点击展开「劫难档案卡」，含时间、妖怪、降妖神仙、原著回目、本站历难与剧情。<b>查阅档案不会让行程倒退</b>。</li>
+      <li><b>团队状态</b>　头像随收徒依次点亮；悟空在白虎岭（贬书逐走）与真假美猴王（再贬心猿）两度离队，头像转灰并标「离」，到下一站归队。</li>
+      <li><b>援助雷达</b>　淡紫虚线自天庭 / 南海连向需神佛出手之地；按钮在「聚焦 / 全览 / 关闭」三态间切换，聚焦模式默认只亮 3 条以内。</li>
+      <li><b>三大地望</b>　长卷分东土大唐（青）、西域诸国（赭）、天竺佛境（金）三色区；行至通天河结冰、女儿国飞花、火焰山起热浪、狮驼岭转暗、灵山放佛光，左侧「地望」匾额同步提示。</li>
+      <li><b>卷轴镜头</b>　播放时视口随笔尖缓缓横移（右上角 ◎ 可开关）；手动拖拽 / 缩放会锁定视图，点「复位」恢复跟随。窄屏默认显示当前站附近的局部长卷。</li>
+      <li><b>劫难回放</b>　档案卡底部「↺ 回放此劫」把本站前后三站作慢镜复演，路线回卷重绘、档案与氛围联动，结束自动回到原行程；也可点引文卷轴里的同名按钮或按 Esc 退出。</li>
+      <li><b>原著引文</b>　点选重点劫难时，地图上方浮出原著原句卷轴并注明回目出处；本次收录的八条引文均依百回本原文核对。</li>
+      <li><b>快捷键</b>　← / → 逐站移动行程，空格播放暂停，/ 搜索，Esc 收起侧栏、引文与面板并退出回放。</li>
+    </ul>
+    <p class="modal-foot">数据依百回本《西游记》（第十二回～第一百回）与第九十九回难簿校本；年份按贞观十三年至二十七年设定。前四难为唐僧前尘，难簿于灵山追记。</p>
+  </div>
+</div>
+
+<!-- ===== 典藏面板：八十一难难簿 / 神仙谱 / 妖魔谱 ===== -->
+<div class="modal codex-modal" id="codexModal" aria-hidden="true">
+  <div class="modal-card codex-card">
+    <button class="modal-close" id="btnCloseCodex" type="button" aria-label="关闭典藏面板">×</button>
+    <h2 id="codexTitle">九九八十一难 · 观音难簿</h2>
+    <div class="codex-body" id="codexBody"></div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
