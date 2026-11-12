@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第十六至十七回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>唐僧师徒借宿观音禅院，老院主金池长老见唐僧的锦襕袈裟起了贪心，竟纵火图谋独占。火起时，黑风山的黑熊精趁机偷走袈裟。悟空找熊精讨要，打不过也讲不拢，最后还是请观音出面——观音收黑熊为守山大神，袈裟物归原主。</p><p>读这一站，重点看<b>"贪"字</b>：祸，不是妖先起的，是人先动的贪念。</p><p class="q">带着问题读：① 袈裟之祸，根子在谁？② 黑熊精为何被收去做"守山大神"？③ "贪"在故事里常引来什么？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧</h3><p>取经人，锦襕袈裟的主人。他本无贪，灾却因"他的宝物"而起。说明<b>拥有好东西，也需有守得住的心</b>。</p></div><div class="card"><h3>金池长老</h3><p>观音禅院老僧，见袈裟起贪纵火。是<b>"贪念招祸"的活样本</b>——祸根在人心，不在妖。</p></div><div class="card"><h3>黑熊精（黑风大王）</h3><p>黑风山黑毛巨熊，趁火偷袈裟，后被观音收为守山大神。代表<b>被贪念"引来"的 external 灾</b>。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 贪是祸之门</h3><p>袈裟之祸起于长老的贪。很多时候，灾不是天降，是自己"想要"引来的。</p><h3>② 破绽引外灾</h3><p>人有贪隙，妖才趁火。守好自己的心，外部的祸就少一半。</p><h3>③ 收服胜杀伐</h3><p>观音收黑熊为正神，说明"安其位"比"灭其命"更高明。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>袈裟之祸，根子在谁？</b><br><span class="ans">根子在金池长老的贪心。他见宝起意，纵火想独占，才引来黑熊趁火偷宝。祸不是妖先起，是人先动贪念。</span></li><li><b>黑熊精为何被收去做“守山大神”？</b><br><span class="ans">观音慈悲，见他有些本事又肯听训，便不杀他，收他做落伽山守山大神，让他从为恶转为护山。</span></li><li><b>“贪”在故事里常引来什么？</b><br><span class="ans">常引来灾祸。金池长老贪袈裟，赔上禅院又丢了性命；黑熊贪宝，差点被降。贪心一起，祸就跟着来。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>抓"眼"写人：</b>学作者用"眼神小动作"写性格，写作文的秘技。</li><li><b>追"谁先动念"：</b>每回遇妖，先问"祸根在妖还是在人"，读法立刻深一层。</li><li><b>比观音的"收"：</b>黑熊、红孩儿、白龙……观音如何"各收各用"，列一张表更好玩。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-04.html"><span class="dir">← 上一站</span><b>蛇盘山鹰愁涧</b><small>第 4 站</small></a><a class="next" href="comic-06.html"><span class="dir">下一站 →</span><b>高老庄</b><small>第 6 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-05-1.png","span":true,"size":"cover","pos":"center","caption":"观音禅院，金池长老见唐僧锦襕袈裟，眼中露出贪羡之色。","bubbles":[{"who":"金池长老","text":"这袈裟……老衲生平未见也。","side":"r"}],"study":{"intro":"起笔写\"见宝起贪\"：袈裟本是圣物，却被凡心看成了\"稀奇财物\"。祸根，在此一念。","appreciate":"作者用<b>细节写人性</b>：不写\"长老贪\"，而写\"眼中贪羡\"。眼神比台词更诚实，读时抓这种小动作。","think":["长老\"眼中贪羡\"这一笔，比直接说他贪高明在哪？","好东西摆在面前，为什么容易引人起念？"],"phrases":["观音禅院","锦襕袈裟","眼中贪羡"]}},{"img":"assets/scenes/comic-05-2.png","size":"cover","pos":"center","caption":"金池长老纵火焚烧禅院，欲灭口独占袈裟；黑风山黑熊精趁火偷走袈裟。","bubbles":[{"who":"黑熊精","text":"好件袈裟，趁火取来！","side":"l","kind":"demon"}],"sfx":{"t":"轰！","x":"64%","y":"20%"},"study":{"intro":"祸事连发：人纵火、妖偷宝。注意顺序——先是\"人\"作恶，妖才捡便宜。作者把\"贪\"写成引妖的灯。","appreciate":"这一格写<b>\"内外夹击\"</b>：内有贪僧放火，外有黑熊趁乱。读时体会：自己的破绽，往往引来外部的灾。","think":["为什么是\"趁火\"偷？人和妖，谁先动念？","\"破绽引来灾祸\"这个道理，你怎么理解？"],"phrases":["纵火焚院","趁火偷宝","黑熊精"]}},{"img":"assets/scenes/comic-05-3.png","size":"cover","pos":"center","caption":"悟空寻至黑风洞，与黑毛巨熊激斗，熊精武艺不弱，难分胜负。","bubbles":[{"who":"孙悟空","text":"泼妖，还我袈裟来！","side":"r"}],"sfx":{"t":"唰——","x":"14%","y":"18%"},"study":{"intro":"高潮对决。悟空遇上了硬茬：黑熊精本事不小，硬打拿不下。这提醒读者——不是每难都能\"一棒了之\"。","appreciate":"这里用<b>\"强敌\"衬托主角\"也有办不到\"</b>：悟空不是万能，才有后文请观音的铺垫。人物有短板，故事才真实。","think":["为什么悟空这次打不赢黑熊？作者想告诉我们什么？","主角\"有短板\"，对故事有什么好处？"],"phrases":["寻至黑风洞","黑毛巨熊","难分胜负"]}},{"img":"assets/scenes/comic-05-4.png","size":"cover","pos":"center","caption":"观音收黑熊为守山大神，袈裟归还，火劫平息。","bubbles":[{"who":"观音菩萨","text":"黑熊听训，且做我落伽山守山大神。","side":"r","kind":"god"}],"study":{"intro":"收尾：观音以\"收服\"代\"打死\"，黑熊成了守山神。妖性未灭，却被\"安\"在正处——这是观音式的圆满。","appreciate":"结局点出<b>\"各得其所\"</b>：袈裟归原主，黑熊得正差。乱的根源（贪）被平息，失序重归秩序。","think":["观音为何收黑熊做\"守山大神\"而非杀之？","金池长老的\"贪\"与黑熊的\"偷\"，谁更该警醒？"],"phrases":["收为守山","袈裟归还","火劫平息"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-05-1.png","span":true,"size":"cover","pos":"center","caption":"观音禅院，金池长老见唐僧锦襕袈裟，眼中露出贪羡之色。","bubbles":[{"who":"金池长老","text":"这袈裟……老衲生平未见也。","side":"r"}],"study":{"intro":"起笔写\"见宝起贪\"：袈裟本是圣物，却被凡心看成了\"稀奇财物\"。祸根，在此一念。","appreciate":"作者用<b>细节写人性</b>：不写\"长老贪\"，而写\"眼中贪羡\"。眼神比台词更诚实，读时抓这种小动作。","think":["长老\"眼中贪羡\"这一笔，比直接说他贪高明在哪？","好东西摆在面前，为什么容易引人起念？"],"phrases":["观音禅院","锦襕袈裟","眼中贪羡"],"vocab":{"words":[{"t":"观音禅院","m":"供奉观音的寺庙，取经师徒借宿之处。"},{"t":"锦襕袈裟","m":"唐僧的宝袈裟，由佛祖赐予，是稀世珍宝。"},{"t":"眼中贪羡","m":"金池长老看到袈裟，眼神透出贪婪羡慕。"}],"ju":[{"t":"观音禅院，金池长老见唐僧锦襕袈裟，眼中露出贪羡之色。","from":"原著第十六至十七回","m":"不写“长老贪”，写“眼中贪羡”，眼神比台词更诚实。"},{"t":"这袈裟……老衲生平未见也。","from":"原著第十六至十七回","m":"一句惊叹，老和尚动了贪心，祸根由此埋下。"}],"rhet":[{"t":"细节描写","m":"用“眼中贪羡”的微表情，把贪心写得入木三分。"},{"t":"动作描写","m":"一个眼神动作就传神，人物内心藏不住。"}]}}},{"img":"assets/scenes/comic-05-2.png","size":"cover","pos":"center","caption":"金池长老纵火焚烧禅院，欲灭口独占袈裟；黑风山黑熊精趁火偷走袈裟。","bubbles":[{"who":"黑熊精","text":"好件袈裟，趁火取来！","side":"l","kind":"demon"}],"sfx":{"t":"轰！","x":"64%","y":"20%"},"study":{"intro":"祸事连发：人纵火、妖偷宝。注意顺序——先是\"人\"作恶，妖才捡便宜。作者把\"贪\"写成引妖的灯。","appreciate":"这一格写<b>\"内外夹击\"</b>：内有贪僧放火，外有黑熊趁乱。读时体会：自己的破绽，往往引来外部的灾。","think":["为什么是\"趁火\"偷？人和妖，谁先动念？","\"破绽引来灾祸\"这个道理，你怎么理解？"],"phrases":["纵火焚院","趁火偷宝","黑熊精"],"vocab":{"words":[{"t":"纵火焚院","m":"金池长老放火烧禅院，想灭口独占袈裟。"},{"t":"趁火偷宝","m":"黑熊精趁着大火，把袈裟偷回黑风洞。"},{"t":"黑熊精","m":"黑风山的黑毛巨熊精，武艺高强，也贪这件宝衣。"}],"ju":[{"t":"金池长老纵火焚烧禅院，欲灭口独占袈裟；黑风山黑熊精趁火偷走袈裟。","from":"原著第十六至十七回","m":"内有贪僧放火，外有黑熊趁乱，内外夹击写出破绽招灾。"},{"t":"好件袈裟，趁火取来！","from":"原著第十六至十七回","m":"黑熊也趁机下手，可见一件宝贝引出的连锁贪念。"}],"rhet":[{"t":"语言生动","m":"“纵火”“趁火”两个“火”连用，把趁乱劫夺写得很传神。"}]}}},{"img":"assets/scenes/comic-05-3.png","size":"cover","pos":"center","caption":"悟空寻至黑风洞，与黑毛巨熊激斗，熊精武艺不弱，难分胜负。","bubbles":[{"who":"孙悟空","text":"泼妖，还我袈裟来！","side":"r"}],"sfx":{"t":"唰——","x":"14%","y":"18%"},"study":{"intro":"高潮对决。悟空遇上了硬茬：黑熊精本事不小，硬打拿不下。这提醒读者——不是每难都能\"一棒了之\"。","appreciate":"这里用<b>\"强敌\"衬托主角\"也有办不到\"</b>：悟空不是万能，才有后文请观音的铺垫。人物有短板，故事才真实。","think":["为什么悟空这次打不赢黑熊？作者想告诉我们什么？","主角\"有短板\"，对故事有什么好处？"],"phrases":["寻至黑风洞","黑毛巨熊","难分胜负"],"vocab":{"words":[{"t":"寻至黑风洞","m":"悟空一路找到黑熊精的老巢黑风洞。"},{"t":"黑毛巨熊","m":"黑熊精现出原形，是头黑毛巨熊，十分凶悍。"},{"t":"难分胜负","m":"悟空与熊精打得难解难分，一时赢不了。"}],"ju":[{"t":"悟空寻至黑风洞，与黑毛巨熊激斗，熊精武艺不弱，难分胜负。","from":"原著第十六至十七回","m":"悟空不是万能，打不过才有请观音的铺垫，人物更真实。"},{"t":"泼妖，还我袈裟来！","from":"原著第十六至十七回","m":"悟空又急又气，一句讨要写出他的责任与脾气。"}],"rhet":[{"t":"衬托","m":"用熊精的强衬托悟空也有办不到，让故事更真实可信。"},{"t":"铺垫","m":"打不赢为后文请观音做铺垫，情节自然过渡。"}]}}},{"img":"assets/scenes/comic-05-4.png","size":"cover","pos":"center","caption":"观音收黑熊为守山大神，袈裟归还，火劫平息。","bubbles":[{"who":"观音菩萨","text":"黑熊听训，且做我落伽山守山大神。","side":"r","kind":"god"}],"study":{"intro":"收尾：观音以\"收服\"代\"打死\"，黑熊成了守山神。妖性未灭，却被\"安\"在正处——这是观音式的圆满。","appreciate":"结局点出<b>\"各得其所\"</b>：袈裟归原主，黑熊得正差。乱的根源（贪）被平息，失序重归秩序。","think":["观音为何收黑熊做\"守山大神\"而非杀之？","金池长老的\"贪\"与黑熊的\"偷\"，谁更该警醒？"],"phrases":["收为守山","袈裟归还","火劫平息"],"vocab":{"words":[{"t":"收为守山","m":"观音收黑熊精做落伽山的守山大神。"},{"t":"袈裟归还","m":"宝袈裟物归原主，还到唐僧手里。"},{"t":"火劫平息","m":"一场因贪念起的祸事，终于平息。"}],"ju":[{"t":"观音收黑熊为守山大神，袈裟归还，火劫平息。","from":"原著第十六至十七回","m":"袈裟归原主，黑熊得正差，乱源被平息，各得其所。"},{"t":"黑熊听训，且做我落伽山守山大神。","from":"原著第十六至十七回","m":"观音不杀黑熊而收为己用，让为恶者转而为善。"}],"rhet":[{"t":"语言生动","m":"“收为守山”“归还”“平息”层层收束，把祸事写得圆满。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

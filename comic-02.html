@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第十三回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>出了长安，真正的险路才开始。唐僧带着两名从人走到双叉岭，夜宿荒山，却被三只妖魔——虎精寅将军、熊精熊山君、牛精特处士——盯上。两仆被吃，唐僧昏死，幸得太白金星临凡相救。这是取经路上<b>第一难</b>，也第一次让人看到：西行不是游山玩水。</p><p>读这一站，要体会<b>"难"的意义</b>：困难不是惩罚，而是把"决心"试出来的磨刀石。</p><p class="q">带着问题读：① 为什么第一难就吃掉随从？② 太白金星为什么来救？③ 如果一上来就顺利，故事还好看吗？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧</h3><p>取经人。第一难便痛失随从，却未改西行之心。说明<b>初心经得起打击</b>——真正的出发，从"失去"后仍能迈步开始。</p></div><div class="card"><h3>寅将军（三妖）</h3><p>双叉岭虎精，与熊山君、特处士为伴，吞食唐僧从人。代表取经路上<b>赤裸裸的生死之险</b>。</p></div><div class="card"><h3>太白金星</h3><p>天庭善神，临凡救唐僧。是<b>暗中护持取经的"引路神仙"</b>之一，常于危难时送来转机。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 第一难即试胆</h3><p>故事让主角一出门就遇险，是要把"决心"立刻放到火上烤。难，是成长的入场券。</p><h3>② 失去与继续</h3><p>唐僧失去随从却未回头。成长常伴随失去，关键是失去之后还走不走。</p><h3>③ 暗中有人护</h3><p>太白金星的出现提醒我们：很多事能成，是因为有一路"看不见的帮手"。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>为什么第一难就吃掉随从？</b><br><span class="ans">要告诉读者取经不是游山玩水。随从被吃，唐僧失去依赖，必须独自面对，西行路的凶险与决心都被写实了。</span></li><li><b>太白金星为什么来救？</b><br><span class="ans">取经是上天安排的大事，不能一开始就断送。太白金星奉命护持，救的既是唐僧，更是“取经这件事”。</span></li><li><b>如果一上来就顺利，故事还好看吗？</b><br><span class="ans">不好看。一顺到底就没波折，读者不会紧张，也看不出决心。有了难，才能把唐僧的坚定“试”出来。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"难"的结构：</b>注意《西游记》逢"难"必写"妖+救"。先记模式，再品变化。</li><li><b>找"伏笔"：</b>太白金星此处救，后文还多次出现。小角色会"回访"，读时留个心。</li><li><b>想"如果"：</b>如果唐僧第一难就回头，故事还有吗？多问"如果"，读出作者安排。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-01.html"><span class="dir">← 上一站</span><b>大唐长安</b><small>第 1 站</small></a><a class="next" href="comic-03.html"><span class="dir">下一站 →</span><b>两界山</b><small>第 3 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-02-1.png","span":true,"size":"cover","pos":"center","caption":"双叉岭荒山险恶，取经队伍夜宿山坳，不知三妖已环伺四周。","bubbles":[{"who":"唐僧","text":"此地去何处，方是安稳前程？","side":"l"}],"study":{"intro":"起笔先写\"静中有险\"：队伍安睡，山坳平静，读者却已知妖在暗处。这种\"山雨欲来\"的写法，最勾人。","appreciate":"作者善用<b>环境与心理的反差</b>：表面是歇脚，底下是杀机。读小说要学会\"看\"作者没写出来的危险——写在景里，藏在话外。","think":["为什么作者先写\"安睡\"再写\"妖至\"？这样安排妙在哪？","你读时有没有\"替唐僧着急\"的感觉？这叫什么效果？"],"phrases":["双叉岭","荒山险恶","环伺四周"]}},{"img":"assets/scenes/comic-02-2.png","size":"cover","pos":"center","caption":"寅将军率熊山君、特处士扑出，将唐僧两名从人吞食。","bubbles":[{"who":"寅将军","text":"送上门的肉食，且充我饥肠！","side":"r","kind":"demon"}],"study":{"intro":"冲突爆发：三只妖怪现形，随从惨死。取经队伍刚出门就遭重创，\"第一难\"来得又狠又快。","appreciate":"这一格用<b>对比</b>写惨：上一格还\"安睡\"，这一格已\"被吞\"。节奏的骤变，让读者瞬间感到取经路的凶险与无常。","think":["随从被吃，对唐僧意味着什么？","作者为什么把\"难\"写得这么直接、这么快？"],"phrases":["寅将军","扑出","吞食从人"]}},{"img":"assets/scenes/comic-02-3.png","size":"cover","pos":"center","caption":"太白金星临凡，仗剑驱散三妖，救下昏死的唐僧。","bubbles":[{"who":"太白金星","text":"唐僧莫慌，吾奉命来救。","side":"l","kind":"god"}],"study":{"intro":"转机出现：神仙下场。太白金星是\"引路神仙\"的代表——危难时送来一线生机，也暗示取经本有\"上界\"暗中护持。","appreciate":"神话里常设<b>\"救兵\"</b>：让凡人主角不至于一上来就死。读时想：太白金星救的只是人，还是\"取经这件事\"？","think":["太白金星为什么来救唐僧？他代表什么力量？","\"暗中护持\"的写法，让故事多了哪层意味？"],"phrases":["太白金星","临凡相救","仗剑驱妖"]}},{"img":"assets/scenes/comic-02-4.png","size":"cover","pos":"center","caption":"三妖散去，唐僧孤身重整行装，更坚取经之志。","bubbles":[],"study":{"intro":"收束于\"孤身上路\"。失去随从，却没失去方向。第一难没有打垮他，反而让\"取经\"二字更沉、更真。","appreciate":"结尾用<b>留白</b>：不写哭、不写怕，只写\"重整行装\"。真正的坚定，往往是无声的。这种\"不说破\"的写法，比嚎啕更有力量。","think":["为什么唐僧失去随从还能继续走？支撑他的是什么？","如果一上来就遇难就退，还算\"取经\"吗？"],"phrases":["孤身上路","重整行装","更坚其志"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-02-1.png","span":true,"size":"cover","pos":"center","caption":"双叉岭荒山险恶，取经队伍夜宿山坳，不知三妖已环伺四周。","bubbles":[{"who":"唐僧","text":"此地去何处，方是安稳前程？","side":"l"}],"study":{"intro":"起笔先写\"静中有险\"：队伍安睡，山坳平静，读者却已知妖在暗处。这种\"山雨欲来\"的写法，最勾人。","appreciate":"作者善用<b>环境与心理的反差</b>：表面是歇脚，底下是杀机。读小说要学会\"看\"作者没写出来的危险——写在景里，藏在话外。","think":["为什么作者先写\"安睡\"再写\"妖至\"？这样安排妙在哪？","你读时有没有\"替唐僧着急\"的感觉？这叫什么效果？"],"phrases":["双叉岭","荒山险恶","环伺四周"],"vocab":{"words":[{"t":"双叉岭","m":"取经路上的第一座险山，荒凉险恶，妖魔出没。"},{"t":"荒山险恶","m":"山高林密、荒凉危险，处处透着不祥。"},{"t":"环伺四周","m":"三只妖怪已经悄悄包围了宿营的取经队伍。"}],"ju":[{"t":"双叉岭荒山险恶，取经队伍夜宿山坳，不知三妖已环伺四周。","from":"原著第十三回","m":"表面歇脚，底下杀机，用环境的静写危险的动，让人发冷。"},{"t":"此地去何处，方是安稳前程？","from":"原著第十三回","m":"唐僧一问，道出前路茫茫的迷茫，也衬出他的担心。"}],"rhet":[{"t":"环境描写","m":"用荒山夜色渲染紧张，为妖怪出现做足铺垫。"},{"t":"心理描写","m":"唐僧的发问写出他对前路的忧虑与不安。"}]}}},{"img":"assets/scenes/comic-02-2.png","size":"cover","pos":"center","caption":"寅将军率熊山君、特处士扑出，将唐僧两名从人吞食。","bubbles":[{"who":"寅将军","text":"送上门的肉食，且充我饥肠！","side":"r","kind":"demon"}],"study":{"intro":"冲突爆发：三只妖怪现形，随从惨死。取经队伍刚出门就遭重创，\"第一难\"来得又狠又快。","appreciate":"这一格用<b>对比</b>写惨：上一格还\"安睡\"，这一格已\"被吞\"。节奏的骤变，让读者瞬间感到取经路的凶险与无常。","think":["随从被吃，对唐僧意味着什么？","作者为什么把\"难\"写得这么直接、这么快？"],"phrases":["寅将军","扑出","吞食从人"],"vocab":{"words":[{"t":"寅将军","m":"虎精，双叉岭三妖之首，凶残食人。"},{"t":"扑出","m":"妖怪突然从暗处蹿出，来势凶猛。"},{"t":"吞食从人","m":"三妖当场吞了唐僧两个随从，队伍顿时残缺。"}],"ju":[{"t":"寅将军率熊山君、特处士扑出，将唐僧两名从人吞食。","from":"原著第十三回","m":"上一格安睡、这一格被吞，节奏骤变，取经路的凶险立现。"},{"t":"送上门的肉食，且充我饥肠！","from":"原著第十三回","m":"妖怪把吃人说成“送上门的肉食”，凶残又狂妄，让人不寒而栗。"}],"rhet":[{"t":"对比","m":"上一格“安睡”与这一格“被吞”对比强烈，突出无常。"},{"t":"节奏","m":"情节猛然加速，把凶险瞬间砸到读者眼前。"}]}}},{"img":"assets/scenes/comic-02-3.png","size":"cover","pos":"center","caption":"太白金星临凡，仗剑驱散三妖，救下昏死的唐僧。","bubbles":[{"who":"太白金星","text":"唐僧莫慌，吾奉命来救。","side":"l","kind":"god"}],"study":{"intro":"转机出现：神仙下场。太白金星是\"引路神仙\"的代表——危难时送来一线生机，也暗示取经本有\"上界\"暗中护持。","appreciate":"神话里常设<b>\"救兵\"</b>：让凡人主角不至于一上来就死。读时想：太白金星救的只是人，还是\"取经这件事\"？","think":["太白金星为什么来救唐僧？他代表什么力量？","\"暗中护持\"的写法，让故事多了哪层意味？"],"phrases":["太白金星","临凡相救","仗剑驱妖"],"vocab":{"words":[{"t":"太白金星","m":"天庭的老神仙，奉命下界救护取经人。"},{"t":"临凡相救","m":"太白金星从天上来到凡间，出手救下唐僧。"},{"t":"仗剑驱妖","m":"他手持宝剑赶散三妖，护住昏死的唐僧。"}],"ju":[{"t":"太白金星临凡，仗剑驱散三妖，救下昏死的唐僧。","from":"原著第十三回","m":"关键时刻神仙出手，让取经大事不至于刚起步就断送。"},{"t":"唐僧莫慌，吾奉命来救。","from":"原著第十三回","m":"一句“奉命来救”，说明取经是上天安排的大事，自有护佑。"}],"rhet":[{"t":"语言生动","m":"“临凡”“仗剑”“驱散”动词干脆，写尽神仙出手的利落。"}]}}},{"img":"assets/scenes/comic-02-4.png","size":"cover","pos":"center","caption":"三妖散去，唐僧孤身重整行装，更坚取经之志。","bubbles":[],"study":{"intro":"收束于\"孤身上路\"。失去随从，却没失去方向。第一难没有打垮他，反而让\"取经\"二字更沉、更真。","appreciate":"结尾用<b>留白</b>：不写哭、不写怕，只写\"重整行装\"。真正的坚定，往往是无声的。这种\"不说破\"的写法，比嚎啕更有力量。","think":["为什么唐僧失去随从还能继续走？支撑他的是什么？","如果一上来就遇难就退，还算\"取经\"吗？"],"phrases":["孤身上路","重整行装","更坚其志"],"vocab":{"words":[{"t":"孤身上路","m":"随从已死，唐僧独自一人继续西行。"},{"t":"重整行装","m":"他收拾好行李担子，重新上路。"},{"t":"更坚其志","m":"经历这一难，他取经的决心反而更坚定了。"}],"ju":[{"t":"三妖散去，唐僧孤身重整行装，更坚取经之志。","from":"原著第十三回","m":"不写哭不怕，只写“重整行装”，坚定往往无声，更有力量。"}],"rhet":[{"t":"语言生动","m":"“孤身”“重整”“更坚”把不言弃的坚毅写进行动里。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

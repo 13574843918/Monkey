@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第五十四回　法性西来逢女国　心猿定计脱烟花</b>　民间知名度：<span class="hm">★★★★★（女儿国）</span>　常考程度：<span class="hm">★★★★☆</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>西梁女国，举国无男。女王闻得东土圣僧，心生爱慕，要以一国之富招唐僧为夫、自己退位。唐僧不为所动，与悟空定下"假意应婚、换得关文、寻机脱身"的计策。谁知送别之时，又被蝎子精摄去——情关之后，还有一劫。</p><p>读这一站，要想：前面的难，多是<b>妖怪动武</b>；这一难，却是<b>温柔相许</b>。最难过的关，往往不是刀山，而是心动。</p><p class="q">带问题读：① 女王之"难"难在哪？② 唐僧为什么"不动心"？③ 如果换成你，这一关好不好过？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">东土圣僧到此，朕心慕久矣，愿以一国相托。</p><p class="qt">— 第五十四回　法性西来逢女国　心猿定计脱烟花</p><p class="qm">以帝王之尊、一国之富求亲，情意越真、聘礼越重，考验也越深。</p></div><div class="qrow"><p class="qq">贫僧许身佛门，不敢从命，望陛下见谅。</p><p class="qt">— 第五十四回　法性西来逢女国　心猿定计脱烟花</p><p class="qm">“许身佛门”四字谦和坚定，一动一静对照，写出唐僧定力。</p></div><div class="qrow"><p class="qq">御弟哥哥——</p><p class="qt">— 第五十四回　法性西来逢女国　心猿定计脱烟花</p><p class="qm">欲说还休的一声呼唤，把未尽的深情留在省略号里，余韵悠长。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>对比烘托：</b>以女王之“动情”对唐僧之“静定”，一柔一刚对照，让唐僧“不动心”的定力格外鲜明。</li><li><b>环境营造：</b>先写“举国无男”的特殊国度，再写女王深情，把情关写得又美又险，衬托守心之难。</li><li><b>留白余韵：</b>结尾不写唐僧是否回头，只留女王一声“御弟哥哥”，言有尽而意无穷，令人久久回味。</li><li><b>对话推进：</b>借女王求亲、唐僧拒婚、悟空献计三段对话推动情节，人物性格在对话中自然显现。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>为女王写一句“情话”：</b>假设你是女儿国女王，送别时想对唐僧说一句什么话？要求写出不舍又不失体面。</li><li><b>唐僧为什么“不动心”：</b>结合“许身佛门”，写一段话分析唐僧拒婚的原因，并说说你怎样看待他的选择。</li><li><b>“情关”小议：</b>围绕“最难过的关不是刀山而是心动”，写一篇短文，谈谈面对诱惑时定力的可贵。</li><li><b>改写送别一幕：</b>把“城外送别”改写成一段散文，加入环境与心理描写，让女王的心情更可感。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>“女儿国”有原型吗：</b>查一查玄奘西行途中所记“西女国”的史料，比较历史记载与小说写法的异同。</li><li><b>“烟花”与“情关”：</b>本回回目有“脱烟花”，查一查“烟花”在古语中的含义，说说它在本回指什么。</li><li><b>为女王配一幅画：</b>根据“雍容含情”与“怅然目送”，为女儿国女王画两幅肖像，并各配一句解说。</li><li><b>比较两难：妖难与情难：</b>把本回的“情关”与前文妖怪的“武难”作比较，说说哪一种难更考验人，写一段话。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧</h3><p>取经人。这一难里他面对的是"情"，却以"许身佛门"守住了心。说明<b>真正的坚定，是经得起温柔</b>。</p></div><div class="card"><h3>女儿国女王</h3><p>西梁女国之主，真诚倾慕唐僧，愿让江山。她不是"妖"，而是<b>温柔的诱惑</b>本身——最难拒绝的那种。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄，也是"智囊"。看穿情关要用"巧"，献将计就计之策，护师父过关。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 最难的关是"心动"</h3><p>刀山火海可用棒破，柔情蜜意却要"心破"。修炼，到最后是修一颗不为外物所动的心。</p><h3>② 守心不是无情</h3><p>唐僧拒绝女王，不是讨厌她，而是"道不同"。守住自己，也是一种对他人的尊重。</p><h3>③ 取经即修心</h3><p>每一难都是一道"心关"。女儿国这关提醒我们：成长路上，最大的对手常是自己。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>女王之“难”难在哪里？</b><br><span class="ans">女王的“难”，不在刀兵，而在“温柔”与“富贵”。她要以一国之富招唐僧为夫，这比妖怪的刀山火海更难防——一旦唐僧应允，取经大业就中断了。</span></li><li><b>唐僧为什么“不动心”？</b><br><span class="ans">唐僧是取经僧人，心里只有西天取经的信念，视富贵如浮云。他不为“一国之富”所动，正见其心志之坚定，这也是他能成真的根本。</span></li><li><b>如果换成你，这一关好不好过？</b><br><span class="ans">多数人会被“一国之富”打动，唐僧却能拒绝，靠的是信念。它提醒我们：真正难过的关，往往不是困难，而是诱惑与安逸。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>比较"难"的类型：</b>把这一难和"三打白骨精""火焰山"放一起比：有的难在妖，有的难在情。</li><li><b>读"留白"：</b>结尾不写尽，是高级写法。读时想想"没写出来"的部分。</li><li><b>代入"两难"：</b>假如你是唐僧，既不想伤女王，又必须西行，你会怎么办？</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-19.html"><span class="dir">← 上一站</span><b>金兜山金兜洞</b><small>第 19 站</small></a><a class="next" href="comic-21.html"><span class="dir">下一站 →</span><b>毒敌山琵琶洞</b><small>第 21 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-20-1.png","span":true,"size":"cover","pos":"center","caption":"西梁女国，举国无男。女王闻得东土圣僧，雍容含情，心生爱慕。","bubbles":[{"who":"女儿国女王","text":"东土圣僧到此，朕心慕久矣，愿以一国相托。","side":"r"}],"study":{"intro":"先用\"举国无男\"点出奇特，再用女王的\"雍容含情\"铺开柔情。这一难，从\"刀光\"换成了\"目光\"。","appreciate":"与前文妖怪的\"凶\"相比，这里用<b>\"柔\"</b>写难。作者很懂：最甜的诱惑，常常最险。环境越美、情意越真，考验越深。","think":["为什么作者要把\"最难一难\"写成\"温柔\"而非\"凶险\"？","\"举国无男\"这个设定，对写\"情关\"有什么帮助？"],"phrases":["举国无男","雍容含情","以一国相托"]}},{"img":"assets/scenes/comic-20-2.png","size":"cover","pos":"center","caption":"驿馆之中，女王含情求亲，唐僧合十低眉，面有为难却不动心。","bubbles":[{"who":"唐僧","text":"贫僧许身佛门，不敢从命，望陛下见谅。","side":"l"}],"study":{"intro":"冲突核心：一边是真情实意的女王，一边是守戒坚定的唐僧。唐僧的\"不敢从命\"，是修行人的底线。","appreciate":"这一格写<b>\"不动\"</b>：女王越动情，唐僧越静定，一动一静对照出人物的\"定力\"。对话里\"许身佛门\"四字，是拒婚的最强理由。","think":["唐僧拒婚，凭的是哪四个字？这背后是什么在支撑他？","面对真心喜欢自己的人，拒绝为什么反而更难？"],"phrases":["含情求亲","合十低眉","许身佛门"]}},{"img":"assets/scenes/comic-20-3.png","size":"cover","pos":"center","caption":"悟空献计：唐僧假意应婚，只求先倒换关文，再寻机脱身。","bubbles":[{"who":"孙悟空","text":"师父且假意应了，换了关文，徒弟自有脱身之法。","side":"r"}],"study":{"intro":"智取一环。悟空看穿：硬拒伤和气、也走不成，不如\"将计就计\"。假应婚是真智慧，不是真动心。","appreciate":"小说里悟空常当<b>\"脑子\"</b>，唐僧当\"心\"。一柔一刚、一智一诚，正是取经能成的秘密。读时看师徒如何\"互补\"。","think":["\"假意应婚\"算不算说谎？危急时的\"权变\"与\"欺骗\"有何不同？","师徒一个主\"诚\"一个主\"智\"，你更认同谁？"],"phrases":["假意应婚","倒换关文","将计就计"]}},{"img":"assets/scenes/comic-20-4.png","size":"cover","pos":"center","caption":"城外送别，唐僧策马西去，女王怅然目送——此情关，唐僧守住了。","bubbles":[{"who":"女儿国女王","text":"御弟哥哥——","side":"r"}],"study":{"intro":"收束于一声呼唤与一次策马。唐僧守住了心，却也留白：女王的好，他并非全无感，只是\"道不同\"。","appreciate":"结尾用<b>留白与余韵</b>：不写唐僧回头与否，只写女王一声\"御弟哥哥\"。未说尽的情感，比说尽更动人，也引人回味\"守心\"的代价与成全。","think":["\"守住\"和\"无情\"是一回事吗？唐僧的离开算不算对女王的一种成全？","如果你写下一格，会画唐僧回头还是不回头？为什么？"],"phrases":["城外送别","策马西去","御弟哥哥"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-20-1.png","span":true,"size":"cover","pos":"center","caption":"西梁女国，举国无男。女王闻得东土圣僧，雍容含情，心生爱慕。","bubbles":[{"who":"女儿国女王","text":"东土圣僧到此，朕心慕久矣，愿以一国相托。","side":"r"}],"study":{"intro":"先用\"举国无男\"点出奇特，再用女王的\"雍容含情\"铺开柔情。这一难，从\"刀光\"换成了\"目光\"。","appreciate":"与前文妖怪的\"凶\"相比，这里用<b>\"柔\"</b>写难。作者很懂：最甜的诱惑，常常最险。环境越美、情意越真，考验越深。","think":["为什么作者要把\"最难一难\"写成\"温柔\"而非\"凶险\"？","\"举国无男\"这个设定，对写\"情关\"有什么帮助？"],"phrases":["举国无男","雍容含情","以一国相托"],"vocab":{"words":[{"t":"举国无男","m":"西梁女国全国都是女子，没有男子。"},{"t":"雍容含情","m":"女王仪态端庄，眼中却含着情意。"},{"t":"以一国相托","m":"女王愿把整个国家托付给唐僧。"}],"ju":[{"t":"西梁女国，举国无男。女王闻得东土圣僧，雍容含情，心生爱慕。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"“举国无男”设下特殊环境，“雍容含情”写女王又尊又柔，温软中自藏考验。"},{"t":"东土圣僧到此，朕心慕久矣，愿以一国相托。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"女王自称“朕”，以帝王之尊求亲，用整个国家做聘礼，情意越真越难拒。"}],"rhet":[{"t":"环境描写","m":"用“举国无男”渲染特殊环境，为“温柔关”铺好背景，让人物选择更显艰难。"}]}}},{"img":"assets/scenes/comic-20-2.png","size":"cover","pos":"center","caption":"驿馆之中，女王含情求亲，唐僧合十低眉，面有为难却不动心。","bubbles":[{"who":"唐僧","text":"贫僧许身佛门，不敢从命，望陛下见谅。","side":"l"}],"study":{"intro":"冲突核心：一边是真情实意的女王，一边是守戒坚定的唐僧。唐僧的\"不敢从命\"，是修行人的底线。","appreciate":"这一格写<b>\"不动\"</b>：女王越动情，唐僧越静定，一动一静对照出人物的\"定力\"。对话里\"许身佛门\"四字，是拒婚的最强理由。","think":["唐僧拒婚，凭的是哪四个字？这背后是什么在支撑他？","面对真心喜欢自己的人，拒绝为什么反而更难？"],"phrases":["含情求亲","合十低眉","许身佛门"],"vocab":{"words":[{"t":"含情求亲","m":"女王情意绵绵，主动向唐僧求婚。"},{"t":"合十低眉","m":"唐僧双手合十、低头不语，显出为难与恭敬。"},{"t":"许身佛门","m":"唐僧自陈已献身佛门，以此为拒婚理由。"}],"ju":[{"t":"驿馆之中，女王含情求亲，唐僧合十低眉，面有为难却不动心。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"一动一静对照，“为难”与“不动心”并存，写出唐僧的定力。"},{"t":"贫僧许身佛门，不敢从命，望陛下见谅。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"“许身佛门”四字是拒婚的最强理由，语气谦和却坚定，柔中带刚。"}],"rhet":[{"t":"语言生动","m":"以“合十低眉”“面有为难”写人物情态，细腻传神，让定力跃然纸上。"}]}}},{"img":"assets/scenes/comic-20-3.png","size":"cover","pos":"center","caption":"悟空献计：唐僧假意应婚，只求先倒换关文，再寻机脱身。","bubbles":[{"who":"孙悟空","text":"师父且假意应了，换了关文，徒弟自有脱身之法。","side":"r"}],"study":{"intro":"智取一环。悟空看穿：硬拒伤和气、也走不成，不如\"将计就计\"。假应婚是真智慧，不是真动心。","appreciate":"小说里悟空常当<b>\"脑子\"</b>，唐僧当\"心\"。一柔一刚、一智一诚，正是取经能成的秘密。读时看师徒如何\"互补\"。","think":["\"假意应婚\"算不算说谎？危急时的\"权变\"与\"欺骗\"有何不同？","师徒一个主\"诚\"一个主\"智\"，你更认同谁？"],"phrases":["假意应婚","倒换关文","将计就计"],"vocab":{"words":[{"t":"假意应婚","m":"唐僧假装答应婚事，以便脱身。"},{"t":"倒换关文","m":"借应婚之机换取通关文书。"},{"t":"将计就计","m":"顺着女王的安排定下脱身计。"}],"ju":[{"t":"悟空献计：唐僧假意应婚，只求先倒换关文，再寻机脱身。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"“假意”对“真意”，悟空以智破情关，计划周密又留有余地。"},{"t":"师父且假意应了，换了关文，徒弟自有脱身之法。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"悟空的话干脆利落，“自有脱身之法”显其胸有成竹。"}],"rhet":[{"t":"语言生动","m":"以师徒一智一诚的对话推进情节，语言明快，写出取经团队的分工互补。"}]}}},{"img":"assets/scenes/comic-20-4.png","size":"cover","pos":"center","caption":"城外送别，唐僧策马西去，女王怅然目送——此情关，唐僧守住了。","bubbles":[{"who":"女儿国女王","text":"御弟哥哥——","side":"r"}],"study":{"intro":"收束于一声呼唤与一次策马。唐僧守住了心，却也留白：女王的好，他并非全无感，只是\"道不同\"。","appreciate":"结尾用<b>留白与余韵</b>：不写唐僧回头与否，只写女王一声\"御弟哥哥\"。未说尽的情感，比说尽更动人，也引人回味\"守心\"的代价与成全。","think":["\"守住\"和\"无情\"是一回事吗？唐僧的离开算不算对女王的一种成全？","如果你写下一格，会画唐僧回头还是不回头？为什么？"],"phrases":["城外送别","策马西去","御弟哥哥"],"vocab":{"words":[{"t":"城外送别","m":"送别的地点设在城外，暗示即将离去。"},{"t":"策马西去","m":"唐僧骑马向西赶路，决意前行。"},{"t":"御弟哥哥","m":"女王对唐僧的亲昵称呼，含情不舍。"}],"ju":[{"t":"城外送别，唐僧策马西去，女王怅然目送——此情关，唐僧守住了。","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"“怅然目送”写尽女王深情，“守住了”三字收束，一舍一守余味悠长。"},{"t":"御弟哥哥——","from":"第五十四回　法性西来逢女国　心猿定计脱烟花","m":"一声呼唤戛然而止，欲语还休，把未说尽的情意留在省略号里。"}],"rhet":[{"t":"语言生动","m":"以留白收尾，只写一声“御弟哥哥”，情意未尽却更动人，引人回味。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

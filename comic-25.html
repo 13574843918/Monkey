@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第六十四回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>荆棘岭，千年松树化身的十八公等树精，以"谈诗论文"为由邀唐僧夜话，杏仙更欲招其为夫。这一难没有打杀，只有文雅的纠缠——妖以"文人雅趣"留人，悟空赶到，识破树精本相，挥棒斩树除之。这一站讲"雅惑"也误人。</p><p>读这一站，看<b>"文妖"</b>：不咬人不吃人，却用风雅绊住你。</p><p class="q">带着问题读：① 树精用什么"留"唐僧？② 谈诗也算"难"吗？③ "雅"会不会也误事？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>十八公 / 杏仙等树精</h3><p>松柏桧杏千年成精，以谈诗招赘留唐僧。代表<b>"风雅的羁縻"</b>——不凶不恶，却误人前程。</p></div><div class="card"><h3>唐僧</h3><p>取经人。这回他陷在"文雅夜话"里，险些因"舒服"误行。说明<b>温柔的滞留也是难</b>。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄。不擅风雅却擅辨妖，及时斩树救人。说明<b>看穿本质比附庸风雅更顶用</b>。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 雅惑也误人</h3><p>不凶的妖照样误事。风雅的纠缠，比刀枪更不易察觉。</p><h3>② 看穿胜附和</h3><p>悟空不写诗却破局。真本事是看穿，不是凑热闹。</p><h3>③ 舒服勿绊脚</h3><p>诗酒是好物，绊住正路便是劫。雅，也要有度。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>树精用什么“留”唐僧？</b><br><span class="ans">树精不用刀枪，而是化作老叟佳人，请唐僧赏月、品茶、谈诗，又让杏仙吟诗求亲，用文雅和柔情软磨，想绊住他不让走。</span></li><li><b>谈诗也算“难”吗？</b><br><span class="ans">算。这难不在刀兵，而在软磨。树精用雅兴缠住唐僧，让他沉迷诗酒、忘了取经，若不走就成了劫。所以文雅的纠缠，也是取经路上的难。</span></li><li><b>“雅”会不会也误事？</b><br><span class="ans">会。雅兴本是好事，但若沉迷其中、绊住该走的路，就会误了正事。唐僧差点被诗情绊住前程，提醒我们爱好要有度，别让“雅”误了正事。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"无打之难"：</b>这回几乎没打斗，却是最"文"的一难。读时品"雅"的写法。</li><li><b>想"温柔滞留"：</b>什么"舒服事"曾让你拖延？和唐僧对照一下。</li><li><b>学"辨本质"：</b>不被表象（雅）迷惑，先看"是不是该做的"。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-24.html"><span class="dir">← 上一站</span><b>祭赛国碧波潭</b><small>第 24 站</small></a><a class="next" href="comic-26.html"><span class="dir">下一站 →</span><b>小雷音寺</b><small>第 26 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-25-1.png","span":true,"size":"cover","pos":"center","caption":"荆棘岭夜色，古木参天，木仙庵中松柏杏树精化作老叟佳人，邀唐僧品茶谈诗。","bubbles":[{"who":"十八公","text":"圣僧远来，且共赏月谈诗。","side":"r"}],"study":{"intro":"起笔写\"雅局\"：没有刀光，只有茶与诗。树精以文人姿态出现，最易让人放下戒心。","appreciate":"作者用<b>\"以雅惑人\"</b>设局：别的妖抢，这帮妖\"请\"。越文雅的纠缠，越不易察觉是\"难\"。","think":["为什么树精不抢而\"请谈诗\"？","\"文雅的麻烦\"和\"凶猛的麻烦\"，哪个更隐蔽？"],"phrases":["荆棘岭","木仙庵","谈诗品茶"]}},{"img":"assets/scenes/comic-25-2.png","size":"cover","pos":"center","caption":"杏仙（杏树精）含情吟诗，欲招唐僧为夫，以风雅软磨。","bubbles":[{"who":"杏仙","text":"愿与长老结百年之好，可好？","side":"r","kind":"demon"}],"study":{"intro":"软磨：杏仙不强迫，而用诗与情\"慢慢磨\"。这种\"温柔的滞留\"，也是一种劫。","appreciate":"这一格写<b>\"软羁縻\"</b>：不绑你，却让你舍不得走。读时想：什么\"好东西\"也曾绊住过你前行的脚？","think":["杏仙的\"留\"和蝎子精的\"摄\"，有什么不同？","有没有\"舒服的事\"也曾耽误过你？"],"phrases":["杏仙吟诗","欲招赘","风雅软磨"]}},{"img":"assets/scenes/comic-25-3.png","size":"cover","pos":"center","caption":"悟空寻来，识破树精本相——原是松柏桧杏千年老木成精。","bubbles":[{"who":"孙悟空","text":"原来是几棵老树成精，现出本来面目！","side":"l"}],"study":{"intro":"点破：悟空一眼看穿\"雅皮\"下的\"木身\"。风雅再浓，也遮不住本相。","appreciate":"这里写<b>\"火眼辨伪\"</b>：悟空不见得会写诗，却最会看\"是不是妖\"。真本事，常是看穿而非附和。","think":["悟空不谈诗却能破局，说明什么？","\"会看穿\"和\"会附和\"，哪个更管用？"],"phrases":["悟空识破","现出木身","千年老木"]}},{"img":"assets/scenes/comic-25-4.png","size":"cover","pos":"center","caption":"悟空挥棒斩树，木仙庵化为枯木，唐僧脱此文雅之劫。","bubbles":[{"who":"孙悟空","text":"呆木头，莫误我师父前程！","side":"r"}],"study":{"intro":"收尾：斩树除妖。这一难不算凶，却提醒——\"雅\"若误了正事，也得断。","appreciate":"结局点出<b>\"风雅亦需有度\"</b>：诗酒琴棋是好物，但若绊住该走的路，便是劫。分不清\"雅\"与\"碍\"，也会栽。","think":["\"雅\"怎么会误事？你有没有被\"舒服的好事\"绊住过？","怎样才算\"雅而不碍\"？"],"phrases":["挥棒斩树","木仙化枯","脱此文劫"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-25-1.png","span":true,"size":"cover","pos":"center","caption":"荆棘岭夜色，古木参天，木仙庵中松柏杏树精化作老叟佳人，邀唐僧品茶谈诗。","bubbles":[{"who":"十八公","text":"圣僧远来，且共赏月谈诗。","side":"r"}],"study":{"intro":"起笔写\"雅局\"：没有刀光，只有茶与诗。树精以文人姿态出现，最易让人放下戒心。","appreciate":"作者用<b>\"以雅惑人\"</b>设局：别的妖抢，这帮妖\"请\"。越文雅的纠缠，越不易察觉是\"难\"。","think":["为什么树精不抢而\"请谈诗\"？","\"文雅的麻烦\"和\"凶猛的麻烦\"，哪个更隐蔽？"],"phrases":["荆棘岭","木仙庵","谈诗品茶"],"vocab":{"words":[{"t":"荆棘岭","m":"满是荆棘的山岭，松柏杏树精在此修行。"},{"t":"木仙庵","m":"树精们化作人形聚会谈诗的地方。"},{"t":"谈诗品茶","m":"树精请唐僧赏月、品茶、吟诗，以雅留人。"}],"ju":[{"t":"荆棘岭夜色，古木参天，木仙庵中松柏杏树精化作老叟佳人，邀唐僧品茶谈诗。","from":"原著第六十四回","m":"夜色、古木、品茶谈诗，一片雅致，偏偏是妖怪设的局。"},{"t":"圣僧远来，且共赏月谈诗。","from":"原著第六十四回","m":"言语客气有礼，越是客气，越让人放松警惕。"}],"rhet":[{"t":"语言生动","m":"以雅写妖，用风雅作外衣，越雅致越险恶。"}]}}},{"img":"assets/scenes/comic-25-2.png","size":"cover","pos":"center","caption":"杏仙（杏树精）含情吟诗，欲招唐僧为夫，以风雅软磨。","bubbles":[{"who":"杏仙","text":"愿与长老结百年之好，可好？","side":"r","kind":"demon"}],"study":{"intro":"软磨：杏仙不强迫，而用诗与情\"慢慢磨\"。这种\"温柔的滞留\"，也是一种劫。","appreciate":"这一格写<b>\"软羁縻\"</b>：不绑你，却让你舍不得走。读时想：什么\"好东西\"也曾绊住过你前行的脚？","think":["杏仙的\"留\"和蝎子精的\"摄\"，有什么不同？","有没有\"舒服的事\"也曾耽误过你？"],"phrases":["杏仙吟诗","欲招赘","风雅软磨"],"vocab":{"words":[{"t":"杏仙吟诗","m":"杏树精化作佳人，吟诗传情，欲招唐僧。"},{"t":"欲招赘","m":"杏仙想招唐僧做丈夫，留在身边。"},{"t":"风雅软磨","m":"不以武力，而以诗情软磨硬泡留住唐僧。"}],"ju":[{"t":"杏仙（杏树精）含情吟诗，欲招唐僧为夫，以风雅软磨。","from":"原著第六十四回","m":"不绑不打，却用柔情雅兴绊人，软刀子更缠人。"},{"t":"愿与长老结百年之好，可好？","from":"原著第六十四回","m":"柔声相问，越是情意绵绵，越让人难以脱身。"}],"rhet":[{"t":"语言生动","m":"以软写缠，用情诗雅兴设绊，写尽软羁縻的厉害。"}]}}},{"img":"assets/scenes/comic-25-3.png","size":"cover","pos":"center","caption":"悟空寻来，识破树精本相——原是松柏桧杏千年老木成精。","bubbles":[{"who":"孙悟空","text":"原来是几棵老树成精，现出本来面目！","side":"l"}],"study":{"intro":"点破：悟空一眼看穿\"雅皮\"下的\"木身\"。风雅再浓，也遮不住本相。","appreciate":"这里写<b>\"火眼辨伪\"</b>：悟空不见得会写诗，却最会看\"是不是妖\"。真本事，常是看穿而非附和。","think":["悟空不谈诗却能破局，说明什么？","\"会看穿\"和\"会附和\"，哪个更管用？"],"phrases":["悟空识破","现出木身","千年老木"],"vocab":{"words":[{"t":"悟空识破","m":"悟空赶来，一眼看穿这些是树精所变。"},{"t":"现出木身","m":"树精被看破，现出松柏桧杏的老木本相。"},{"t":"千年老木","m":"原来是修行千年的老树，成了精怪。"}],"ju":[{"t":"悟空寻来，识破树精本相——原是松柏桧杏千年老木成精。","from":"原著第六十四回","m":"悟空不写诗却最会辨妖，一眼看穿雅致背后是木精。"},{"t":"原来是几棵老树成精，现出本来面目！","from":"原著第六十四回","m":"一句“现出本来面目”，戳破风雅伪装，痛快淋漓。"}],"rhet":[{"t":"语言生动","m":"以辨写真，用火眼金睛撕破雅致外衣，点出真伪。"}]}}},{"img":"assets/scenes/comic-25-4.png","size":"cover","pos":"center","caption":"悟空挥棒斩树，木仙庵化为枯木，唐僧脱此文雅之劫。","bubbles":[{"who":"孙悟空","text":"呆木头，莫误我师父前程！","side":"r"}],"study":{"intro":"收尾：斩树除妖。这一难不算凶，却提醒——\"雅\"若误了正事，也得断。","appreciate":"结局点出<b>\"风雅亦需有度\"</b>：诗酒琴棋是好物，但若绊住该走的路，便是劫。分不清\"雅\"与\"碍\"，也会栽。","think":["\"雅\"怎么会误事？你有没有被\"舒服的好事\"绊住过？","怎样才算\"雅而不碍\"？"],"phrases":["挥棒斩树","木仙化枯","脱此文劫"],"vocab":{"words":[{"t":"挥棒斩树","m":"悟空挥起金箍棒，把这些老树精一一斩除。"},{"t":"木仙化枯","m":"木仙庵化作一堆枯木，再无妖气。"},{"t":"脱此文劫","m":"唐僧脱身，摆脱这场文雅的纠缠。"}],"ju":[{"t":"悟空挥棒斩树，木仙庵化为枯木，唐僧脱此文雅之劫。","from":"原著第六十四回","m":"一棒斩去，风雅散尽，枯木现形，文劫立解。"},{"t":"呆木头，莫误我师父前程！","from":"原著第六十四回","m":"又急又气的一句，骂醒木头，也点明“误前程”的要害。"}],"rhet":[{"t":"语言生动","m":"以斩破雅，棒落木枯，用粗粝破掉温软，对比强烈。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

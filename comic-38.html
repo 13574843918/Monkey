@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第九十一至九十二回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>金平府青龙山，辟寒、辟暑、辟尘三只犀牛精，假扮佛身收享酥合香油，悟空识破追打，犀牛逃入西洋大海。悟空请来四木禽星（角木蛟等）下海擒三犀，斩之除害，金平府重见真佛。这一站讲"假佛吸油，真星擒牛"。</p><p>读这一站，看<b>"假佛"</b>：又是一回"扮佛骗香火"，却换了犀牛身。</p><p class="q">带着问题读：① 三犀为何扮佛？② 为什么请四木禽星？③ "假佛吸油"讽刺什么？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>辟寒 / 辟暑 / 辟尘大王</h3><p>三只犀牛精，假扮佛身收酥合香油。代表<b>"借信仰揩油"的伪神圣</b>——靠装相吸供奉。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄。火眼辨出"佛皮"下的犀牛，又请对口的四木禽星。说明<b>既敢破虔，也懂借力</b>。</p></div><div class="card"><h3>四木禽星</h3><p>角木蛟等天界星官，专克鳞甲。下海擒三犀。是<b>"专业对口"的收妖者</b>。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 假佛骗香火</h3><p>犀牛扮佛吸油，靠排场骗诚心。辨"真信仰"还是"假营生"，要有眼。</p><h3>② 专业要对口</h3><p>擒牛请禽星。遇难题找"对口"的人，比找"最强"的更准。</p><h3>③ 真不必装</h3><p>真佛无需吸油显灵。去掉包装，真心自显。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>三犀为何扮佛？</b><br><span class="ans">为了骗取百姓的酥合香油和香火。它们扮成佛身受供，借佛的名号敛财骗油，享受香火鼎盛，真身其实是三只犀牛精。</span></li><li><b>为什么请四木禽星？</b><br><span class="ans">因为犀牛逃进大海，悟空难以追捕；而四木禽星正是水中擒妖的行家，又是犀牛的天敌。请对口的星君，才能把犀牛从海里赶出擒住。</span></li><li><b>假佛吸油讽刺什么？</b><br><span class="ans">讽刺那些装神弄鬼、借信仰骗人钱财的假象。百姓越是诚心献油，越显出假佛可恶；真佛无需排场骗油，去掉伪装，真心才显。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>勾连"假佛"：</b>小雷音黄眉、金平府三犀都是"扮佛"。归一类，看作者讽什么。</li><li><b>学"对口"：</b>擒牛请禽星，写作文讲"找对人"也可套。</li><li><b>想"包装"：</b>你身边有没有"靠包装显灵"的人和事？</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-37.html"><span class="dir">← 上一站</span><b>玉华州</b><small>第 37 站</small></a><a class="next" href="comic-39.html"><span class="dir">下一站 →</span><b>天竺国</b><small>第 39 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-38-1.png","span":true,"size":"cover","pos":"center","caption":"金平府元宵，三尊\"佛身\"现身受万民酥合香油，香火鼎盛。","bubbles":[{"who":"辟寒大王","text":"众生献油，吾等受用了。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"假佛受供\"：百姓虔诚献油，供的却是犀牛。信众的\"诚\"，喂了冒牌的\"佛\"。","appreciate":"作者用<b>\"以虔写骗\"</b>：越写百姓诚心，越显假佛可恶。读时想：你的\"虔诚\"有没有喂错过人？","think":["为什么写百姓\"诚心献油\"反而刺心？","你有没有\"真心\"给错过对象？"],"phrases":["金平府","三犀假佛","酥合香油"]}},{"img":"assets/scenes/comic-38-2.png","size":"cover","pos":"center","caption":"悟空识破：哪是佛，分明是三只犀牛精！追打之下犀牛逃入大海。","bubbles":[{"who":"孙悟空","text":"呔！三只犀牛，也配称佛！","side":"l"}],"sfx":{"t":"咤！","x":"58%","y":"20%"},"study":{"intro":"识破：悟空火眼辨妖，假佛现形逃海。和上回小雷音\"假佛\"呼应——作者爱用\"佛皮\"试信众。","appreciate":"这一格写<b>\"火眼破虔\"</b>：众人拜的，悟空偏要打。真见识，常敢于对\"众人信的\"说\"不\"。","think":["悟空敢打\"众人拜的佛\"，凭什么？","众人皆拜时，敢说\"不\"需要什么？"],"phrases":["三犀假佛","火眼识破","逃入大海"]}},{"img":"assets/scenes/comic-38-3.png","size":"cover","pos":"center","caption":"悟空请四木禽星（角木蛟等）下西洋大海，围擒三犀，犀牛难逃。","bubbles":[{"who":"四木禽星","text":"孽畜，还不现出本相！","side":"r","kind":"god"}],"sfx":{"t":"哗——","x":"60%","y":"20%"},"study":{"intro":"转折：犀牛逃海，请\"克星\"四木禽星——角木蛟等本就专管鳞甲之类。对路的星官一下海，妖就慌。","appreciate":"这一格写<b>\"专业对口\"</b>：擒牛请禽星，不是谁强谁上，是谁\"对口\"谁上。读时学\"找专业的人办专业的事\"。","think":["为什么请四木禽星而非别的神？","你遇难题时，找过\"对口\"的人吗？"],"phrases":["请四木禽星","下海围擒","犀牛难逃"]}},{"img":"assets/scenes/comic-38-4.png","size":"cover","pos":"center","caption":"三犀被斩除害，金平府破除假佛，重见真佛金身。","bubbles":[{"who":"孙悟空","text":"假佛已除，真佛自在人心。","side":"l"}],"study":{"intro":"收尾：假佛被斩，香火归真。百姓拜的若真是佛，便不必靠\"吸油\"显灵。","appreciate":"结局点出<b>\"真不必装\"</b>：真佛无需扮相吸油，假佛才要靠排场骗香。去掉伪装，真心才显。","think":["\"真佛自在人心\"这句话你怎么理解？","什么\"真东西\"是从不需要包装的？"],"phrases":["三犀被斩","破除假佛","重见真佛"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-38-1.png","span":true,"size":"cover","pos":"center","caption":"金平府元宵，三尊\"佛身\"现身受万民酥合香油，香火鼎盛。","bubbles":[{"who":"辟寒大王","text":"众生献油，吾等受用了。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"假佛受供\"：百姓虔诚献油，供的却是犀牛。信众的\"诚\"，喂了冒牌的\"佛\"。","appreciate":"作者用<b>\"以虔写骗\"</b>：越写百姓诚心，越显假佛可恶。读时想：你的\"虔诚\"有没有喂错过人？","think":["为什么写百姓\"诚心献油\"反而刺心？","你有没有\"真心\"给错过对象？"],"phrases":["金平府","三犀假佛","酥合香油"],"vocab":{"words":[{"t":"金平府","m":"地名，元宵节设灯供佛，被三犀假佛骗去大量香油。"},{"t":"三犀假佛","m":"辟寒、辟暑、辟尘三只犀牛精，假扮佛身骗取香火。"},{"t":"酥合香油","m":"珍贵的香油，百姓诚心供奉，却被假佛吞掉敛财。"}],"ju":[{"t":"金平府元宵，三尊佛身现身受万民酥合香油，香火鼎盛。","from":"原著第九十一至九十二回","m":"概述场面，灯节香火越盛，越显受油的佛可疑，为识破做铺垫。"},{"t":"众生献油，吾等受用了。","from":"原著第九十一至九十二回","m":"语言描写，假佛一句话道破受用，把骗香的贪婪藏在佛腔里。"}],"rhet":[{"t":"语言生动","m":"香火鼎盛与受用对照，写尽百姓虔诚与假佛贪婪，对比刺目。"}]}}},{"img":"assets/scenes/comic-38-2.png","size":"cover","pos":"center","caption":"悟空识破：哪是佛，分明是三只犀牛精！追打之下犀牛逃入大海。","bubbles":[{"who":"孙悟空","text":"呔！三只犀牛，也配称佛！","side":"l"}],"sfx":{"t":"咤！","x":"58%","y":"20%"},"study":{"intro":"识破：悟空火眼辨妖，假佛现形逃海。和上回小雷音\"假佛\"呼应——作者爱用\"佛皮\"试信众。","appreciate":"这一格写<b>\"火眼破虔\"</b>：众人拜的，悟空偏要打。真见识，常敢于对\"众人信的\"说\"不\"。","think":["悟空敢打\"众人拜的佛\"，凭什么？","众人皆拜时，敢说\"不\"需要什么？"],"phrases":["三犀假佛","火眼识破","逃入大海"],"vocab":{"words":[{"t":"三犀假佛","m":"犀牛精扮作佛身，借佛名骗香油，真面目被悟空戳穿。"},{"t":"火眼识破","m":"悟空火眼金睛看出佛身是妖，当众揭穿其伪装。"},{"t":"逃入大海","m":"三犀被打败，慌不择路逃进西洋大海躲藏。"}],"ju":[{"t":"悟空识破：哪是佛，分明是三只犀牛精！追打之下犀牛逃入大海。","from":"原著第九十一至九十二回","m":"一句转出真相，把众人所拜的佛打回犀牛原形，痛快有力。"},{"t":"呔！三只犀牛，也配称佛！","from":"原著第九十一至九十二回","m":"语言描写，悟空一声断喝，戳穿骗局，显出他敢于对众人信的说不。"}],"rhet":[{"t":"语言生动","m":"也配称佛一句反诘，气势逼人，把假佛的虚伪和悟空的清醒都写出来了。"}]}}},{"img":"assets/scenes/comic-38-3.png","size":"cover","pos":"center","caption":"悟空请四木禽星（角木蛟等）下西洋大海，围擒三犀，犀牛难逃。","bubbles":[{"who":"四木禽星","text":"孽畜，还不现出本相！","side":"r","kind":"god"}],"sfx":{"t":"哗——","x":"60%","y":"20%"},"study":{"intro":"转折：犀牛逃海，请\"克星\"四木禽星——角木蛟等本就专管鳞甲之类。对路的星官一下海，妖就慌。","appreciate":"这一格写<b>\"专业对口\"</b>：擒牛请禽星，不是谁强谁上，是谁\"对口\"谁上。读时学\"找专业的人办专业的事\"。","think":["为什么请四木禽星而非别的神？","你遇难题时，找过\"对口\"的人吗？"],"phrases":["请四木禽星","下海围擒","犀牛难逃"],"vocab":{"words":[{"t":"请四木禽星","m":"悟空请来角木蛟等四位星君，专克水中犀牛。"},{"t":"下海围擒","m":"四木禽星下到西洋大海，四面围住，把犀牛赶出水面。"},{"t":"犀牛难逃","m":"三犀被天将围困，无处可逃，现出原形被擒。"}],"ju":[{"t":"悟空请四木禽星（角木蛟等）下西洋大海，围擒三犀，犀牛难逃。","from":"原著第九十一至九十二回","m":"概述擒牛，请对星君、下海围剿，写出专业对口的取胜之道。"},{"t":"孽畜，还不现出本相！","from":"原著第九十一至九十二回","m":"语言描写，星君威严断喝，命令妖怪现形，写尽天将捉妖的气势。"}],"rhet":[{"t":"语言生动","m":"现出本相一语双关，既令妖现形，也讽刺假佛终究藏不住，妙。"}]}}},{"img":"assets/scenes/comic-38-4.png","size":"cover","pos":"center","caption":"三犀被斩除害，金平府破除假佛，重见真佛金身。","bubbles":[{"who":"孙悟空","text":"假佛已除，真佛自在人心。","side":"l"}],"study":{"intro":"收尾：假佛被斩，香火归真。百姓拜的若真是佛，便不必靠\"吸油\"显灵。","appreciate":"结局点出<b>\"真不必装\"</b>：真佛无需扮相吸油，假佛才要靠排场骗香。去掉伪装，真心才显。","think":["\"真佛自在人心\"这句话你怎么理解？","什么\"真东西\"是从不需要包装的？"],"phrases":["三犀被斩","破除假佛","重见真佛"],"vocab":{"words":[{"t":"三犀被斩","m":"辟寒、辟暑、辟尘三犀被斩除，妖祸平息。"},{"t":"破除假佛","m":"拆穿犀牛假佛的骗局，不再有人被骗油。"},{"t":"重见真佛","m":"金平府恢复供奉真佛，民心归正，香火归于正途。"}],"ju":[{"t":"三犀被斩除害，金平府破除假佛，重见真佛金身。","from":"原著第九十一至九十二回","m":"收束句，斩犀、破假、归真，写尽恶除后信仰复正的清明。"},{"t":"假佛已除，真佛自在人心。","from":"原著第九十一至九十二回","m":"语言描写，悟空点题：真佛不需排场，藏在人心，假佛才靠骗。"}],"rhet":[{"t":"语言生动","m":"假佛已除，真佛自在人心一贬一褒，对比鲜明，把全回主旨说透。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

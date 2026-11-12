@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第二十三回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>黎山老母与观音、普贤、文殊三位菩萨，变作一户富足母女，以招婿为名试探取经之心。唐僧、悟空、沙僧皆不动心，唯独猪八戒凡心大动，想要入赘，结果被吊在树上受了一夜罪。这一难没有刀光，却最见人心。</p><p>读这一站，重点看<b>"试探"</b>：真心的成色，要在"没人看着"时看。</p><p class="q">带着问题读：① 菩萨为什么要"试"？② 八戒为何中招？③ 你经得起"没人看"的考验吗？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>猪八戒</h3><p>二徒弟。这一回他的"凡心"被放大审视——贪安逸、动色念。是<b>人性弱点的喜剧化身</b>，也可爱，也可警。</p></div><div class="card"><h3>唐僧 / 悟空 / 沙僧</h3><p>三人皆不为富贵所动。唐僧守戒、悟空看破、沙僧本分，是<b>三种不同的"定"</b>，共同撑住队伍的心。</p></div><div class="card"><h3>黎山老母与三菩萨</h3><p>化为母女设局试心。是<b>"出题人"</b>——不伤你，只照出你。菩萨的试，是成全不是刁难。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 真心要试</h3><p>"没人看"时还守不守，才是真成色。菩萨的试，是帮你看见自己。</p><h3>② 平常诱最难拒</h3><p>富贵安逸比刀山更难拒。越像"好日子"的饵，越要清醒。</p><h3>③ 出丑即长记性</h3><p>八戒吊一夜，换来一路警醒。小惩大诫，笑话里藏着修行。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>菩萨为什么要“试”？</b><br><span class="ans">取经之路要见真心。菩萨变作母女设局，试探师徒能否抵挡富贵美色，看他们取经的诚心真不真。</span></li><li><b>八戒为何中招？</b><br><span class="ans">八戒本就贪吃贪懒、凡心重，一听说有田有财、还有美色，就动了入赘的念头，所以中了试探。</span></li><li><b>你经得起“没人看”的考验吗？</b><br><span class="ans">这问题要自省。没人看着时的选择，才见真性情。管住自己的贪念，才守得住底线。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"群像对照"：</b>同一桌诱饵四人不同反应，是学写人物的好范例。</li><li><b>想"没人看时"：</b>把八戒的考题换成你的：独处时你还守规矩吗？</li><li><b>品喜剧笔法：</b>《西游记》用笑写戒，比板着脸说教高明，写作可学。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-08.html"><span class="dir">← 上一站</span><b>流沙河</b><small>第 8 站</small></a><a class="next" href="comic-10.html"><span class="dir">下一站 →</span><b>万寿山五庄观</b><small>第 10 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-09-1.png","span":true,"size":"cover","pos":"center","caption":"庄院门前，一富态老母携三女相邀：家资丰厚，欲招一婿同享富贵。","bubbles":[{"who":"黎山老母","text":"我家有田有财，哪位长老肯留？","side":"r","kind":"god"}],"study":{"intro":"起笔是\"糖衣\"：富贵、美貌、安逸，一并奉上。考验，往往包装成\"好事\"到来。","appreciate":"作者用<b>\"以美色富贵为饵\"</b>设局，不写妖不写杀，写\"居家日子\"。越平常的诱惑，越难拒——这是高明处。","think":["为什么菩萨用\"招婿享福\"来试，而不用妖怪？","越平常的诱惑越难拒，你同意吗？"],"phrases":["庄院相邀","富态母女","招婿同享"]}},{"img":"assets/scenes/comic-09-2.png","size":"cover","pos":"center","caption":"唐僧、悟空、沙僧皆合十不动，唯八戒偷眼张望，凡心浮动。","bubbles":[{"who":"猪八戒","text":"这等富贵，倒也不错……","side":"r"}],"study":{"intro":"对比亮相：三人心定，八戒心摇。同一桌\"诱饵\"，四种反应，人物性格当场分高下。","appreciate":"这一格写<b>\"群像对照\"</b>：不靠台词评判，靠\"谁动眼\"说话。读小说，看人在同一处境下的不同反应，最见性格。","think":["同一诱惑前，四人反应不同，说明了什么？","\"偷眼张望\"这一小动作，比骂八戒更有力吗？"],"phrases":["合十不动","偷眼张望","凡心浮动"]}},{"img":"assets/scenes/comic-09-3.png","size":"cover","pos":"center","caption":"八戒夜入赘房，撞破原是菩萨法身，被捆吊在树上受惩。","bubbles":[{"who":"猪八戒","text":"娘啊——饶我这一回！","side":"l"}],"sfx":{"t":"嗬！","x":"60%","y":"20%"},"study":{"intro":"收网：八戒的\"动心\"变成\"出丑\"。菩萨不真嫁，只是让他自己现形。惩罚很轻，教训很重。","appreciate":"这里用<b>\"喜剧式惩戒\"</b>：不砍不杀，只吊一夜。笑中带警——八戒的贪，被写成人人可会犯的\"小人性\"。","think":["菩萨为什么只吊他不杀他？","八戒的\"出丑\"，你笑得出还是笑不出？为什么？"],"phrases":["夜入赘房","法身现形","捆吊受惩"]}},{"img":"assets/scenes/comic-09-4.png","size":"cover","pos":"center","caption":"天明菩萨隐去，八戒羞惭，师徒继续西行——此\"难\"在人心。","bubbles":[{"who":"孙悟空","text":"呆子，长记性了罢？","side":"l"}],"study":{"intro":"收束：一夜风雨，路还在。八戒挨了教训，队伍照走。这一难，难在\"心\"，不在\"路\"。","appreciate":"结尾点题：<b>真经路上的\"难\"，许多是心里的坎</b>。菩萨走后留一句话：守不住心，才过不了关。","think":["\"试心\"这一难，和打妖怪的难有什么不同？","你有没有\"没人看时也守规矩\"的时候？"],"phrases":["菩萨隐去","羞惭续行","难在人心"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-09-1.png","span":true,"size":"cover","pos":"center","caption":"庄院门前，一富态老母携三女相邀：家资丰厚，欲招一婿同享富贵。","bubbles":[{"who":"黎山老母","text":"我家有田有财，哪位长老肯留？","side":"r","kind":"god"}],"study":{"intro":"起笔是\"糖衣\"：富贵、美貌、安逸，一并奉上。考验，往往包装成\"好事\"到来。","appreciate":"作者用<b>\"以美色富贵为饵\"</b>设局，不写妖不写杀，写\"居家日子\"。越平常的诱惑，越难拒——这是高明处。","think":["为什么菩萨用\"招婿享福\"来试，而不用妖怪？","越平常的诱惑越难拒，你同意吗？"],"phrases":["庄院相邀","富态母女","招婿同享"],"vocab":{"words":[{"t":"庄院相邀","m":"一位富态老母带着三个女儿，邀请师徒留宿。"},{"t":"富态母女","m":"老母与三女都是菩萨变化，家境富足。"},{"t":"招婿同享","m":"老母提出招一婿入赘，共享家产富贵。"}],"ju":[{"t":"庄院门前，一富态老母携三女相邀：家资丰厚，欲招一婿同享富贵。","from":"原著第二十三回","m":"不写妖不写杀，写居家富贵，越平常的诱惑越难拒。"},{"t":"我家有田有财，哪位长老肯留？","from":"原著第二十三回","m":"老母一句相邀，拿富贵当饵，考验就在眼前。"}],"rhet":[{"t":"语言生动","m":"“有田有财”“招婿同享”把诱惑说得具体，直勾人心。"}]}}},{"img":"assets/scenes/comic-09-2.png","size":"cover","pos":"center","caption":"唐僧、悟空、沙僧皆合十不动，唯八戒偷眼张望，凡心浮动。","bubbles":[{"who":"猪八戒","text":"这等富贵，倒也不错……","side":"r"}],"study":{"intro":"对比亮相：三人心定，八戒心摇。同一桌\"诱饵\"，四种反应，人物性格当场分高下。","appreciate":"这一格写<b>\"群像对照\"</b>：不靠台词评判，靠\"谁动眼\"说话。读小说，看人在同一处境下的不同反应，最见性格。","think":["同一诱惑前，四人反应不同，说明了什么？","\"偷眼张望\"这一小动作，比骂八戒更有力吗？"],"phrases":["合十不动","偷眼张望","凡心浮动"],"vocab":{"words":[{"t":"合十不动","m":"唐僧、悟空、沙僧都合掌静坐，不为所动。"},{"t":"偷眼张望","m":"八戒偷偷抬眼打量，心里开始打主意。"},{"t":"凡心浮动","m":"八戒动了凡心，想着富贵美色，心猿意马。"}],"ju":[{"t":"唐僧、悟空、沙僧皆合十不动，唯八戒偷眼张望，凡心浮动。","from":"原著第二十三回","m":"靠“谁动眼”说话，同一处境不同反应，最见性格。"},{"t":"这等富贵，倒也不错……","from":"原著第二十三回","m":"八戒一句话露了底，贪恋富贵，与三人的坚定成对比。"}],"rhet":[{"t":"语言生动","m":"“合十不动”对“偷眼张望”，一动一静，人物立见。"}]}}},{"img":"assets/scenes/comic-09-3.png","size":"cover","pos":"center","caption":"八戒夜入赘房，撞破原是菩萨法身，被捆吊在树上受惩。","bubbles":[{"who":"猪八戒","text":"娘啊——饶我这一回！","side":"l"}],"sfx":{"t":"嗬！","x":"60%","y":"20%"},"study":{"intro":"收网：八戒的\"动心\"变成\"出丑\"。菩萨不真嫁，只是让他自己现形。惩罚很轻，教训很重。","appreciate":"这里用<b>\"喜剧式惩戒\"</b>：不砍不杀，只吊一夜。笑中带警——八戒的贪，被写成人人可会犯的\"小人性\"。","think":["菩萨为什么只吊他不杀他？","八戒的\"出丑\"，你笑得出还是笑不出？为什么？"],"phrases":["夜入赘房","法身现形","捆吊受惩"],"vocab":{"words":[{"t":"夜入赘房","m":"八戒晚上溜进洞房，想入赘成亲。"},{"t":"法身现形","m":"原来新娘是菩萨法身，八戒撞破真相。"},{"t":"捆吊受惩","m":"八戒被捆起来吊在树上，受了一夜罪。"}],"ju":[{"t":"八戒夜入赘房，撞破原是菩萨法身，被捆吊在树上受惩。","from":"原著第二十三回","m":"不砍不杀只吊一夜，笑中带警，把贪写成小人性。"},{"t":"娘啊——饶我这一回！","from":"原著第二十三回","m":"八戒求饶又可怜又好笑，惩戒中透着慈悲与幽默。"}],"rhet":[{"t":"语言生动","m":"“撞破”“捆吊”“受惩”把喜剧式惩戒写得很生动。"}]}}},{"img":"assets/scenes/comic-09-4.png","size":"cover","pos":"center","caption":"天明菩萨隐去，八戒羞惭，师徒继续西行——此\"难\"在人心。","bubbles":[{"who":"孙悟空","text":"呆子，长记性了罢？","side":"l"}],"study":{"intro":"收束：一夜风雨，路还在。八戒挨了教训，队伍照走。这一难，难在\"心\"，不在\"路\"。","appreciate":"结尾点题：<b>真经路上的\"难\"，许多是心里的坎</b>。菩萨走后留一句话：守不住心，才过不了关。","think":["\"试心\"这一难，和打妖怪的难有什么不同？","你有没有\"没人看时也守规矩\"的时候？"],"phrases":["菩萨隐去","羞惭续行","难在人心"],"vocab":{"words":[{"t":"菩萨隐去","m":"天亮菩萨化作的母女隐去，庄院恢复原样。"},{"t":"羞惭续行","m":"八戒满脸羞愧，跟着队伍继续上路。"},{"t":"难在人心","m":"这一难不在刀兵，而在人心的贪念。"}],"ju":[{"t":"天明菩萨隐去，八戒羞惭，师徒继续西行——此“难”在人心。","from":"原著第二十三回","m":"菩萨走后留一句话，守不住心才过不了关，点题。"},{"t":"呆子，长记性了罢？","from":"原著第二十三回","m":"悟空打趣八戒，玩笑中带着提醒，气氛轻松。"}],"rhet":[{"t":"语言生动","m":"“羞惭”“长记性”把教训写成带笑的提醒，余味十足。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

@@ -31,6 +31,11 @@
   .card .meta .nm{font-size:19px;font-weight:700;letter-spacing:2px;text-shadow:0 1px 4px rgba(0,0,0,.7);}
   .card .meta .ch{font-size:12px;opacity:.9;margin-top:3px;}
   .card .tag{position:absolute;top:10px;right:10px;background:var(--gold);color:#3a2a08;font-size:11px;padding:2px 9px;border-radius:11px;font-weight:700;}
+  .card.key{border-color:var(--gold);box-shadow:4px 5px 0 rgba(201,151,31,.35);}
+  .key-badge{position:absolute;top:10px;left:10px;background:linear-gradient(90deg,#f6e7bd,#f0d9a0);color:#7a5210;
+    font-size:11px;padding:3px 10px;border-radius:11px;font-weight:700;border:1px solid var(--gold);z-index:5;}
+  .card.key .tag{background:var(--red);color:#fff;}
+  .star{display:block;margin-top:4px;color:var(--gold);font-size:12px;letter-spacing:2px;text-shadow:0 1px 2px rgba(0,0,0,.6);}
   .foot{text-align:center;color:#6b5a44;font-size:12.5px;margin-top:26px;line-height:1.7;}
   @media(max-width:640px){ .grid{grid-template-columns:1fr;} .masthead h1{font-size:27px;letter-spacing:5px;} }
 </style>
@@ -58,60 +63,62 @@
 
 <script>
 const ITEMS = [
-  { id:'01', file:'comic-01.html', hero:'assets/scenes/comic-01-1.png', name:'大唐长安', chapter:'第 01 站 · 原著第十二至十三回', tag:'取经事业的起点' },
-  { id:'02', file:'comic-02.html', hero:'assets/scenes/comic-02-1.png', name:'双叉岭', chapter:'第 02 站 · 原著第十三回', tag:'取经首难，妖魔试胆' },
-  { id:'03', file:'comic-03.html', hero:'assets/scenes/comic-03-1.png', name:'两界山', chapter:'第 03 站 · 原著第十四回', tag:'五行山下，收第一位…' },
-  { id:'04', file:'comic-04.html', hero:'assets/scenes/comic-04-1.png', name:'蛇盘山鹰愁涧', chapter:'第 04 站 · 原著第十五回', tag:'白龙化马，千里随行' },
-  { id:'05', file:'comic-05.html', hero:'assets/scenes/comic-05-1.png', name:'黑风山·观音禅院', chapter:'第 05 站 · 原著第十六至十七回', tag:'贪念起祸，袈裟惹灾' },
-  { id:'06', file:'comic-06.html', hero:'assets/scenes/comic-06-1.png', name:'高老庄', chapter:'第 06 站 · 原著第十八至十九回', tag:'收第二位徒弟猪八戒' },
-  { id:'07', file:'comic-07.html', hero:'assets/scenes/comic-07-1.png', name:'黄风岭', chapter:'第 07 站 · 原著第二十至二十一回', tag:'三昧神风，一珠定妖' },
-  { id:'08', file:'comic-08.html', hero:'assets/scenes/comic-08-1.png', name:'流沙河', chapter:'第 08 站 · 原著第二十二回', tag:'收第三位徒弟沙僧' },
-  { id:'09', file:'comic-09.html', hero:'assets/scenes/comic-09-1.png', name:'四圣试禅心', chapter:'第 09 站 · 原著第二十三回', tag:'菩萨试心，八戒现形' },
-  { id:'10', file:'comic-10.html', hero:'assets/scenes/comic-10-1.png', name:'万寿山五庄观', chapter:'第 10 站 · 原著第二十四至二十六回', tag:'推树惹祸，观音医树' },
-  { id:'11', file:'comic-baihuling.html', hero:'assets/scenes/baihuling-1.png', name:'白虎岭 · 三打白骨精', chapter:'第 11 站 · 原著第二十七回', tag:'经典' },
-  { id:'12', file:'comic-12.html', hero:'assets/scenes/comic-12-1.png', name:'宝象国', chapter:'第 12 站 · 原著第二十八至三十一回', tag:'黄袍怪案，白龙救主' },
-  { id:'13', file:'comic-13.html', hero:'assets/scenes/comic-13-1.png', name:'平顶山莲花洞', chapter:'第 13 站 · 原著第三十二至三十五回', tag:'五件宝贝，假葫破真' },
-  { id:'14', file:'comic-14.html', hero:'assets/scenes/comic-14-1.png', name:'乌鸡国', chapter:'第 14 站 · 原著第三十六至三十九回', tag:'井中真王，瓶中假王' },
-  { id:'15', file:'comic-15.html', hero:'assets/scenes/comic-15-1.png', name:'火云洞', chapter:'第 15 站 · 原著第四十至四十二回', tag:'红孩儿的三昧真火' },
-  { id:'16', file:'comic-16.html', hero:'assets/scenes/comic-16-1.png', name:'黑水河', chapter:'第 16 站 · 原著第四十三回', tag:'鼍龙阻渡，龙王擒子' },
-  { id:'17', file:'comic-17.html', hero:'assets/scenes/comic-17-1.png', name:'车迟国', chapter:'第 17 站 · 原著第四十四至四十六回', tag:'三国师斗法，求雨破…' },
-  { id:'18', file:'comic-18.html', hero:'assets/scenes/comic-18-1.png', name:'通天河', chapter:'第 18 站 · 原著第四十七至四十九回', tag:'金鱼冻河，竹篮收妖' },
-  { id:'19', file:'comic-19.html', hero:'assets/scenes/comic-19-1.png', name:'金兜山金兜洞', chapter:'第 19 站 · 原著第五十至五十二回', tag:'金刚琢套尽兵器' },
-  { id:'20', file:'comic-20.html', hero:'assets/scenes/comic-20-1.png', name:'西梁女国', chapter:'第 20 站 · 原著第五十四至五十五回', tag:'最柔的一难：情关' },
-  { id:'21', file:'comic-21.html', hero:'assets/scenes/comic-21-1.png', name:'毒敌山琵琶洞', chapter:'第 21 站 · 原著第五十五回', tag:'蝎子精的倒马毒桩' },
-  { id:'22', file:'comic-22.html', hero:'assets/scenes/comic-22-1.png', name:'真假美猴王', chapter:'第 22 站 · 原著第五十七至五十八回', tag:'一场关于"二心"的…' },
-  { id:'23', file:'comic-23.html', hero:'assets/scenes/comic-23-1.png', name:'火焰山', chapter:'第 23 站 · 原著第五十九至六十一回', tag:'三借芭蕉扇' },
-  { id:'24', file:'comic-24.html', hero:'assets/scenes/comic-24-1.png', name:'祭赛国碧波潭', chapter:'第 24 站 · 原著第六十二至六十三回', tag:'九头驸马，二郎助擒' },
-  { id:'25', file:'comic-25.html', hero:'assets/scenes/comic-25-1.png', name:'荆棘岭木仙庵', chapter:'第 25 站 · 原著第六十四回', tag:'树精谈诗，欲招赘唐…' },
-  { id:'26', file:'comic-26.html', hero:'assets/scenes/comic-26-1.png', name:'小雷音寺', chapter:'第 26 站 · 原著第六十五至六十六回', tag:'黄眉假佛，人种袋收' },
-  { id:'27', file:'comic-27.html', hero:'assets/scenes/comic-27-1.png', name:'七绝山稀柿衕', chapter:'第 27 站 · 原著第六十七回', tag:'巨蟒阻路，八戒开道' },
-  { id:'28', file:'comic-28.html', hero:'assets/scenes/comic-28-1.png', name:'朱紫国', chapter:'第 28 站 · 原著第六十八至七十一回', tag:'金毛犼盗宫，紫金铃…' },
-  { id:'29', file:'comic-29.html', hero:'assets/scenes/comic-29-1.png', name:'盘丝洞', chapter:'第 29 站 · 原著第七十二回', tag:'七蛛吐丝，毗蓝破网' },
-  { id:'30', file:'comic-30.html', hero:'assets/scenes/comic-30-1.png', name:'黄花观', chapter:'第 30 站 · 原著第七十三回', tag:'百眼魔君，千目被针' },
-  { id:'31', file:'comic-31.html', hero:'assets/scenes/comic-31-1.png', name:'狮驼岭狮驼国', chapter:'第 31 站 · 原著第七十四至七十七回', tag:'三魔据国，如来收鹏' },
-  { id:'32', file:'comic-32.html', hero:'assets/scenes/comic-32-1.png', name:'比丘国', chapter:'第 32 站 · 原著第七十八至七十九回', tag:'国丈害童，寿星收鹿' },
-  { id:'33', file:'comic-33.html', hero:'assets/scenes/comic-33-1.png', name:'陷空山无底洞', chapter:'第 33 站 · 原著第八十至八十三回', tag:'地涌夫人，天王缚鼠' },
-  { id:'34', file:'comic-34.html', hero:'assets/scenes/comic-34-1.png', name:'灭法国', chapter:'第 34 站 · 原著第八十四回', tag:'杀僧之愿，智剃君臣' },
-  { id:'35', file:'comic-35.html', hero:'assets/scenes/comic-35-1.png', name:'隐雾山折岳连环洞', chapter:'第 35 站 · 原著第八十五至八十六回', tag:'豹精分瓣梅花，八戒…' },
-  { id:'36', file:'comic-36.html', hero:'assets/scenes/comic-36-1.png', name:'凤仙郡', chapter:'第 36 站 · 原著第八十七回', tag:'郡侯亵天，求雨劝善' },
-  { id:'37', file:'comic-37.html', hero:'assets/scenes/comic-37-1.png', name:'玉华州', chapter:'第 37 站 · 原著第八十八至九十回', tag:'九头狮掳徒，天尊收…' },
-  { id:'38', file:'comic-38.html', hero:'assets/scenes/comic-38-1.png', name:'金平府青龙山', chapter:'第 38 站 · 原著第九十一至九十二回', tag:'三犀假佛，星官擒之' },
-  { id:'39', file:'comic-39.html', hero:'assets/scenes/comic-39-1.png', name:'天竺国', chapter:'第 39 站 · 原著第九十三至九十五回', tag:'玉兔假公主，太阴收…' },
-  { id:'40', file:'comic-40.html', hero:'assets/scenes/comic-40-1.png', name:'铜台府地灵县', chapter:'第 40 站 · 原著第九十六至九十七回', tag:'寇员外斋僧，悟空洗…' },
-  { id:'41', file:'comic-41.html', hero:'assets/scenes/comic-41-1.png', name:'凌云渡', chapter:'第 41 站 · 原著第九十八回', tag:'无底船渡，脱胎登岸' },
-  { id:'42', file:'comic-42.html', hero:'assets/scenes/comic-42-1.png', name:'大雷音寺', chapter:'第 42 站 · 原著第九十八至一百回', tag:'取经功成，师徒受封' }
+  { id:'01', file:'comic-01.html', hero:'assets/scenes/comic-01-1.png', name:'大唐长安', chapter:'第 01 站 · 原著第十二至十三回', tag:'取经事业的起点', key:0, star:'' },
+  { id:'02', file:'comic-02.html', hero:'assets/scenes/comic-02-1.png', name:'双叉岭', chapter:'第 02 站 · 原著第十三回', tag:'取经首难，妖魔试胆', key:0, star:'' },
+  { id:'03', file:'comic-03.html', hero:'assets/scenes/comic-03-1.png', name:'两界山', chapter:'第 03 站 · 原著第十四回', tag:'五行山下，收第一位…', key:1, star:'★★★★☆' },
+  { id:'04', file:'comic-04.html', hero:'assets/scenes/comic-04-1.png', name:'蛇盘山鹰愁涧', chapter:'第 04 站 · 原著第十五回', tag:'白龙化马，千里随行', key:0, star:'' },
+  { id:'05', file:'comic-05.html', hero:'assets/scenes/comic-05-1.png', name:'黑风山·观音禅院', chapter:'第 05 站 · 原著第十六至十七回', tag:'贪念起祸，袈裟惹灾', key:0, star:'' },
+  { id:'06', file:'comic-06.html', hero:'assets/scenes/comic-06-1.png', name:'高老庄', chapter:'第 06 站 · 原著第十八至十九回', tag:'收第二位徒弟猪八戒', key:1, star:'★★★★☆' },
+  { id:'07', file:'comic-07.html', hero:'assets/scenes/comic-07-1.png', name:'黄风岭', chapter:'第 07 站 · 原著第二十至二十一回', tag:'三昧神风，一珠定妖', key:0, star:'' },
+  { id:'08', file:'comic-08.html', hero:'assets/scenes/comic-08-1.png', name:'流沙河', chapter:'第 08 站 · 原著第二十二回', tag:'收第三位徒弟沙僧', key:1, star:'★★★★☆' },
+  { id:'09', file:'comic-09.html', hero:'assets/scenes/comic-09-1.png', name:'四圣试禅心', chapter:'第 09 站 · 原著第二十三回', tag:'菩萨试心，八戒现形', key:0, star:'' },
+  { id:'10', file:'comic-10.html', hero:'assets/scenes/comic-10-1.png', name:'万寿山五庄观', chapter:'第 10 站 · 原著第二十四至二十六回', tag:'推树惹祸，观音医树', key:1, star:'★★★★☆' },
+  { id:'11', file:'comic-baihuling.html', hero:'assets/scenes/baihuling-1.png', name:'白虎岭 · 三打白骨精', chapter:'第 11 站 · 第二十七至三十一回', tag:'经典', key:1, star:'★★★★★' },
+  { id:'12', file:'comic-12.html', hero:'assets/scenes/comic-12-1.png', name:'宝象国', chapter:'第 12 站 · 原著第二十八至三十一回', tag:'黄袍怪案，白龙救主', key:0, star:'' },
+  { id:'13', file:'comic-13.html', hero:'assets/scenes/comic-13-1.png', name:'平顶山莲花洞', chapter:'第 13 站 · 原著第三十二至三十五回', tag:'五件宝贝，假葫破真', key:0, star:'' },
+  { id:'14', file:'comic-14.html', hero:'assets/scenes/comic-14-1.png', name:'乌鸡国', chapter:'第 14 站 · 原著第三十六至三十九回', tag:'井中真王，瓶中假王', key:0, star:'' },
+  { id:'15', file:'comic-15.html', hero:'assets/scenes/comic-15-1.png', name:'火云洞', chapter:'第 15 站 · 原著第四十至四十二回', tag:'红孩儿的三昧真火', key:1, star:'★★★★★' },
+  { id:'16', file:'comic-16.html', hero:'assets/scenes/comic-16-1.png', name:'黑水河', chapter:'第 16 站 · 原著第四十三回', tag:'鼍龙阻渡，龙王擒子', key:0, star:'' },
+  { id:'17', file:'comic-17.html', hero:'assets/scenes/comic-17-1.png', name:'车迟国', chapter:'第 17 站 · 原著第四十四至四十六回', tag:'三国师斗法，求雨破…', key:1, star:'★★★★☆' },
+  { id:'18', file:'comic-18.html', hero:'assets/scenes/comic-18-1.png', name:'通天河', chapter:'第 18 站 · 原著第四十七至四十九回', tag:'金鱼冻河，竹篮收妖', key:0, star:'' },
+  { id:'19', file:'comic-19.html', hero:'assets/scenes/comic-19-1.png', name:'金兜山金兜洞', chapter:'第 19 站 · 原著第五十至五十二回', tag:'金刚琢套尽兵器', key:0, star:'' },
+  { id:'20', file:'comic-20.html', hero:'assets/scenes/comic-20-1.png', name:'西梁女国', chapter:'第 20 站 · 原著第五十四至五十五回', tag:'最柔的一难：情关', key:1, star:'★★★★★' },
+  { id:'21', file:'comic-21.html', hero:'assets/scenes/comic-21-1.png', name:'毒敌山琵琶洞', chapter:'第 21 站 · 原著第五十五回', tag:'蝎子精的倒马毒桩', key:0, star:'' },
+  { id:'22', file:'comic-22.html', hero:'assets/scenes/comic-22-1.png', name:'真假美猴王', chapter:'第 22 站 · 原著第五十七至五十八回', tag:'一场关于"二心"的…', key:1, star:'★★★★★' },
+  { id:'23', file:'comic-23.html', hero:'assets/scenes/comic-23-1.png', name:'火焰山', chapter:'第 23 站 · 原著第五十九至六十一回', tag:'三借芭蕉扇', key:1, star:'★★★★★' },
+  { id:'24', file:'comic-24.html', hero:'assets/scenes/comic-24-1.png', name:'祭赛国碧波潭', chapter:'第 24 站 · 原著第六十二至六十三回', tag:'九头驸马，二郎助擒', key:0, star:'' },
+  { id:'25', file:'comic-25.html', hero:'assets/scenes/comic-25-1.png', name:'荆棘岭木仙庵', chapter:'第 25 站 · 原著第六十四回', tag:'树精谈诗，欲招赘唐…', key:0, star:'' },
+  { id:'26', file:'comic-26.html', hero:'assets/scenes/comic-26-1.png', name:'小雷音寺', chapter:'第 26 站 · 原著第六十五至六十六回', tag:'黄眉假佛，人种袋收', key:0, star:'' },
+  { id:'27', file:'comic-27.html', hero:'assets/scenes/comic-27-1.png', name:'七绝山稀柿衕', chapter:'第 27 站 · 原著第六十七回', tag:'巨蟒阻路，八戒开道', key:0, star:'' },
+  { id:'28', file:'comic-28.html', hero:'assets/scenes/comic-28-1.png', name:'朱紫国', chapter:'第 28 站 · 原著第六十八至七十一回', tag:'金毛犼盗宫，紫金铃…', key:0, star:'' },
+  { id:'29', file:'comic-29.html', hero:'assets/scenes/comic-29-1.png', name:'盘丝洞', chapter:'第 29 站 · 原著第七十二回', tag:'七蛛吐丝，毗蓝破网', key:0, star:'' },
+  { id:'30', file:'comic-30.html', hero:'assets/scenes/comic-30-1.png', name:'黄花观', chapter:'第 30 站 · 原著第七十三回', tag:'百眼魔君，千目被针', key:0, star:'' },
+  { id:'31', file:'comic-31.html', hero:'assets/scenes/comic-31-1.png', name:'狮驼岭狮驼国', chapter:'第 31 站 · 原著第七十四至七十七回', tag:'三魔据国，如来收鹏', key:1, star:'★★★★★' },
+  { id:'32', file:'comic-32.html', hero:'assets/scenes/comic-32-1.png', name:'比丘国', chapter:'第 32 站 · 原著第七十八至七十九回', tag:'国丈害童，寿星收鹿', key:0, star:'' },
+  { id:'33', file:'comic-33.html', hero:'assets/scenes/comic-33-1.png', name:'陷空山无底洞', chapter:'第 33 站 · 原著第八十至八十三回', tag:'地涌夫人，天王缚鼠', key:0, star:'' },
+  { id:'34', file:'comic-34.html', hero:'assets/scenes/comic-34-1.png', name:'灭法国', chapter:'第 34 站 · 原著第八十四回', tag:'杀僧之愿，智剃君臣', key:0, star:'' },
+  { id:'35', file:'comic-35.html', hero:'assets/scenes/comic-35-1.png', name:'隐雾山折岳连环洞', chapter:'第 35 站 · 原著第八十五至八十六回', tag:'豹精分瓣梅花，八戒…', key:0, star:'' },
+  { id:'36', file:'comic-36.html', hero:'assets/scenes/comic-36-1.png', name:'凤仙郡', chapter:'第 36 站 · 原著第八十七回', tag:'郡侯亵天，求雨劝善', key:0, star:'' },
+  { id:'37', file:'comic-37.html', hero:'assets/scenes/comic-37-1.png', name:'玉华州', chapter:'第 37 站 · 原著第八十八至九十回', tag:'九头狮掳徒，天尊收…', key:0, star:'' },
+  { id:'38', file:'comic-38.html', hero:'assets/scenes/comic-38-1.png', name:'金平府青龙山', chapter:'第 38 站 · 原著第九十一至九十二回', tag:'三犀假佛，星官擒之', key:0, star:'' },
+  { id:'39', file:'comic-39.html', hero:'assets/scenes/comic-39-1.png', name:'天竺国', chapter:'第 39 站 · 原著第九十三至九十五回', tag:'玉兔假公主，太阴收…', key:0, star:'' },
+  { id:'40', file:'comic-40.html', hero:'assets/scenes/comic-40-1.png', name:'铜台府地灵县', chapter:'第 40 站 · 原著第九十六至九十七回', tag:'寇员外斋僧，悟空洗…', key:0, star:'' },
+  { id:'41', file:'comic-41.html', hero:'assets/scenes/comic-41-1.png', name:'凌云渡', chapter:'第 41 站 · 原著第九十八回', tag:'无底船渡，脱胎登岸', key:0, star:'' },
+  { id:'42', file:'comic-42.html', hero:'assets/scenes/comic-42-1.png', name:'大雷音寺', chapter:'第 42 站 · 原著第九十八至一百回', tag:'取经功成，师徒受封', key:1, star:'★★★★★' }
 ];
 const grid = document.getElementById('grid');
-grid.innerHTML = ITEMS.map(it =>
-  '<a class="card" href="'+it.file+'">'+
+grid.innerHTML = ITEMS.map(it => {
+  const kb = it.key ? '<span class="key-badge">★ 重点精读</span>' : '';
+  const star = it.star ? '<span class="star">'+it.star+'</span>' : '';
+  return '<a class="card'+(it.key?' key':'')+'" href="'+it.file+'">'+
     '<div class="ph" style="background-image:url(\''+it.hero+'\')"></div>'+
-    '<div class="ov"></div>'+
+    '<div class="ov"></div>'+ kb +
     '<span class="tag">'+it.tag+'</span>'+
     '<div class="meta"><span class="no">第 '+it.id+' 站</span>'+
       '<div class="nm">'+it.name+'</div>'+
-      '<div class="ch">'+it.chapter+'</div></div>'+
-  '</a>'
-).join('');
+      '<div class="ch">'+it.chapter+'</div>'+ star +'</div>'+
+  '</a>';
+}).join('');
 </script>
 </body>
 </html>

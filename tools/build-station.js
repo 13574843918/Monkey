@@ -78,6 +78,72 @@ async function genImage(file, prompt) {
   return 'fail';
 }
 
+/* ============ 回目徽章条 ============ */
+function huimuHTML(cfg) {
+  if (!cfg.huimu) return '';
+  const isKey = !!cfg.feature;
+  const h = cfg.huimu;
+  const badge = isKey ? '★ 重点精读' : '原著回目';
+  const known = h.known ? '　民间知名度：<span class="hm">' + h.known + '</span>' : '';
+  const exam = h.exam ? '　常考程度：<span class="hm">' + h.exam + '</span>' : '';
+  return '<div class="feature-bar"><span class="feature-badge">' + badge + '</span>' +
+    '<div class="huimu">原著回目：<b>' + h.hui + '</b>' + known + exam + '</div></div>';
+}
+
+/* ============ 页内目录 ============ */
+function tocHTML(cfg) {
+  const a = ['<a href="#comic">🎬 分镜</a>'];
+  if (cfg.feature) a.push('<a href="#feature">📜 原著精读</a>');
+  a.push('<a href="#chars">👥 人物小档案</a>');
+  a.push('<a href="#themes">🧭 主题探究</a>');
+  if (cfg.closure) a.push('<a href="#closure">✅ 读后想一想</a>');
+  a.push('<a href="#tips">💡 阅读小贴士</a>');
+  return '<nav class="toc">' + a.join('') + '</nav>';
+}
+
+/* ============ 重点精读板块（仅重点站注入，普通站为空） ============ */
+function featureHTML(cfg) {
+  if (!cfg.feature) return '';
+  const f = cfg.feature;
+  let h = '<div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature">';
+  h += '<div class="fsec"><h4>📜 原著精读 · 原文选段</h4>';
+  (f.yinyuan || []).forEach(q => { h += '<div class="qrow"><p class="qq">' + q.text + '</p><p class="qt">— ' + q.from + '</p><p class="qm">' + q.note + '</p></div>'; });
+  h += '</div>';
+  h += '<div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist">';
+  (f.shoufa || []).forEach(s => { h += '<li><b>' + s.t + '：</b>' + s.p + '</li>'; });
+  h += '</ul></div>';
+  h += '<div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist">';
+  (f.xiedu || []).forEach(s => { h += '<li><b>' + s.t + '：</b>' + s.p + '</li>'; });
+  h += '</ul></div>';
+  h += '<div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist">';
+  (f.tuozhan || []).forEach(s => { h += '<li><b>' + s.t + '：</b>' + s.p + '</li>'; });
+  h += '</ul></div>';
+  h += '</div>';
+  return h;
+}
+
+/* ============ 读后想一想（闭环） ============ */
+function closureHTML(cfg) {
+  if (!cfg.closure) return '';
+  const c = cfg.closure;
+  let h = '<div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>' + c.title + '</h3><ol>';
+  (c.items || []).forEach(it => { h += '<li><b>' + it.q + '</b><br><span class="ans">' + it.a + '</span></li>'; });
+  h += '</ol></div>';
+  return h;
+}
+
+/* ============ 前后站导航 ============ */
+function navHTML(cfg) {
+  const p = cfg.prev, n = cfg.next;
+  let h = '<nav class="station-nav">';
+  if (p) h += '<a class="prev" href="' + p.file + '"><span class="dir">← 上一站</span><b>' + p.title + '</b><small>' + p.no + '</small></a>';
+  else h += '<span></span>';
+  if (n) h += '<a class="next" href="' + n.file + '"><span class="dir">下一站 →</span><b>' + n.title + '</b><small>' + n.no + '</small></a>';
+  else h += '<span></span>';
+  h += '</nav>';
+  return h;
+}
+
 function buildHTML(cfg) {
   let tpl = fs.readFileSync(path.join(__dirname, '_comic_template.html'), 'utf8');
   const chars = (cfg.characters || []).map(c => '<div class="card"><h3>' + c.name + '</h3><p>' + c.text + '</p></div>').join('');
@@ -88,6 +154,11 @@ function buildHTML(cfg) {
     .replace(/__SUB__/g, cfg.sub || '')
     .replace(/__SEAL__/g, cfg.seal || '西游导读')
     .replace(/__LEAD__/g, cfg.lead || '')
+    .replace(/__HUIMU__/g, huimuHTML(cfg))
+    .replace(/__TOC__/g, tocHTML(cfg))
+    .replace(/__FEATURE__/g, featureHTML(cfg))
+    .replace(/__CLOSURE__/g, closureHTML(cfg))
+    .replace(/__NAV__/g, navHTML(cfg))
     .replace(/__CHARS__/g, chars)
     .replace(/__THEMES__/g, themes)
     .replace(/__TIPS__/g, tips)

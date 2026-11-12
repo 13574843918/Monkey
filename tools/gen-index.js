@@ -6,10 +6,19 @@ const ROOT = path.join(__dirname, '..');
 const ST = require('./stations.js');
 
 const items = [];
+// 重点精读站（含白虎岭特篇）
+const KEY = new Set(['03', '06', '08', '10', '11', '15', '17', '20', '22', '23', '31', '42']);
+const STAR = {
+  '03': '★★★★☆', '06': '★★★★☆', '08': '★★★★☆', '10': '★★★★☆', '11': '★★★★★',
+  '15': '★★★★★', '17': '★★★★☆', '20': '★★★★★', '22': '★★★★★', '23': '★★★★★',
+  '31': '★★★★★', '42': '★★★★★'
+};
+
 // 第 11 站白虎岭（三打白骨精）单独成页
 items.push({
   id: '11', file: 'comic-baihuling.html', hero: 'assets/scenes/baihuling-1.png',
-  name: '白虎岭 · 三打白骨精', chapter: '第 11 站 · 第二十七至三十一回', tag: '经典'
+  name: '白虎岭 · 三打白骨精', chapter: '第 11 站 · 第二十七至三十一回', tag: '经典',
+  key: 1, star: STAR['11']
 });
 
 ST.forEach(c => {
@@ -24,14 +33,17 @@ ST.forEach(c => {
     hero: 'assets/scenes/comic-' + c.id + '-1.png',
     name: c.title,
     chapter: '第 ' + c.id + ' 站 · ' + chap,
-    tag: tag || '导读'
+    tag: tag || '导读',
+    key: KEY.has(c.id) ? 1 : 0,
+    star: STAR[c.id] || ''
   });
 });
 items.sort((a, b) => (+a.id) - (+b.id));
 
 const itemsStr = 'const ITEMS = [\n' + items.map(it =>
   "  { id:'" + it.id + "', file:'" + it.file + "', hero:'" + it.hero +
-  "', name:'" + it.name + "', chapter:'" + it.chapter + "', tag:'" + it.tag + "' }"
+  "', name:'" + it.name + "', chapter:'" + it.chapter + "', tag:'" + it.tag +
+  "', key:" + (it.key || 0) + ", star:'" + (it.star || '') + "' }"
 ).join(',\n') + '\n];';
 
 let html = fs.readFileSync(path.join(ROOT, 'comic-index.html'), 'utf8');

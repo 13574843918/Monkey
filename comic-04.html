@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第十五回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>过了两界山，唐僧有了悟空，却还缺一头脚力。行至蛇盘山鹰愁涧，一条白龙突然出水，一口吞了唐僧的坐骑白马。原来这白龙是西海龙王三太子，因犯死罪将被斩，幸得观音搭救，命他在此等候，变作白马驮唐僧西行赎罪。</p><p>读这一站，看<b>"孽"如何变"缘"</b>：犯错的人，也可以被安排去立功。</p><p class="q">带着问题读：① 小白龙为何在此？② 白马和龙太子，哪个才是"真身"？③ 观音为什么总在"收徒"？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧</h3><p>取经人。失去白马又得白龙马，他始终是"被护送"的核心。代表<b>值得被成全的初心</b>。</p></div><div class="card"><h3>小白龙（西海三太子）</h3><p>犯死罪待斩的龙太子，经观音搭救化白马。是<b>将功折罪、以行赎心</b>的典型——沉默却忠实的脚力。</p></div><div class="card"><h3>观音菩萨</h3><p>取经总策划。点化白龙、安排脚力，再次体现她<b>"收徒不除妖、给错者出路"</b>的教化观。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 孽可化缘</h3><p>白龙本是"待罪之身"，却被安排去立功。人走错了，也可以走回来。</p><h3>② 给错者出路</h3><p>观音不杀而化，说明最好的管教常是"指一条正路"，而非"一棍打死"。</p><h3>③ 沉默的同伴</h3><p>白龙马不说话却驮全程。真正的陪伴，有时不必多言。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>小白龙为何在此？</b><br><span class="ans">他本是西海龙王三太子，因犯死罪将被斩，观音救下他，命他在鹰愁涧等候，变作白马驮唐僧西行赎罪。</span></li><li><b>白马和龙太子，哪个才是“真身”？</b><br><span class="ans">龙太子才是真身，白马只是他变化的样子。他自愿变马，既是赎罪，也是为取经出力。</span></li><li><b>观音为什么总在“收徒”？</b><br><span class="ans">观音慈悲，不轻易惩罚，而是给改过机会。她收小白龙、度化妖魔，都是让犯错者将功折罪、走回正道。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>看观音"收徒法"：</b>对比悟空、八戒、沙僧、白龙，观音如何"因人成徒"，很有意思。</li><li><b>读"误会"：</b>先当妖、后揭真相，是常见套路。读时享受"急—懂"的起伏。</li><li><b>品地名：</b>"鹰愁涧"式地名，是作者埋的"小预告"，读时注意收集。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-03.html"><span class="dir">← 上一站</span><b>两界山</b><small>第 3 站</small></a><a class="next" href="comic-05.html"><span class="dir">下一站 →</span><b>黑风山·观音禅院</b><small>第 5 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-04-1.png","span":true,"size":"cover","pos":"center","caption":"蛇盘山鹰愁涧，云遮雾锁，深涧翻波，取经队伍行至涧边。","bubbles":[{"who":"孙悟空","text":"师父，这涧水古怪，莫要近前。","side":"l"}],"study":{"intro":"先用险地定调：鹰愁涧，连鹰都愁，何况人。环境越\"愁\"，越预示下面将出变故。","appreciate":"地名是<b>会说话的伏笔</b>：\"鹰愁涧\"三字先吓你一跳，读者自然屏息。好的地名，等于半个预告。","think":["\"鹰愁涧\"这名字有什么作用？","为什么作者总用\"怪地\"引出\"怪事\"？"],"phrases":["蛇盘山","鹰愁涧","云遮雾锁"]}},{"img":"assets/scenes/comic-04-2.png","size":"cover","pos":"center","caption":"涧中白龙翻波而出，一口吞下唐僧白马，旋即没入水中。","bubbles":[{"who":"白龙","text":"好一匹肥马，充我饥腹！","side":"r","kind":"demon"}],"study":{"intro":"危机：白马被吞。注意这\"妖\"其实不是真妖——他是待罪立功的龙太子，吞马是\"误\"也是\"缘\"的开头。","appreciate":"这一格用<b>误会制造张力</b>：读者以为又遇妖，后文才揭真相。先让你急，再让你懂，节奏就活了。","think":["白龙吞马，看起来是\"害\"，其实通向什么？","误会写法为什么比直接说明更好看？"],"phrases":["白龙翻波","吞下白马","没入水中"]}},{"img":"assets/scenes/comic-04-3.png","size":"cover","pos":"center","caption":"观音现身点化：此龙乃西海三太子，命其化白马赎罪随行。","bubbles":[{"who":"观音菩萨","text":"孽龙听旨，化马驮圣僧，将功折罪。","side":"r","kind":"god"}],"study":{"intro":"解法由观音给出：不是打死，而是点化。这正合观音一贯\"收徒不除妖\"的思路——给犯错者一条路。","appreciate":"神仙的<b>\"教化\"高于\"惩罚\"</b>：观音不杀龙，而让龙\"将功折罪\"。这是《西游记》常写的善意：给人改过的机会。","think":["观音为什么不杀白龙，而要他变马？","\"将功折罪\"对你有哪些启发？"],"phrases":["观音现身","点化孽龙","将功折罪"]}},{"img":"assets/scenes/comic-04-4.png","size":"cover","pos":"center","caption":"小白龙化作白马，温顺驮唐僧上路——取经队伍有了脚力。","bubbles":[{"who":"唐僧","text":"既归正道，便随我西行罢。","side":"l"}],"study":{"intro":"收束：龙变马，罪变功。取经队从此\"马不停蹄\"。白马虽不说话，却是队伍里最少抱怨的一位。","appreciate":"结尾点出<b>\"身份可转换\"</b>：龙与马，本是一体两面；人走正路，过去的\"孽\"也能变成今天的\"力\"。","think":["白马和龙太子，哪个才是\"真身\"？","你犯过的错，有没有可能变成后来的\"力气\"？"],"phrases":["化作白马","温顺驮行","有了脚力"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-04-1.png","span":true,"size":"cover","pos":"center","caption":"蛇盘山鹰愁涧，云遮雾锁，深涧翻波，取经队伍行至涧边。","bubbles":[{"who":"孙悟空","text":"师父，这涧水古怪，莫要近前。","side":"l"}],"study":{"intro":"先用险地定调：鹰愁涧，连鹰都愁，何况人。环境越\"愁\"，越预示下面将出变故。","appreciate":"地名是<b>会说话的伏笔</b>：\"鹰愁涧\"三字先吓你一跳，读者自然屏息。好的地名，等于半个预告。","think":["\"鹰愁涧\"这名字有什么作用？","为什么作者总用\"怪地\"引出\"怪事\"？"],"phrases":["蛇盘山","鹰愁涧","云遮雾锁"],"vocab":{"words":[{"t":"蛇盘山","m":"取经路上的一座山，山势盘曲，山下有深涧。"},{"t":"鹰愁涧","m":"涧名吓人，连鹰都发愁，暗示水深有妖。"},{"t":"云遮雾锁","m":"山涧被云雾笼罩，阴森神秘，暗藏危险。"}],"ju":[{"t":"蛇盘山鹰愁涧，云遮雾锁，深涧翻波，取经队伍行至涧边。","from":"原著第十五回","m":"地名“鹰愁”先吓人，加上云雾深涧，气氛立刻紧张。"},{"t":"师父，这涧水古怪，莫要近前。","from":"原著第十五回","m":"悟空机警提醒，给危险做预告，也显出他的细心。"}],"rhet":[{"t":"伏笔","m":"“鹰愁涧”三字地名是伏笔，先让读者提心吊胆。"}]}}},{"img":"assets/scenes/comic-04-2.png","size":"cover","pos":"center","caption":"涧中白龙翻波而出，一口吞下唐僧白马，旋即没入水中。","bubbles":[{"who":"白龙","text":"好一匹肥马，充我饥腹！","side":"r","kind":"demon"}],"study":{"intro":"危机：白马被吞。注意这\"妖\"其实不是真妖——他是待罪立功的龙太子，吞马是\"误\"也是\"缘\"的开头。","appreciate":"这一格用<b>误会制造张力</b>：读者以为又遇妖，后文才揭真相。先让你急，再让你懂，节奏就活了。","think":["白龙吞马，看起来是\"害\"，其实通向什么？","误会写法为什么比直接说明更好看？"],"phrases":["白龙翻波","吞下白马","没入水中"],"vocab":{"words":[{"t":"白龙翻波","m":"一条白龙从涧中翻浪跃出，气势骇人。"},{"t":"吞下白马","m":"白龙一口把唐僧的坐骑白马吞进肚里。"},{"t":"没入水中","m":"吞完马，白龙立刻沉回水底不见踪影。"}],"ju":[{"t":"涧中白龙翻波而出，一口吞下唐僧白马，旋即没入水中。","from":"原著第十五回","m":"先让你以为是妖，后文才揭真相，误会制造张力。"},{"t":"好一匹肥马，充我饥腹！","from":"原著第十五回","m":"白龙把吞马说成“充饥”，凶相毕露，更让人以为遇大妖。"}],"rhet":[{"t":"戏剧张力","m":"白龙吞马被写成拦路妖怪，先急后揭，吊足胃口。"},{"t":"节奏","m":"出场、吞马、入水一气呵成，动作快得让人反应不及。"}]}}},{"img":"assets/scenes/comic-04-3.png","size":"cover","pos":"center","caption":"观音现身点化：此龙乃西海三太子，命其化白马赎罪随行。","bubbles":[{"who":"观音菩萨","text":"孽龙听旨，化马驮圣僧，将功折罪。","side":"r","kind":"god"}],"study":{"intro":"解法由观音给出：不是打死，而是点化。这正合观音一贯\"收徒不除妖\"的思路——给犯错者一条路。","appreciate":"神仙的<b>\"教化\"高于\"惩罚\"</b>：观音不杀龙，而让龙\"将功折罪\"。这是《西游记》常写的善意：给人改过的机会。","think":["观音为什么不杀白龙，而要他变马？","\"将功折罪\"对你有哪些启发？"],"phrases":["观音现身","点化孽龙","将功折罪"],"vocab":{"words":[{"t":"观音现身","m":"观音菩萨及时出现，点明白龙的身份。"},{"t":"点化孽龙","m":"观音开导犯下死罪的小白龙，给他改过机会。"},{"t":"将功折罪","m":"让白龙变马驮唐僧，用功劳抵消从前的罪过。"}],"ju":[{"t":"观音现身点化：此龙乃西海三太子，命其化白马赎罪随行。","from":"原著第十五回","m":"观音不杀龙而让龙赎罪，教化高于惩罚，写满善意。"},{"t":"孽龙听旨，化马驮圣僧，将功折罪。","from":"原著第十五回","m":"一句“将功折罪”，给犯错者一条生路，也定了白马身份。"}],"rhet":[{"t":"语言生动","m":"“点化”“化马”“折罪”用词温和，把宽宥与救赎写清楚。"}]}}},{"img":"assets/scenes/comic-04-4.png","size":"cover","pos":"center","caption":"小白龙化作白马，温顺驮唐僧上路——取经队伍有了脚力。","bubbles":[{"who":"唐僧","text":"既归正道，便随我西行罢。","side":"l"}],"study":{"intro":"收束：龙变马，罪变功。取经队从此\"马不停蹄\"。白马虽不说话，却是队伍里最少抱怨的一位。","appreciate":"结尾点出<b>\"身份可转换\"</b>：龙与马，本是一体两面；人走正路，过去的\"孽\"也能变成今天的\"力\"。","think":["白马和龙太子，哪个才是\"真身\"？","你犯过的错，有没有可能变成后来的\"力气\"？"],"phrases":["化作白马","温顺驮行","有了脚力"],"vocab":{"words":[{"t":"化作白马","m":"白龙太子变作一匹白马，从此跟随队伍。"},{"t":"温顺驮行","m":"白马温顺地驮着唐僧，一步步往西走。"},{"t":"有了脚力","m":"取经队伍从此有了代步的坐骑。"}],"ju":[{"t":"小白龙化作白马，温顺驮唐僧上路——取经队伍有了脚力。","from":"原著第十五回","m":"龙与马本是一体，走正路，从前的“孽”成了今天的“力”。"},{"t":"既归正道，便随我西行罢。","from":"原著第十五回","m":"唐僧一句接纳，不追究从前，写尽宽容与同行之谊。"}],"rhet":[{"t":"语言生动","m":"“化马”“温顺驮行”写出身份转变的安静顺服，收束干净。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

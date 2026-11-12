@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第十二至十三回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>取经，不是唐僧一个人的事，而是一段从长安出发的万里远行。这一站回到故事起点：大唐长安，盛世繁华。唐王开"水陆大会"寻高僧求取大乘佛法，选中了玄奘，与他结为兄弟，赐号"三藏"、授通关文牒，亲自送出城门。</p><p>读这一站，留意两点：一是<b>"为什么是唐僧"</b>——他凭什么担此大任；二是<b>"出发"意味着什么</b>——告别安稳，走向未知。</p><p class="q">带着问题读：① 唐王为什么把玄奘当"御弟"？② 通关文牒像今天的什么？③ "出发"在成长故事里象征什么？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧（玄奘）</h3><p>大唐高僧，被唐王选为取经人，赐号"三藏"，结为御弟。他<b>信念坚定、慈悲守戒</b>，是取经团队的"主心骨"，也是一路上"肉眼凡胎、人妖不辨"的那一个。</p></div><div class="card"><h3>唐王（李世民）</h3><p>大唐皇帝，开"水陆大会"求法，与玄奘结为兄弟、赐通关文牒。他代表<b>世俗王权对"真经"的渴求</b>，是取经事业的发起人。</p></div><div class="card"><h3>观音菩萨</h3><p>取经事业的"总策划"。先是化作老僧点化，后又一路暗中护持，安排徒弟、指点迷津，是<b>推动情节的关键神仙</b>。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 初心与使命</h3><p>玄奘本可安稳做高僧，却选择万里孤征。"为什么出发"比"走到哪里"更值得想——你的"真经"又是什么？</p><h3>② 信任的托付</h3><p>"御弟"与"文牒"是信任的载体。被人信任，就要担得起；托付别人，也要选对人。</p><h3>③ 出发即成长</h3><p>离开舒适的长安，是成长故事的标配。取经路，其实就是一条"修炼自己"的路。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>唐王为什么把玄奘当“御弟”？</b><br><span class="ans">玄奘德行出众、通晓佛法，又主动领旨去西天求取真经。唐王敬重他的志向与担当，便与他结拜，赐号“三藏”。</span></li><li><b>通关文牒像今天的什么？</b><br><span class="ans">像今天的护照或通行证。它是唐王发的官方文书，写明取经人的身份与目的，一路过关、借宿、通行都要出示。</span></li><li><b>“出发”在成长故事里象征什么？</b><br><span class="ans">象征告别舒适、走向未知。唐僧放弃长安安稳去取经，就像成长中迈出家门，前方有险也有收获。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>先读回目：</b>如"第十二回 玄奘秉诚建大会 观音显象化金蝉"，回目就是这一回的提纲。</li><li><b>联系历史：</b>历史上真有玄奘西行取经（贞观年间），小说是在真实故事上"加料"的。读时想想：哪些可能是真的？</li><li><b>把"取经"读成"追梦"：</b>把唐僧当成"为理想远行的人"，故事就离你很近了。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><span></span><a class="next" href="comic-02.html"><span class="dir">下一站 →</span><b>双叉岭</b><small>第 2 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-01-1.png","span":true,"size":"cover","pos":"center","caption":"大唐长安，盛世繁华。唐王开\"水陆大会\"，欲寻高僧往西天取大乘真经。","bubbles":[{"who":"唐王","text":"谁肯领朕旨意，去西天求取真经？","side":"l"}],"study":{"intro":"这一格是故事的\"起点\"。先用\"盛世繁华\"四个字定调，再让唐王发问——一个强大的王朝，为什么还要派人去\"求经\"？因为已有的佛法不够\"真\"，这便埋下了西行的理由。","appreciate":"作者用<b>先扬后转</b>的写法：把长安写得越繁华，越反衬出西行之路的遥远与未知。唐王的\"问\"，是全书的\"引子\"，一句话把主角玄奘推到了台前。","think":["长安这么繁华，唐王为何还要派人去西天取经？","\"水陆大会\"这个开场，对后文的取经有什么作用？"],"phrases":["盛世繁华","水陆大会","西天取经"]}},{"img":"assets/scenes/comic-01-2.png","size":"cover","pos":"center","caption":"唐王与玄奘结为兄弟，赐号\"三藏\"，授通关文牒，嘱其西行求法。","bubbles":[{"who":"唐僧","text":"贫僧愿效犬马之劳，求取真经。","side":"r"}],"study":{"intro":"玄奘被选中，唐王与他\"结为兄弟\"，称\"御弟\"，还赐了通关文牒。这一步把一次\"出差\"变成了\"家国之托\"，分量一下子重了。","appreciate":"细节里藏着人物关系：<b>\"御弟\"</b>二字，把君臣变成了兄弟，既显唐王礼贤，也写尽对玄奘的信任。那纸<b>通关文牒</b>，更是贯穿全书的重要\"道具\"，一路过关都要靠它。","think":["唐王与玄奘\"结为兄弟\"，这层关系对取经有什么意义？","\"通关文牒\"在故事里像今天的什么？它为什么重要？"],"phrases":["结为兄弟","赐号三藏","通关文牒"]}},{"img":"assets/scenes/comic-01-3.png","size":"cover","pos":"center","caption":"城门外，百官送行，玄奘匹马启程，立誓取经而归。","bubbles":[{"who":"唐僧","text":"誓以此身，西行求法；不取真经，不回大唐！","side":"l"}],"study":{"intro":"送行的一幕。百官相送、匹马启程，玄奘立下重誓。从\"被选中\"到\"自己立誓\"，主角真正完成了\"出发\"的心理准备。","appreciate":"这是<b>承诺的力量</b>。\"不取真经，不回大唐\"一句，是人物的\"志向宣言\"。读小说要学会抓这样的\"誓言时刻\"——它往往预示了人物的命运走向。","think":["玄奘的\"誓\"说明了他怎样的性格？","一个故事里，\"出发\"和\"立誓\"为什么常常连在一起写？"],"phrases":["百官送行","匹马启程","不取真经，不回大唐"]}},{"img":"assets/scenes/comic-01-4.png","size":"cover","pos":"center","caption":"回望长安，前路十万八千里。取经之路，自此开始。","bubbles":[],"study":{"intro":"最后一格，镜头拉远：人回望长安，路向远方。这是\"起点\"的收束，也是\"长路\"的开端。","appreciate":"结尾用<b>留白</b>制造余味：不写一路艰险，只写\"前路十万八千里\"，把想象留给读者。这种\"不说尽\"的写法，比罗列困难更有力量。","think":["为什么这一格不画困难，只画\"回望\"与\"远路\"？","如果由你续写下一格，你会画什么？为什么？"],"phrases":["回望长安","十万八千里","取经之路"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-01-1.png","span":true,"size":"cover","pos":"center","caption":"大唐长安，盛世繁华。唐王开\"水陆大会\"，欲寻高僧往西天取大乘真经。","bubbles":[{"who":"唐王","text":"谁肯领朕旨意，去西天求取真经？","side":"l"}],"study":{"intro":"这一格是故事的\"起点\"。先用\"盛世繁华\"四个字定调，再让唐王发问——一个强大的王朝，为什么还要派人去\"求经\"？因为已有的佛法不够\"真\"，这便埋下了西行的理由。","appreciate":"作者用<b>先扬后转</b>的写法：把长安写得越繁华，越反衬出西行之路的遥远与未知。唐王的\"问\"，是全书的\"引子\"，一句话把主角玄奘推到了台前。","think":["长安这么繁华，唐王为何还要派人去西天取经？","\"水陆大会\"这个开场，对后文的取经有什么作用？"],"phrases":["盛世繁华","水陆大会","西天取经"],"vocab":{"words":[{"t":"盛世繁华","m":"大唐长安一派繁荣兴盛，是当时世界闻名的大都市。"},{"t":"水陆大会","m":"唐王开设的超度水陆众生的法会，借此寻访取经高僧。"},{"t":"西天取经","m":"去西天求取大乘真经的壮举，是全书故事的起点。"}],"ju":[{"t":"大唐长安，盛世繁华。唐王开“水陆大会”，欲寻高僧往西天取大乘真经。","from":"原著第十二至十三回","m":"先写长安繁华，反衬西行路的遥远与未知，一扬一转。"},{"t":"谁肯领朕旨意，去西天求取真经？","from":"原著第十二至十三回","m":"唐王一句发问，把主角推到台前，是全书写“取经”的引子。"}],"rhet":[{"t":"反衬","m":"越写长安繁华，越显西行路艰苦难测，为后文埋伏笔。"}]}}},{"img":"assets/scenes/comic-01-2.png","size":"cover","pos":"center","caption":"唐王与玄奘结为兄弟，赐号\"三藏\"，授通关文牒，嘱其西行求法。","bubbles":[{"who":"唐僧","text":"贫僧愿效犬马之劳，求取真经。","side":"r"}],"study":{"intro":"玄奘被选中，唐王与他\"结为兄弟\"，称\"御弟\"，还赐了通关文牒。这一步把一次\"出差\"变成了\"家国之托\"，分量一下子重了。","appreciate":"细节里藏着人物关系：<b>\"御弟\"</b>二字，把君臣变成了兄弟，既显唐王礼贤，也写尽对玄奘的信任。那纸<b>通关文牒</b>，更是贯穿全书的重要\"道具\"，一路过关都要靠它。","think":["唐王与玄奘\"结为兄弟\"，这层关系对取经有什么意义？","\"通关文牒\"在故事里像今天的什么？它为什么重要？"],"phrases":["结为兄弟","赐号三藏","通关文牒"],"vocab":{"words":[{"t":"结为兄弟","m":"唐王与玄奘结拜为兄弟，君臣变成兄弟，信任极深。"},{"t":"赐号三藏","m":"唐王赐玄奘法号“三藏”，从此人称他唐三藏。"},{"t":"通关文牒","m":"唐王授予的通行文书，一路过关斩将都要靠它。"}],"ju":[{"t":"唐王与玄奘结为兄弟，赐号“三藏”，授通关文牒，嘱其西行求法。","from":"原著第十二至十三回","m":"“御弟”二字把君臣变兄弟，既显礼贤，也写尽信任。"},{"t":"贫僧愿效犬马之劳，求取真经。","from":"原著第十二至十三回","m":"玄奘恭敬领命，一个“愿”字写出主动担当、不畏路途的决心。"}],"rhet":[{"t":"细节描写","m":"“御弟”“通关文牒”两个细节，把人物关系与关键道具都点到位。"}]}}},{"img":"assets/scenes/comic-01-3.png","size":"cover","pos":"center","caption":"城门外，百官送行，玄奘匹马启程，立誓取经而归。","bubbles":[{"who":"唐僧","text":"誓以此身，西行求法；不取真经，不回大唐！","side":"l"}],"study":{"intro":"送行的一幕。百官相送、匹马启程，玄奘立下重誓。从\"被选中\"到\"自己立誓\"，主角真正完成了\"出发\"的心理准备。","appreciate":"这是<b>承诺的力量</b>。\"不取真经，不回大唐\"一句，是人物的\"志向宣言\"。读小说要学会抓这样的\"誓言时刻\"——它往往预示了人物的命运走向。","think":["玄奘的\"誓\"说明了他怎样的性格？","一个故事里，\"出发\"和\"立誓\"为什么常常连在一起写？"],"phrases":["百官送行","匹马启程","不取真经，不回大唐"],"vocab":{"words":[{"t":"百官送行","m":"满朝文武到城门外为玄奘送行，场面隆重。"},{"t":"匹马启程","m":"玄奘独自骑上马，告别长安，踏上万里西行路。"}],"ju":[{"t":"不取真经，不回大唐","from":"原著第十二至十三回","m":"掷地有声的誓言，写尽人物志向，预示他与取经绑在一起。"},{"t":"城门外，百官送行，玄奘匹马启程，立誓取经而归。","from":"原著第十二至十三回","m":"热闹送行与一人独行对比，更显西行的孤勇。"}],"rhet":[{"t":"语言生动","m":"“不取真经，不回大唐”对仗有力，誓言铿锵，读来心潮澎湃。"}]}}},{"img":"assets/scenes/comic-01-4.png","size":"cover","pos":"center","caption":"回望长安，前路十万八千里。取经之路，自此开始。","bubbles":[],"study":{"intro":"最后一格，镜头拉远：人回望长安，路向远方。这是\"起点\"的收束，也是\"长路\"的开端。","appreciate":"结尾用<b>留白</b>制造余味：不写一路艰险，只写\"前路十万八千里\"，把想象留给读者。这种\"不说尽\"的写法，比罗列困难更有力量。","think":["为什么这一格不画困难，只画\"回望\"与\"远路\"？","如果由你续写下一格，你会画什么？为什么？"],"phrases":["回望长安","十万八千里","取经之路"],"vocab":{"words":[{"t":"回望长安","m":"玄奘回头望一眼长安城，从此故乡只在身后。"},{"t":"十万八千里","m":"长安到西天的距离，遥远得难以想象，象征漫漫长路。"},{"t":"取经之路","m":"自此踏上征途，漫长的考验才刚刚开始。"}],"ju":[{"t":"回望长安，前路十万八千里。取经之路，自此开始。","from":"原著第十二至十三回","m":"不写艰险只写距离，留白给读者想象，余味悠长。"}],"rhet":[{"t":"语言生动","m":"“十万八千里”一个数字，把前路的漫长与未知写得具体又空灵。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

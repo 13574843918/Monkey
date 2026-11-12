@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第七十四回　长庚传报魔头狠　行者施为变化能</b>　民间知名度：<span class="hm">★★★★★（狮驼岭）</span>　常考程度：<span class="hm">★★★★★</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>狮驼岭狮驼国，青狮、白象、大鹏三魔据国称王，势力滔天。悟空屡探屡败，甚至被大鹏 speed 压制、一度以为师父被害而伤心。最终如来亲率文殊、普贤收伏三魔——青狮白象是二菩萨坐骑，大鹏则是如来舅氏。这一站是"妖界天花板"，讲"再大的魔，也有更大的佛"。</p><p>读这一站，看<b>"层级"</b>：魔有来历，收也要讲辈分。</p><p class="q">带着问题读：① 三魔为何最难？② 为什么如来亲来？③ "来历"在故事里起什么作用？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">这取经人，俺若张口便擒！</p><p class="qt">— 第七十四回　长庚传报魔头狠　行者施为变化能</p><p class="qm">大鹏一句狂言写出三魔气焰，未交手已让人感到此妖凶悍难敌。</p></div><div class="qrow"><p class="qq">这鸟 speed 好快，俺竟追不上！</p><p class="qt">— 第七十四回　长庚传报魔头狠　行者施为变化能</p><p class="qm">悟空追不上大鹏，以速度即压迫写妖之强，让读者跟着着急。</p></div><div class="qrow"><p class="qq">三魔听旨，各归各主。</p><p class="qt">— 第七十四回　长庚传报魔头狠　行者施为变化能</p><p class="qm">如来一旨收三魔，层级相收写尽秩序，大难至此圆满化解。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>以国写势：</b>把三魔写成立国称王，城头巨兽旗号一立，难度直接拉满，不写打斗已显其强。</li><li><b>侧面烘托：</b>借悟空追不上、悲极欲弃来侧写大鹏之快、此难之凶险，比正面写斗更见压迫。</li><li><b>欲扬先抑：</b>先写悟空屡屡挫败、几乎放弃，再写如来亲来收妖，一抑一扬，让化解更有分量。</li><li><b>首尾照应：</b>开头三魔据国与结尾三魔归位、狮驼国解遥相呼应，一场大难收束得干净完整。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>写一段追不上：</b>用第二格写法，写一次你拼尽全力仍追不上的经历，二百字，写出那种无奈与不甘。</li><li><b>补写大鹏的狂：</b>假设你是大鹏，写一段出场自白，说说为何敢不把取经人放在眼里。</li><li><b>改写收妖对话：</b>把三魔听旨一幕改写成悟空与如来的三句对话，写出悟空拜求与释然。</li><li><b>梳理层级表：</b>用表格列出三魔的来历、本事与收服者，说说来历如何决定强弱与收服者。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>大鹏与如来的舅甥：</b>查一查大鹏为何称如来舅氏，说说这层亲缘在收妖中起了什么作用。</li><li><b>坐骑为何成妖：</b>青狮白象原是菩萨坐骑，为何下界为妖？联系其他坐骑作妖的故事说一说。</li><li><b>悟空为何追不上：</b>悟空一个筋斗十万八千里，为何追不上大鹏？查查原著，说说速度较量的门道。</li><li><b>狮驼国与妖国：</b>找找书中还有哪些妖国，说说作者为何爱写妖怪占地为王、立国称霸。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>青狮 / 白象 / 大鹏</h3><p>狮驼三国魔，分属文殊、普贤坐骑与如来舅氏。代表<b>"有来历、成气候的大魔"</b>——快、狠、势俱全。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄。这回他被逼到几乎放弃，却也显出对师父的真情。说明<b>最强也有天花板，真情却在底线</b>。</p></div><div class="card"><h3>如来佛祖</h3><p>灵山至尊，亲收大鹏。是<b>"最大秩序"的化身</b>——再大的魔，也归他管。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 大魔需大佛</h3><p>狮驼三魔排场空前，收也要如来亲临。问题多大，解决的力量就要多"上位"。</p><h3>② 英雄也会垮</h3><p>悟空哭师父那刻最真。人会崩，不是弱，是还在乎。</p><h3>③ 层级相收</h3><p>妖有来历，收讲辈分。世界的秩序，是一层层对上的。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>三魔为何最难？</b><br><span class="ans">三魔不但法力高强，还占据一国、来历极大：青狮白象是菩萨坐骑，大鹏是如来舅氏。悟空屡探屡败，连他都追不上大鹏，故为最难。</span></li><li><b>为什么如来亲来？</b><br><span class="ans">因为三魔来历太大，辈分不够的收不了。青狮白象是文殊普贤坐骑，大鹏是如来舅氏，须如来亲率二位菩萨来收，方能各归各主。</span></li><li><b>"来历"在故事里起什么作用？</b><br><span class="ans">来历决定了妖怪的强弱与收服者。三魔因来历大而难制，又因有主可归才被收。它让降妖有了规矩，也显得合理。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"大场面"：</b>这是全书"妖势"顶峰，读时体会作者如何把难写到顶。</li><li><b>看悟空软肋：</b>这回悟空最脆弱也最动人，别只当他"无敌"。</li><li><b>想"层级"：</b>你遇的"大难"，是不是也该找"更上位"的帮手？</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-30.html"><span class="dir">← 上一站</span><b>黄花观</b><small>第 30 站</small></a><a class="next" href="comic-32.html"><span class="dir">下一站 →</span><b>比丘国</b><small>第 32 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-31-1.png","span":true,"size":"cover","pos":"center","caption":"狮驼岭阴云压顶，狮驼国城门巨兽旗号，青狮白象大鹏三魔立于城头。","bubbles":[{"who":"大鹏","text":"这取经人，俺若张口便擒！","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"势压\"：一国之妖，排场空前。读者立刻感到——这是\"大场面\"的一难。","appreciate":"作者用<b>\"以国写势\"</b>：把妖写成\"立国称王\"，难度直接拉满。读景，城旗兽号都在说\"此妖非比寻常\"。","think":["为什么把妖写成\"占国\"？","故事里\"排场越大\"的难，是不是越要靠\"更大的力量\"收？"],"phrases":["狮驼岭","狮驼国","三魔据国"]}},{"img":"assets/scenes/comic-31-2.png","size":"cover","pos":"center","caption":"悟空探洞屡遭挫，大鹏速度无双一口擒走唐僧，悟空束手。","bubbles":[{"who":"孙悟空","text":"这鸟 speed 好快，俺竟追不上！","side":"l"}],"sfx":{"t":"唰！","x":"60%","y":"18%"},"study":{"intro":"危机：大鹏之快，悟空生平未见。连\"筋斗云\"都追不上，第一次真正\"够不着\"。","appreciate":"这一格写<b>\"速度即压迫\"</b>：妖不靠力靠快，让你连还手的机会都没有。读时想：什么\"快\"曾让你追不上？","think":["为什么\"快\"比\"狠\"更让悟空无奈？","生活里有没有\"快到来不及反应\"的难？"],"phrases":["悟空屡挫","大鹏 speed","一口擒僧"]}},{"img":"assets/scenes/comic-31-3.png","size":"cover","pos":"center","caption":"悟空悲师父\"遇害\"几欲弃行，仍强撑请援——此难逼出悟空最深的无助。","bubbles":[{"who":"孙悟空","text":"师父……难道真个没了？","side":"l"}],"study":{"intro":"低谷：连悟空都想放弃。作者舍得让主角崩到谷底，才显后文\"翻盘\"的珍贵。","appreciate":"这里写<b>\"英雄也会垮\"</b>：悟空哭师父，比打妖更动人。人物有软肋，故事才有心跳。","think":["悟空为何这回几乎放弃？","你见过的\"最强的人\"有没有也崩溃过？这说明了什么？"],"phrases":["悲极欲弃","最深无助","强撑请援"]}},{"img":"assets/scenes/comic-31-4.png","size":"cover","pos":"center","caption":"如来亲率文殊普贤降世，收青狮白象、罩大鹏，三魔归位，狮驼国解。","bubbles":[{"who":"如来","text":"三魔听旨，各归各主。","side":"r","kind":"god"}],"study":{"intro":"收尾：最大的佛收最大的魔。三魔各有其主（文殊、普贤、如来），层级对层级，圆满收束。","appreciate":"结局点出<b>\"层级相收\"</b>：妖有多大来历，就要多大盘的佛来收。世界的秩序，是一层层对上的。","think":["为什么非如来亲来不可？","\"来历\"在故事里像不像现实的\"关系与辈分\"？"],"phrases":["如来亲临","三魔归位","狮驼国解"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-31-1.png","span":true,"size":"cover","pos":"center","caption":"狮驼岭阴云压顶，狮驼国城门巨兽旗号，青狮白象大鹏三魔立于城头。","bubbles":[{"who":"大鹏","text":"这取经人，俺若张口便擒！","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"势压\"：一国之妖，排场空前。读者立刻感到——这是\"大场面\"的一难。","appreciate":"作者用<b>\"以国写势\"</b>：把妖写成\"立国称王\"，难度直接拉满。读景，城旗兽号都在说\"此妖非比寻常\"。","think":["为什么把妖写成\"占国\"？","故事里\"排场越大\"的难，是不是越要靠\"更大的力量\"收？"],"phrases":["狮驼岭","狮驼国","三魔据国"],"vocab":{"words":[{"t":"狮驼岭","m":"取经路上的一座险山，青狮、白象、大鹏三魔盘踞之地。"},{"t":"狮驼国","m":"被三魔占据改作妖国的城池，城头挂着巨兽旗号，阴森恐怖。"},{"t":"三魔据国","m":"三个妖魔占国称王，把一国当作家业，势力之大非比寻常。"}],"ju":[{"t":"狮驼岭阴云压顶，狮驼国城门巨兽旗号，青狮白象大鹏三魔立于城头。","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"用以国写势的手法，把妖写成立国称王，难度直接拉满，不写打斗已显其强。"},{"t":"这取经人，俺若张口便擒！","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"一句话写出大鹏的狂妄自大，三魔的气焰跃然纸上。"}],"rhet":[{"t":"语言生动","m":"借阴云、巨兽旗号等意象造势，未写打斗已让人感到此妖非同小可。"}]}}},{"img":"assets/scenes/comic-31-2.png","size":"cover","pos":"center","caption":"悟空探洞屡遭挫，大鹏速度无双一口擒走唐僧，悟空束手。","bubbles":[{"who":"孙悟空","text":"这鸟 speed 好快，俺竟追不上！","side":"l"}],"sfx":{"t":"唰！","x":"60%","y":"18%"},"study":{"intro":"危机：大鹏之快，悟空生平未见。连\"筋斗云\"都追不上，第一次真正\"够不着\"。","appreciate":"这一格写<b>\"速度即压迫\"</b>：妖不靠力靠快，让你连还手的机会都没有。读时想：什么\"快\"曾让你追不上？","think":["为什么\"快\"比\"狠\"更让悟空无奈？","生活里有没有\"快到来不及反应\"的难？"],"phrases":["悟空屡挫","大鹏 speed","一口擒僧"],"vocab":{"words":[{"t":"悟空屡挫","m":"悟空多次进洞探敌都吃了亏，说明三魔确有本事。"},{"t":"大鹏 speed","m":"大鹏飞得快如闪电，速度无双，连悟空都追不上。"},{"t":"一口擒僧","m":"大鹏一张口就把唐僧叼走，速度快到让人来不及反应。"}],"ju":[{"t":"悟空探洞屡遭挫，大鹏速度无双一口擒走唐僧，悟空束手。","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"以速度即压迫写妖不靠力靠快，让悟空连还手的机会都没有。"},{"t":"这鸟 speed 好快，俺竟追不上！","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"一句感叹写出悟空罕见的无奈，衬托大鹏之快，让人替取经人着急。"}],"rhet":[{"t":"语言生动","m":"用悟空追不上的自白侧写大鹏之快，不直写打斗，压迫感已扑面而来。"}]}}},{"img":"assets/scenes/comic-31-3.png","size":"cover","pos":"center","caption":"悟空悲师父\"遇害\"几欲弃行，仍强撑请援——此难逼出悟空最深的无助。","bubbles":[{"who":"孙悟空","text":"师父……难道真个没了？","side":"l"}],"study":{"intro":"低谷：连悟空都想放弃。作者舍得让主角崩到谷底，才显后文\"翻盘\"的珍贵。","appreciate":"这里写<b>\"英雄也会垮\"</b>：悟空哭师父，比打妖更动人。人物有软肋，故事才有心跳。","think":["悟空为何这回几乎放弃？","你见过的\"最强的人\"有没有也崩溃过？这说明了什么？"],"phrases":["悲极欲弃","最深无助","强撑请援"],"vocab":{"words":[{"t":"悲极欲弃","m":"悲痛到极点，几乎想放弃取经，写出悟空此刻的心灰意冷。"},{"t":"最深无助","m":"这是悟空少有的无力感，连他都束手无策，可见此难之凶险。"},{"t":"强撑请援","m":"尽管难过，仍强打精神去请救兵，写出悟空的责任与坚持。"}],"ju":[{"t":"悟空悲师父\"遇害\"几欲弃行，仍强撑请援——此难逼出悟空最深的无助。","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"写英雄也会垮，悟空哭师父比打妖更动人，人物有了软肋，故事才有心跳。"},{"t":"师父……难道真个没了？","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"一句断续的问话，写尽惊愕与悲伤，让读者跟着心头一紧。"}],"rhet":[{"t":"语言生动","m":"用省略号与短句写悟空语塞心乱，把英雄的脆弱写得真实可感。"}]}}},{"img":"assets/scenes/comic-31-4.png","size":"cover","pos":"center","caption":"如来亲率文殊普贤降世，收青狮白象、罩大鹏，三魔归位，狮驼国解。","bubbles":[{"who":"如来","text":"三魔听旨，各归各主。","side":"r","kind":"god"}],"study":{"intro":"收尾：最大的佛收最大的魔。三魔各有其主（文殊、普贤、如来），层级对层级，圆满收束。","appreciate":"结局点出<b>\"层级相收\"</b>：妖有多大来历，就要多大盘的佛来收。世界的秩序，是一层层对上的。","think":["为什么非如来亲来不可？","\"来历\"在故事里像不像现实的\"关系与辈分\"？"],"phrases":["如来亲临","三魔归位","狮驼国解"],"vocab":{"words":[{"t":"如来亲临","m":"如来佛祖亲自降临，说明三魔来历极大，需辈分最高者来收。"},{"t":"三魔归位","m":"青狮白象回到菩萨身边，大鹏也被收服，各归各主。"},{"t":"狮驼国解","m":"被妖占据的狮驼国得以解救，取经之路重新打通。"}],"ju":[{"t":"如来亲率文殊普贤降世，收青狮白象、罩大鹏，三魔归位，狮驼国解。","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"点出层级相收，妖有多大的来历，就要多大的佛来收，世界秩序层层对上。"},{"t":"三魔听旨，各归各主。","from":"第七十四回　长庚传报魔头狠　行者施为变化能","m":"一句威严的旨意，写尽如来之威，也收束了这一场大难。"}],"rhet":[{"t":"语言生动","m":"以亲率、归位、各归各主写收妖的从容，层级秩序一目了然。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

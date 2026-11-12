@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第五十至五十二回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>金兜山，独角兕大王原是太上老君的青牛，偷了"金刚琢"下界。这圈子能套尽天下兵器——悟空的金箍棒、天兵的天罗地网，全被收走。悟空请遍众神皆败，最后直闯兜率宫，太上老君出面用芭蕉扇收回青牛。这一站讲"再强的圈子，也有克它的主人"。</p><p>读这一站，看<b>"套"的循环</b>：妖用圈套兵器，老君用扇收圈。</p><p class="q">带着问题读：① 金刚琢为什么这么厉害？② 为什么众神都败？③ 老君为何最后才来？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>独角兕大王（青牛精）</h3><p>太上老君坐骑，偷金刚琢下界。代表<b>"拿主人法宝逞凶的嚣张"</b>——本事在圈，不在牛。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄。这回他罕见地"全程没棒"，被迫从"硬打"转向"找根源"。逼出的，是另一种聪明。</p></div><div class="card"><h3>太上老君</h3><p>金刚琢与青牛之主。最后现身收尾，是<b>"系铃人即解铃人"</b>的化身。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 利器在握者凶</h3><p>青牛不可怕，圈可怕。多少人仗"别人的法宝"逞威？</p><h3>② 失恃见真章</h3><p>悟空没了棒才显智慧。人最依赖的东西被拿走，反逼出本色。</p><h3>③ 解铃问系铃</h3><p>圈是老君的，老君来收。遇死结，找打结的那只手。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>金刚琢为什么这么厉害？</b><br><span class="ans">金刚琢是太上老君的宝贝，能套走一切兵器，连金箍棒、天兵的神器都被收。它本就是老君之物，所以天下兵器都逃不出这个圈。</span></li><li><b>为什么众神都败？</b><br><span class="ans">因为金刚琢专收兵器，众神靠的就是兵器法宝，一祭圈便全被套走，等于没了手脚。圈子不破，请多少神来都白搭。</span></li><li><b>老君为何最后才来？</b><br><span class="ans">因为圈子本是老君之物，只有他的芭蕉扇能克。悟空先试遍众神才找到根源，最后老君出手，既合“解铃还须系铃人”，也让故事更曲折。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>盯"关键道具"：</b>金刚琢是全局钥匙。读时圈出每回的"核心物"。</li><li><b>读"找根源"：</b>悟空从"请神"转向"查根源"，是思维升级，写作可学。</li><li><b>想"系铃人"：</b>你卡住的难题，系铃人是谁？敢不敢直接找？</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-18.html"><span class="dir">← 上一站</span><b>通天河</b><small>第 18 站</small></a><a class="next" href="comic-20.html"><span class="dir">下一站 →</span><b>西梁女国</b><small>第 20 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-19-1.png","span":true,"size":"cover","pos":"center","caption":"金兜山金兜洞，独角兕大王（青牛巨汉）立于洞前，手中金圈闪着诡光。","bubbles":[{"who":"独角兕大王","text":"任你兵器千万，尽入我圈来！","side":"r","kind":"demon"}],"study":{"intro":"起笔亮\"神器\"：一只金圈，是这一难的核心。读者立刻被这\"无解的圈\"吊住。","appreciate":"作者用<b>\"一物定全局\"</b>：一个圈子镇住全场，比写千军万马更省更狠。读时盯住\"关键道具\"。","think":["为什么一只圈比一群妖更可怕？","你遇过\"一个圈套住所有办法\"的困境吗？"],"phrases":["金兜山","独角兕大王","金圈诡光"]}},{"img":"assets/scenes/comic-19-2.png","size":"cover","pos":"center","caption":"兕王祭圈，悟空的金箍棒与天兵兵器尽被套走，一时束手。","bubbles":[{"who":"孙悟空","text":"俺的棒！怎生被他收了去！","side":"l"}],"sfx":{"t":"嗖——","x":"56%","y":"18%"},"study":{"intro":"危机：最依赖的兵器没了。悟空第一次\"空手\"，读者也跟着慌——原来棒也会丢。","appreciate":"这一格写<b>\"失恃之慌\"</b>：把主角最硬的依靠拿走，才见真章。读时体会：当你\"没棒\"时，靠什么？","think":["悟空没了棒，像不像人没了\"最依赖的东西\"？","你最依赖的是什么？失去了会怎样？"],"phrases":["祭圈套棒","兵器尽失","一时束手"]}},{"img":"assets/scenes/comic-19-3.png","size":"cover","pos":"center","caption":"悟空请遍李天王、火德、水德皆败，圈子无敌，陷入绝境。","bubbles":[{"who":"孙悟空","text":"这圈竟套尽天下兵，俺老孙去寻根源！","side":"r"}],"study":{"intro":"加码：请谁来都白搭，圈子通吃。困境被推到顶——必须找到\"源头\"才行。","appreciate":"这里写<b>\"层层加码\"</b>：一请再请皆败，把\"无解感\"写到满。好故事舍得让主角走投无路，才显后文反转之力。","think":["为什么作者让悟空连请数神都败？","你遇\"怎么试都不行\"时，会去想\"根源\"吗？"],"phrases":["请神皆败","圈子无敌","陷入绝境"]}},{"img":"assets/scenes/comic-19-4.png","size":"cover","pos":"center","caption":"太上老君持芭蕉扇现身，收青牛回宫——原来圈是老君的。","bubbles":[{"who":"太上老君","text":"青牛，随我回兜率宫去！","side":"r","kind":"god"}],"study":{"intro":"收尾揭源：圈归老君，老君来收。再强的\"套\"，也敌不过它的\"主人\"。","appreciate":"结局点出<b>\"解铃还须系铃人\"</b>：兵器被老君的圈套走，自然老君的扇能收。遇死结，找打结的那只手。","think":["\"老君收牛\"为什么是唯一的破法？","你生活中的\"死结\"，是不是也该找\"系铃人\"？"],"phrases":["老君现身","芭蕉扇收","青牛归宫"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-19-1.png","span":true,"size":"cover","pos":"center","caption":"金兜山金兜洞，独角兕大王（青牛巨汉）立于洞前，手中金圈闪着诡光。","bubbles":[{"who":"独角兕大王","text":"任你兵器千万，尽入我圈来！","side":"r","kind":"demon"}],"study":{"intro":"起笔亮\"神器\"：一只金圈，是这一难的核心。读者立刻被这\"无解的圈\"吊住。","appreciate":"作者用<b>\"一物定全局\"</b>：一个圈子镇住全场，比写千军万马更省更狠。读时盯住\"关键道具\"。","think":["为什么一只圈比一群妖更可怕？","你遇过\"一个圈套住所有办法\"的困境吗？"],"phrases":["金兜山","独角兕大王","金圈诡光"],"vocab":{"words":[{"t":"金兜山","m":"太上老君青牛下界作乱的山，洞名金兜洞。"},{"t":"独角兕大王","m":"青牛怪，头上独角，手执金刚琢，横行一方。"},{"t":"金圈诡光","m":"他手里的金圈闪着诡异的光，能收尽兵器。"}],"ju":[{"t":"金兜山金兜洞，独角兕大王（青牛巨汉）立于洞前，手中金圈闪着诡光。","from":"原著第五十至五十二回","m":"一个圈、一道光，就把凶险写足，比千军万马更压人。"},{"t":"任你兵器千万，尽入我圈来！","from":"原著第五十至五十二回","m":"口气狂妄，把圈子的厉害和自己的自信一并喊出。"}],"rhet":[{"t":"语言生动","m":"以一物定全局，用金圈统摄全篇，道具虽小分量极重。"}]}}},{"img":"assets/scenes/comic-19-2.png","size":"cover","pos":"center","caption":"兕王祭圈，悟空的金箍棒与天兵兵器尽被套走，一时束手。","bubbles":[{"who":"孙悟空","text":"俺的棒！怎生被他收了去！","side":"l"}],"sfx":{"t":"嗖——","x":"56%","y":"18%"},"study":{"intro":"危机：最依赖的兵器没了。悟空第一次\"空手\"，读者也跟着慌——原来棒也会丢。","appreciate":"这一格写<b>\"失恃之慌\"</b>：把主角最硬的依靠拿走，才见真章。读时体会：当你\"没棒\"时，靠什么？","think":["悟空没了棒，像不像人没了\"最依赖的东西\"？","你最依赖的是什么？失去了会怎样？"],"phrases":["祭圈套棒","兵器尽失","一时束手"],"vocab":{"words":[{"t":"祭圈套棒","m":"兕王祭起金圈，把金箍棒套进圈里。"},{"t":"兵器尽失","m":"悟空和天兵的兵器全被收走，再无依仗。"},{"t":"一时束手","m":"没了兵器，众人一时束手无策。"}],"ju":[{"t":"兕王祭圈，悟空的金箍棒与天兵兵器尽被套走，一时束手。","from":"原著第五十至五十二回","m":"连最硬的棒都被收走，把“失恃之慌”写到极处。"},{"t":"俺的棒！怎生被他收了去！","from":"原著第五十至五十二回","m":"一句惊呼，写出悟空失棒时的着急与不甘。"}],"rhet":[{"t":"语言生动","m":"以收写强，越写兵器尽失，越衬圈子之无敌。"}]}}},{"img":"assets/scenes/comic-19-3.png","size":"cover","pos":"center","caption":"悟空请遍李天王、火德、水德皆败，圈子无敌，陷入绝境。","bubbles":[{"who":"孙悟空","text":"这圈竟套尽天下兵，俺老孙去寻根源！","side":"r"}],"study":{"intro":"加码：请谁来都白搭，圈子通吃。困境被推到顶——必须找到\"源头\"才行。","appreciate":"这里写<b>\"层层加码\"</b>：一请再请皆败，把\"无解感\"写到满。好故事舍得让主角走投无路，才显后文反转之力。","think":["为什么作者让悟空连请数神都败？","你遇\"怎么试都不行\"时，会去想\"根源\"吗？"],"phrases":["请神皆败","圈子无敌","陷入绝境"],"vocab":{"words":[{"t":"请神皆败","m":"请李天王、火德、水德等众神来，全被收走。"},{"t":"圈子无敌","m":"金圈套尽天下兵器，简直没有对手。"},{"t":"陷入绝境","m":"悟空一行彻底无计可施，走进死胡同。"}],"ju":[{"t":"悟空请遍李天王、火德、水德皆败，圈子无敌，陷入绝境。","from":"原著第五十至五十二回","m":"一请再请皆败，把无解感写满，为后文反转蓄足力气。"},{"t":"这圈竟套尽天下兵，俺老孙去寻根源！","from":"原著第五十至五十二回","m":"一句“寻根源”，点出悟空不蛮干、要追根究底。"}],"rhet":[{"t":"语言生动","m":"层层加码，把挫败写足，反衬绝境逢生的畅快。"}]}}},{"img":"assets/scenes/comic-19-4.png","size":"cover","pos":"center","caption":"太上老君持芭蕉扇现身，收青牛回宫——原来圈是老君的。","bubbles":[{"who":"太上老君","text":"青牛，随我回兜率宫去！","side":"r","kind":"god"}],"study":{"intro":"收尾揭源：圈归老君，老君来收。再强的\"套\"，也敌不过它的\"主人\"。","appreciate":"结局点出<b>\"解铃还须系铃人\"</b>：兵器被老君的圈套走，自然老君的扇能收。遇死结，找打结的那只手。","think":["\"老君收牛\"为什么是唯一的破法？","你生活中的\"死结\"，是不是也该找\"系铃人\"？"],"phrases":["老君现身","芭蕉扇收","青牛归宫"],"vocab":{"words":[{"t":"老君现身","m":"太上老君亲自下界，来收自己的青牛。"},{"t":"芭蕉扇收","m":"老君用芭蕉扇一扇，收走了金圈。"},{"t":"青牛归宫","m":"青牛被带回兜率宫，重新做老君的坐骑。"}],"ju":[{"t":"太上老君持芭蕉扇现身，收青牛回宫——原来圈是老君的。","from":"原著第五十至五十二回","m":"老君一到，圈子立收，“解铃还须系铃人”点得明明白白。"},{"t":"青牛，随我回兜率宫去！","from":"原著第五十至五十二回","m":"主人一声唤，妖便随行，尽显主人收妖的分量。"}],"rhet":[{"t":"语言生动","m":"以主收仆，用“系铃人”收解铃事，收束巧而有力。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

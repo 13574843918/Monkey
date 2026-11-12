@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文</b>　民间知名度：<span class="hm">★★★★★（真假美猴王）</span>　常考程度：<span class="hm">★★★★★</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>悟空又因打死劫匪被唐僧责逐。恰在此时，六耳猕猴化作悟空模样，打倒唐僧、抢走行李。两只一模一样的悟空四处争斗，观音、天庭、地府竟都分不出真假，直到灵山如来点破——那假猴，原是悟空心中的"二心"。真悟空一棒除之，也了结了自己心里的那点不甘。</p><p>读这一站，重点不是"谁真谁假"，而是：<b>最像你的敌人，往往是你自己。</b></p><p class="q">带问题读：① 为什么连神仙都分不出真假？② "二心"指什么？③ 你心里有没有一只"六耳猕猴"？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">屡伤性命，你回花果山去罢！</p><p class="qt">— 第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文</p><p class="qm">唐僧决绝的逐客令，“屡”字见积怨难消，也为假猴作乱留下空当。</p></div><div class="qrow"><p class="qq">这唠叨师父，该打！行李归我！</p><p class="qt">— 第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文</p><p class="qm">假悟空言语粗暴，与真悟空性子里那点躁怒暗合，点出二心本出自身。</p></div><div class="qrow"><p class="qq">汝等俱是一心，且看那二心！</p><p class="qt">— 第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文</p><p class="qm">如来一句“一心”“二心”，把真假之争升华为修心之问，寓意深远。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>伏笔铺垫：</b>前文写师徒因“杀”屡生嫌隙，为六耳猕猴乘虚而入埋下伏笔，矛盾爆发水到渠成。</li><li><b>层层渲染：</b>从观音到天庭再到地府，各路高手皆不能辨，层层渲染，把“真假难分”的悬疑推向极致。</li><li><b>以小见大：</b>借真假猴王之争，写人心中的“二心”，把一场妖斗提升为修心自省的人生主题。</li><li><b>照应回目：</b>回目以“真行者”“假猴王”对举，结尾如来点破“二心”，首尾呼应，结构浑然。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>写出“二心”的含义：</b>结合本回，用自己的话说说“二心”指什么，并找出它化为六耳猕猴的线索。</li><li><b>“最像你的敌人是你自己”：</b>围绕这句话写一段议论文，联系悟空除六耳的情节，谈谈认识自己的重要。</li><li><b>给真假悟空写判决：</b>假设你是如来，要当众说明谁真谁假，请写一段话，点明“看本心”的道理。</li><li><b>“自我”小故事：</b>写一个生活中“差点认错自己”的小故事，学习用“二心”自省，结尾点明道理。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>六耳猕猴是什么：</b>查一查六耳猕猴在原著中的来历与神通，说说它为何能变作悟空的样子。</li><li><b>“二心”与“一心”：</b>找找书里还有哪些“二心”“一心”的描写，整理成一张小卡片，体会作者用词的精妙。</li><li><b>为两猴配音：</b>挑一段真假悟空争辩的对白，和同学分角色朗读，注意读出委屈、急切与愤怒。</li><li><b>“照妖镜”失灵了：</b>照妖镜本该辨妖，为何分不出真假？查一查照妖镜的传说，写一段你的发现。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄。这一回他既是"被害者"（被冒名、被冤），也是"当事人"（二心出自他）。最终亲手除六耳，是<b>战胜了自己</b>。</p></div><div class="card"><h3>六耳猕猴</h3><p>假美猴王。本事相貌与悟空无二，实是悟空"二心"（嗔怒不甘）的化身。是<b>内心阴影的外化</b>。</p></div><div class="card"><h3>如来佛祖</h3><p>灵山至尊。一眼看穿"二心"的本质，点破谜底。代表<b>照见本心的智慧</b>。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 最像你的敌人是你自己</h3><p>"二心"之说告诉我们：能伤你最深的，常是自己心里的不甘、怨怒。看清它，才能放下它。</p><h3>② 信任的裂缝</h3><p>师徒一再"杀—逐"，裂缝积累成"二心"。关系出了问题，往往先病在心，后乱于事。</p><h3>③ 辨真伪靠本心</h3><p>眼睛会被"像"骗，本心不会。培养判断，先修养内心。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>为什么连神仙都分不出真假？</b><br><span class="ans">因为假悟空不是外来的妖怪，而是悟空心里的“二心”。外形的“假”容易辨认，内心的“假”却连神仙也难以看穿——这正是本回的深刻处。</span></li><li><b>“二心”指什么？</b><br><span class="ans">指悟空被唐僧责逐后，心里的不甘、委屈与怨愤。它和真悟空一样强大，一旦发作，差点毁了取经团队。</span></li><li><b>你心里有没有一只“六耳猕猴”？</b><br><span class="ans">每个人心里都可能藏着一时的冲动、委屈或嫉妒。关键在于能否觉察它、放下它——像悟空一棒除掉假猴那样，除掉心里的“二心”。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>神话读成人性：</b>别只当"打架看"，把妖怪当"人性弱点"，故事立刻深刻。</li><li><b>勾连前情：</b>把"三打白骨精"的逐徒和这回对照，人物弧光就出来了。</li><li><b>自问"二心"：</b>写一句：我心里那只"六耳猕猴"是什么？这比做题更有用。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-21.html"><span class="dir">← 上一站</span><b>毒敌山琵琶洞</b><small>第 21 站</small></a><a class="next" href="comic-23.html"><span class="dir">下一站 →</span><b>火焰山</b><small>第 23 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-22-1.png","span":true,"size":"cover","pos":"center","caption":"悟空又因打死劫匪被唐僧怒逐——取经路上，师徒再因\"杀\"生隙。","bubbles":[{"who":"唐僧","text":"屡伤性命，你回花果山去罢！","side":"l"}],"study":{"intro":"起因呼应\"三打白骨精\"：又是悟空\"杀\"、唐僧\"逐\"。旧伤未愈，新隙又生，为\"二心\"埋下伏笔。","appreciate":"作者<b>反复用同一冲突</b>（杀—逐），不是偷懒，而是强调：师徒的裂缝一直没真正补好。读时把两次\"逐徒\"对照，味道更深。","think":["这一格和\"三打白骨精\"的\"逐徒\"有何相同与不同？","为什么同一类矛盾会反复出现？"],"phrases":["打死劫匪","怒逐","再因杀生隙"]}},{"img":"assets/scenes/comic-22-2.png","size":"cover","pos":"center","caption":"六耳猕猴化作悟空模样，打倒唐僧、夺走行李——真假难分！","bubbles":[{"who":"假悟空","text":"这唠叨师父，该打！行李归我！","side":"r"}],"sfx":{"t":"砰！","x":"68%","y":"20%"},"study":{"intro":"危机爆发：假猴王出现，连长相、本事都一模一样。读者也懵了——到底哪个是真？","appreciate":"这一格制造<b>身份焦虑</b>：当\"我\"和\"假我\"难分时，信任就崩了。作者让我们体会：被冤枉的委屈，和分不清的恐惧。","think":["假悟空和真悟空一模一样，这\"一样\"让人最怕的是什么？","如果你被一个\"假的你\"冒名做坏事，你会怎么办？"],"phrases":["化作悟空","打倒唐僧","真假难分"]}},{"img":"assets/scenes/comic-22-3.png","size":"cover","pos":"center","caption":"两猴激斗，观音、天庭、地府皆不能辨，毫光四射难分彼此。","bubbles":[{"who":"孙悟空","text":"俺才是真悟空！","side":"l"}],"sfx":{"t":"铛铛铛！","x":"50%","y":"14%"},"study":{"intro":"高潮对决。两只金甲猴王棒来棒往，连神仙都看花眼。外在的\"像\"，骗过了所有人的眼。","appreciate":"写法上是<b>镜像对照</b>：一模一样的两人，谁也说服不了谁。它逼出一个问题——能分辨人的，到底是眼睛，还是\"本心\"？","think":["为什么观音、天庭都分不出？分辨真假，最终要靠什么？","\"镜子\"在这类故事里常象征什么？"],"phrases":["两猴激斗","毫光四射","皆不能辨"]}},{"img":"assets/scenes/comic-22-4.png","size":"cover","pos":"center","caption":"灵山如来笑言\"且看二心\"，真悟空除六耳——亦了结心中二心。","bubbles":[{"who":"如来","text":"汝等俱是一心，且看那二心！","side":"r"}],"study":{"intro":"结局点题：如来不说\"谁是假\"，而说\"二心\"——假猴王，是悟空心里那点不甘与嗔怒的化身。打死六耳，也是打死自己心魔。","appreciate":"这一回的妙，在<b>把\"外部敌人\"写成\"内心影子\"</b>。最深的难，从来不是别人，是自己心里那只\"六耳猕猴\"。读神话，要读出\"人性\"。","think":["\"二心\"指悟空心里的什么？你有没有类似的\"二心\"？","\"了结心魔\"是什么意思？怎样才能做到？"],"phrases":["如来点破","二心","了结心魔"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-22-1.png","span":true,"size":"cover","pos":"center","caption":"悟空又因打死劫匪被唐僧怒逐——取经路上，师徒再因\"杀\"生隙。","bubbles":[{"who":"唐僧","text":"屡伤性命，你回花果山去罢！","side":"l"}],"study":{"intro":"起因呼应\"三打白骨精\"：又是悟空\"杀\"、唐僧\"逐\"。旧伤未愈，新隙又生，为\"二心\"埋下伏笔。","appreciate":"作者<b>反复用同一冲突</b>（杀—逐），不是偷懒，而是强调：师徒的裂缝一直没真正补好。读时把两次\"逐徒\"对照，味道更深。","think":["这一格和\"三打白骨精\"的\"逐徒\"有何相同与不同？","为什么同一类矛盾会反复出现？"],"phrases":["打死劫匪","怒逐","再因杀生隙"],"vocab":{"words":[{"t":"打死劫匪","m":"悟空又打死拦路劫匪，惹恼唐僧。"},{"t":"怒逐","m":"唐僧大怒，再次赶走悟空。"},{"t":"再因杀生隙","m":"师徒又因“杀生”闹翻，裂痕未愈。"}],"ju":[{"t":"悟空又因打死劫匪被唐僧怒逐——取经路上，师徒再因“杀”生隙。","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"“又”“再”点出这是第二次，写出裂缝一直没补好，读来沉重。"},{"t":"屡伤性命，你回花果山去罢！","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"唐僧话语决绝，“屡”字见积怨，“回花果山”是伤透心的逐客令。"}],"rhet":[{"t":"反复","m":"作者两次写“杀—逐”冲突，强调师徒矛盾反复发作，为真假猴王埋根。"}]}}},{"img":"assets/scenes/comic-22-2.png","size":"cover","pos":"center","caption":"六耳猕猴化作悟空模样，打倒唐僧、夺走行李——真假难分！","bubbles":[{"who":"假悟空","text":"这唠叨师父，该打！行李归我！","side":"r"}],"sfx":{"t":"砰！","x":"68%","y":"20%"},"study":{"intro":"危机爆发：假猴王出现，连长相、本事都一模一样。读者也懵了——到底哪个是真？","appreciate":"这一格制造<b>身份焦虑</b>：当\"我\"和\"假我\"难分时，信任就崩了。作者让我们体会：被冤枉的委屈，和分不清的恐惧。","think":["假悟空和真悟空一模一样，这\"一样\"让人最怕的是什么？","如果你被一个\"假的你\"冒名做坏事，你会怎么办？"],"phrases":["化作悟空","打倒唐僧","真假难分"],"vocab":{"words":[{"t":"化作悟空","m":"六耳猕猴变作悟空模样，以假乱真。"},{"t":"打倒唐僧","m":"假悟空打伤唐僧，夺走行李。"},{"t":"真假难分","m":"真假悟空一模一样，难以分辨。"}],"ju":[{"t":"六耳猕猴化作悟空模样，打倒唐僧、夺走行李——真假难分！","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"“打倒”“夺走”写其凶狠，“真假难分”四字一叹，把混乱推向顶点。"},{"t":"这唠叨师父，该打！行李归我！","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"假悟空出口粗暴，与真悟空性子迥异，但外形相同，愈显可怕。"}],"rhet":[{"t":"语言生动","m":"以假悟空粗暴言语与真悟空形成反差，外形同而心性异，悬念顿生。"}]}}},{"img":"assets/scenes/comic-22-3.png","size":"cover","pos":"center","caption":"两猴激斗，观音、天庭、地府皆不能辨，毫光四射难分彼此。","bubbles":[{"who":"孙悟空","text":"俺才是真悟空！","side":"l"}],"sfx":{"t":"铛铛铛！","x":"50%","y":"14%"},"study":{"intro":"高潮对决。两只金甲猴王棒来棒往，连神仙都看花眼。外在的\"像\"，骗过了所有人的眼。","appreciate":"写法上是<b>镜像对照</b>：一模一样的两人，谁也说服不了谁。它逼出一个问题——能分辨人的，到底是眼睛，还是\"本心\"？","think":["为什么观音、天庭都分不出？分辨真假，最终要靠什么？","\"镜子\"在这类故事里常象征什么？"],"phrases":["两猴激斗","毫光四射","皆不能辨"],"vocab":{"words":[{"t":"两猴激斗","m":"真假悟空激烈打斗，难分胜负。"},{"t":"毫光四射","m":"打斗时光芒四射，神通尽显。"},{"t":"皆不能辨","m":"观音、天庭、地府都分不出真假。"}],"ju":[{"t":"两猴激斗，观音、天庭、地府皆不能辨，毫光四射难分彼此。","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"层层高手皆认不出，“皆不能辨”把悬念拉到最高，逼出“看本心”的主题。"},{"t":"俺才是真悟空！","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"一句自辩急切而委屈，真假之争已不在外表，而在“我是谁”。"}],"rhet":[{"t":"语言生动","m":"写众多神仙皆不能辨，层层渲染强化悬疑，让“本心”之问浮出水面。"}]}}},{"img":"assets/scenes/comic-22-4.png","size":"cover","pos":"center","caption":"灵山如来笑言\"且看二心\"，真悟空除六耳——亦了结心中二心。","bubbles":[{"who":"如来","text":"汝等俱是一心，且看那二心！","side":"r"}],"study":{"intro":"结局点题：如来不说\"谁是假\"，而说\"二心\"——假猴王，是悟空心里那点不甘与嗔怒的化身。打死六耳，也是打死自己心魔。","appreciate":"这一回的妙，在<b>把\"外部敌人\"写成\"内心影子\"</b>。最深的难，从来不是别人，是自己心里那只\"六耳猕猴\"。读神话，要读出\"人性\"。","think":["\"二心\"指悟空心里的什么？你有没有类似的\"二心\"？","\"了结心魔\"是什么意思？怎样才能做到？"],"phrases":["如来点破","二心","了结心魔"],"vocab":{"words":[{"t":"如来点破","m":"如来一眼看穿，指出六耳是二心。"},{"t":"二心","m":"指悟空心中的杂念与不甘，化为假猴。"},{"t":"了结心魔","m":"悟空除六耳，也了结心中二心。"}],"ju":[{"t":"灵山如来笑言“且看二心”，真悟空除六耳——亦了结心中二心。","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"如来“笑言”见洞察，“除六耳”与“了结二心”相连，把除妖升华为修心。"},{"t":"汝等俱是一心，且看那二心！","from":"第五十七回　真行者落伽山诉苦　假猴王水帘洞誊文","m":"如来一语点破，“一心”“二心”对照，道出真假之争原是心魔之争。"}],"rhet":[{"t":"语言生动","m":"把“外部敌人”写成“内心影子”，用“二心”点题，让神话显出人性深度。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

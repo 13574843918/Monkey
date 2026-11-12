@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第十四回　心猿归正　六贼无踪</b>　民间知名度：<span class="hm">★★★★☆（初中常读）</span>　常考程度：<span class="hm">★★★★☆</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>还记得大闹天宫的齐天大圣吗？他因反天被压在五行山（两界山）下五百年。这一站，取经路上的唐僧恰好路过，揭去山顶如来压帖，放出了孙悟空——取经队伍的第一位徒弟，就这样"收"到了。</p><p>读这一站，要想：<b>压五百年是惩罚还是磨砺？</b>从"齐天大圣"变成"徒弟行者"，悟空失去了什么，又得到了什么？</p><p class="q">带问题读：① 悟空为什么会被压五百年？② 唐僧揭帖放他，靠的是"力气"还是"缘法"？③ "大圣"变"行者"，名字变了什么？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">长老，前方便是两界山，山里压着个神通广大的妖猴。</p><p class="qt">— 第十四回　心猿归正　六贼无踪</p><p class="qm">借猎户之口轻轻一提，勾起前文大闹天宫，前后呼应，设下悬念。</p></div><div class="qrow"><p class="qq">师父！救人一命，胜造七级浮屠，救我出去罢！</p><p class="qt">— 第十四回　心猿归正　六贼无踪</p><p class="qm">昔日大圣开口求饶，与当年狂傲形成反差，命运落差尽在其中。</p></div><div class="qrow"><p class="qq">俺老孙出来也！</p><p class="qt">— 第十四回　心猿归正　六贼无踪</p><p class="qm">五百年憋屈化为一喊，豪气与悲凉交织，是全书最畅快的一幕之一。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>前后照应：</b>借猎户"压着个妖猴"一句轻轻带出前文大闹天宫，为悟空出场埋伏笔，前后勾连，结构严谨。</li><li><b>对比反差：</b>昔日大闹天宫的齐天大圣，今日被困山中的卑微猴王，两相对照，写出命运沧桑，令人唏嘘。</li><li><b>动作与声响造势：</b>揭帖、崩裂、腾跃三动词连用，配以"轰"的拟声，把破封的猛烈与气势写得有声有色。</li><li><b>名字隐喻：</b>从"齐天大圣"到"孙行者"，名字变化暗喻命运转变：失去张扬，得到方向，深化主题。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>人物转变分析：</b>从大闹天宫到拜师取经，分析孙悟空前后形象的变化，说说压五百年让他失去了什么、又得到了什么。</li><li><b>环境描写作用：</b>找出本回写两界山险绝的句子，分析环境描写如何烘托气氛、暗示情节发展。</li><li><b>心理描写补写：</b>发挥想象，以悟空的口吻写一段他破封而出时的心声，写出五百年被困的感受，80字左右。</li><li><b>悬念设置赏析：</b>说说作者如何借猎户之口一步步引出悟空，这样"先闻其名、再见其人"的写法有何妙处。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>五行山与两界山：</b>查阅资料，说说五行山为何又称两界山，这两个名字各有什么含义。</li><li><b>如来压帖的来历：</b>查一查"唵嘛呢叭咪吽"六字真言的含义，了解佛祖为何要用它镇压悟空。</li><li><b>"心猿归正"题解：</b>结合悟空被压、得救、拜师的情节，说说"心猿"指什么、怎样"归正"。</li><li><b>五百年的意味：</b>悟空被压五百年后才得救，讨论：这漫长等待是惩罚还是磨砺？说说你的理解。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>花果山美猴王、齐天大圣。因大闹天宫被压五行山五百年，经观音点化，拜唐僧为徒，称"孙行者"。<b>神通广大、忠心嫉恶，却急躁好胜</b>，是取经队的主战力。</p></div><div class="card"><h3>唐僧</h3><p>取经人。奉唐王之命西行，路过两界山放出悟空。他<b>慈悲坚定</b>，却"肉眼凡胎"，常看不破妖怪，也压不住徒弟的性子。</p></div><div class="card"><h3>刘伯钦</h3><p>两界山下的猎户，护送唐僧过山，并告知山中压猴之事。是<b>推动情节的小角色</b>——小人物，往往是大事件的引子。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 自由与责任</h3><p>压五百年是"无法无天"的代价。真正的自由，不是想做什么就做什么，而是能担起该担的责任。</p><h3>② 解困靠"缘法"</h3><p>悟空自己挣不出山，须等唐僧揭帖。人生很多困局，也需外力与时机——所谓"贵人"与"时机"。</p><h3>③ 名字即成长</h3><p>"大圣"到"行者"，名字变了，路也变了。你愿意自己的"代号"代表怎样的人？</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>悟空为什么会被压五百年？</b><br><span class="ans">他大闹天宫、藐视天庭，被如来压在五行山下。五百年的镇压既是惩罚，也让他褪去浮躁、磨掉戾气，为取经修行做准备。</span></li><li><b>唐僧揭帖放他，靠的是“力气”还是“缘法”？</b><br><span class="ans">靠的是“缘法”：观音点化、如来金帖的愿力，更是师徒缘分的安排。这不是力气大小，而是因果缘法的必然。</span></li><li><b>“大圣”变“行者”，名字变了什么？</b><br><span class="ans">从“齐天大圣”（反天、求自由）到“行者”（取经、守戒律），名字变了，身份与心志也变了：从桀骜不驯的妖王，到一心向佛的取经人。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>前情要勾连：</b>读这一站，先回想"大闹天宫"。前后勾连，人物才立得起来。</li><li><b>抓"反转"写法的妙：</b>作者最爱用"今昔对比"制造张力，读时圈出前后反差处。</li><li><b>想"如果"：</b>如果唐僧没揭帖，故事会怎样？多问"如果"，能读出作者的匠心。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-02.html"><span class="dir">← 上一站</span><b>双叉岭</b><small>第 2 站</small></a><a class="next" href="comic-04.html"><span class="dir">下一站 →</span><b>蛇盘山鹰愁涧</b><small>第 4 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-03-1.png","span":true,"size":"cover","pos":"center","caption":"两界山（原五行山）山势险绝，唐僧在猎户刘伯钦护送下至此。","bubbles":[{"who":"刘伯钦","text":"长老，前方便是两界山，山里压着个神通广大的妖猴。","side":"l"}],"study":{"intro":"起笔先写环境之险与\"山里压着个猴\"的伏笔。读者已知那是齐天大圣，主角唐僧却还不知道——这种\"读者知道、角色不知\"的错位，最吊人胃口。","appreciate":"作者善用<b>草蛇灰线</b>：前文大闹天宫，此处轻轻一提\"压着个妖猴\"，前后呼应。环境\"险绝\"也暗示：此处将发生大事。","think":["为什么作者要让唐僧\"不知情\"地走近悟空？这样写有什么效果？","刘伯钦这个\"引路人\"在故事里起什么作用？"],"phrases":["山势险绝","两界山","压着个妖猴"]}},{"img":"assets/scenes/comic-03-2.png","size":"cover","pos":"center","caption":"山石下伸出一只毛手，崖间露出猴脸——竟是五百年前大闹天宫的孙悟空！","bubbles":[{"who":"孙悟空","text":"师父！救人一命，胜造七级浮屠，救我出去罢！","side":"r"}],"study":{"intro":"师徒初遇。曾经不可一世的齐天大圣，如今只从石缝里伸出一只手、露一张脸求助。巨大的反差，是这一格的张力所在。","appreciate":"写法上是<b>反差</b>：昔日的\"大\"与今日的\"困\"对照，既可怜又可笑，又让人唏嘘。悟空开口那句\"救人一命\"，已不是当年的狂傲，而是求生的卑微。","think":["从\"大闹天宫\"到\"石缝求救\"，悟空的变化让你有什么感受？","一个人落难时的样子，能不能代表他的全部？"],"phrases":["伸出毛手","露出猴脸","救人一命，胜造七级浮屠"]}},{"img":"assets/scenes/comic-03-3.png","size":"cover","pos":"center","caption":"唐僧揭下如来\"唵嘛呢叭咪吽\"压帖，山石崩裂，齐天大圣破封腾跃而出！","bubbles":[{"who":"孙悟空","text":"俺老孙出来也！","side":"r"}],"sfx":{"t":"轰——","x":"60%","y":"22%"},"study":{"intro":"高潮：揭帖、山崩、破封。一句\"俺老孙出来也\"，把憋了五百年的劲儿全释放了。注意那帖子上写的是如来真言——能放他的，终究是\"佛\"。","appreciate":"这一格用<b>动作与声响</b>造势：揭、崩、跃，三个动词连成一气；\"轰——\"的拟声把画面\"喊\"出了声音。读图时，注意作者如何用\"动\"写\"力\"。","think":["压帖是如来贴的，也由唐僧揭——这暗示了什么？","\"破封而出\"这个画面，除了写悟空，还象征什么？"],"phrases":["揭下压帖","山石崩裂","破封腾跃"]}},{"img":"assets/scenes/comic-03-4.png","size":"cover","pos":"center","caption":"悟空拜唐僧为师，自此护送西行——取经队伍有了第一位徒弟。","bubbles":[{"who":"孙悟空","text":"弟子愿保师父西去，誓不成佛不罢休！","side":"l"}],"study":{"intro":"收尾：从\"妖猴\"到\"徒弟\"。悟空束手立誓，身份彻底转变。取经队伍的第一块拼图，拼上了。","appreciate":"名字是<b>命运的隐喻</b>：\"齐天大圣\"是反抗的代号，\"孙行者\"是修行的代号。从\"大圣\"到\"行者\"，失去的是张扬，得到的是方向。","think":["\"大圣\"与\"行者\"两个名字，分别代表了悟空哪两面？","师徒相遇，谁更需要谁？说说你的理由。"],"phrases":["拜师西行","第一位徒弟","誓不成佛不罢休"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-03-1.png","span":true,"size":"cover","pos":"center","caption":"两界山（原五行山）山势险绝，唐僧在猎户刘伯钦护送下至此。","bubbles":[{"who":"刘伯钦","text":"长老，前方便是两界山，山里压着个神通广大的妖猴。","side":"l"}],"study":{"intro":"起笔先写环境之险与\"山里压着个猴\"的伏笔。读者已知那是齐天大圣，主角唐僧却还不知道——这种\"读者知道、角色不知\"的错位，最吊人胃口。","appreciate":"作者善用<b>草蛇灰线</b>：前文大闹天宫，此处轻轻一提\"压着个妖猴\"，前后呼应。环境\"险绝\"也暗示：此处将发生大事。","think":["为什么作者要让唐僧\"不知情\"地走近悟空？这样写有什么效果？","刘伯钦这个\"引路人\"在故事里起什么作用？"],"phrases":["山势险绝","两界山","压着个妖猴"],"vocab":{"words":[{"t":"山势险绝","m":"形容两界山地势险峻陡峭，暗示此处将有大事发生。"},{"t":"两界山","m":"即五行山，孙悟空被压处，也是长安与西域的分界。"},{"t":"压着个妖猴","m":"点出悟空被困山中五百年，勾起前文大闹天宫的回忆。"}],"ju":[{"t":"两界山（原五行山）山势险绝，唐僧在猎户刘伯钦护送下至此。","from":"第十四回　心猿归正　六贼无踪","m":"先写山势险绝，再写唐僧到来，环境暗示\"此处必有大变\"，为悟空出场铺垫。"},{"t":"长老，前方便是两界山，山里压着个神通广大的妖猴。","from":"第十四回　心猿归正　六贼无踪","m":"借猎户之口点出妖猴来历，草蛇灰线，勾连前文，又设下悬念。"}],"rhet":[{"t":"环境描写","m":"写山势险绝、山路难行，烘托取经前路艰险，也为悟空现身制造氛围。"}]}}},{"img":"assets/scenes/comic-03-2.png","size":"cover","pos":"center","caption":"山石下伸出一只毛手，崖间露出猴脸——竟是五百年前大闹天宫的孙悟空！","bubbles":[{"who":"孙悟空","text":"师父！救人一命，胜造七级浮屠，救我出去罢！","side":"r"}],"study":{"intro":"师徒初遇。曾经不可一世的齐天大圣，如今只从石缝里伸出一只手、露一张脸求助。巨大的反差，是这一格的张力所在。","appreciate":"写法上是<b>反差</b>：昔日的\"大\"与今日的\"困\"对照，既可怜又可笑，又让人唏嘘。悟空开口那句\"救人一命\"，已不是当年的狂傲，而是求生的卑微。","think":["从\"大闹天宫\"到\"石缝求救\"，悟空的变化让你有什么感受？","一个人落难时的样子，能不能代表他的全部？"],"phrases":["伸出毛手","露出猴脸","救人一命，胜造七级浮屠"],"vocab":{"words":[{"t":"伸出毛手","m":"从山石缝中伸出的猴手，写出悟空被困的狼狈模样。"},{"t":"露出猴脸","m":"崖间露出猴脸，点明被困者正是五百年前的大圣。"},{"t":"救人一命，胜造七级浮屠","m":"佛家语，救人一命功德比建七层佛塔还大，悟空以此求唐僧相救。"}],"ju":[{"t":"救人一命，胜造七级浮屠","from":"第十四回　心猿归正　六贼无踪","m":"借佛家俗语道出救人功德，悟空开口即求饶，与当年大闹天宫判若两人。"},{"t":"山石下伸出一只毛手，崖间露出猴脸——竟是五百年前大闹天宫的孙悟空！","from":"第十四回　心猿归正　六贼无踪","m":"毛手、猴脸、大圣身份层层揭示，由物及人，悬念揭晓，前后反差强烈。"}],"rhet":[{"t":"语言生动","m":"用\"伸出一只毛手\"\"露出猴脸\"的细节，把大圣被困的可悲可叹写足，令人唏嘘。"}]}}},{"img":"assets/scenes/comic-03-3.png","size":"cover","pos":"center","caption":"唐僧揭下如来\"唵嘛呢叭咪吽\"压帖，山石崩裂，齐天大圣破封腾跃而出！","bubbles":[{"who":"孙悟空","text":"俺老孙出来也！","side":"r"}],"sfx":{"t":"轰——","x":"60%","y":"22%"},"study":{"intro":"高潮：揭帖、山崩、破封。一句\"俺老孙出来也\"，把憋了五百年的劲儿全释放了。注意那帖子上写的是如来真言——能放他的，终究是\"佛\"。","appreciate":"这一格用<b>动作与声响</b>造势：揭、崩、跃，三个动词连成一气；\"轰——\"的拟声把画面\"喊\"出了声音。读图时，注意作者如何用\"动\"写\"力\"。","think":["压帖是如来贴的，也由唐僧揭——这暗示了什么？","\"破封而出\"这个画面，除了写悟空，还象征什么？"],"phrases":["揭下压帖","山石崩裂","破封腾跃"],"vocab":{"words":[{"t":"揭下压帖","m":"唐僧揭去如来佛祖的六字真言压帖，悟空重获自由。"},{"t":"山石崩裂","m":"封印一除，山石崩裂，用夸张写出破封之猛烈。"},{"t":"破封腾跃","m":"悟空破封而出、腾空跃起，重见天日，声势浩大。"}],"ju":[{"t":"唐僧揭下如来\"唵嘛呢叭咪吽\"压帖，山石崩裂，齐天大圣破封腾跃而出！","from":"第十四回　心猿归正　六贼无踪","m":"揭帖、崩裂、腾跃三动词连用，一气呵成，把破封写得有声有势。"},{"t":"俺老孙出来也！","from":"第十四回　心猿归正　六贼无踪","m":"简短一句呐喊，五百年憋屈尽出，写出大圣重获自由的狂喜与豪气。"}],"rhet":[{"t":"动作描写","m":"用\"揭、崩、跃\"一系列动作与\"轰\"的声响，把破封的力度和画面感写活。"}]}}},{"img":"assets/scenes/comic-03-4.png","size":"cover","pos":"center","caption":"悟空拜唐僧为师，自此护送西行——取经队伍有了第一位徒弟。","bubbles":[{"who":"孙悟空","text":"弟子愿保师父西去，誓不成佛不罢休！","side":"l"}],"study":{"intro":"收尾：从\"妖猴\"到\"徒弟\"。悟空束手立誓，身份彻底转变。取经队伍的第一块拼图，拼上了。","appreciate":"名字是<b>命运的隐喻</b>：\"齐天大圣\"是反抗的代号，\"孙行者\"是修行的代号。从\"大圣\"到\"行者\"，失去的是张扬，得到的是方向。","think":["\"大圣\"与\"行者\"两个名字，分别代表了悟空哪两面？","师徒相遇，谁更需要谁？说说你的理由。"],"phrases":["拜师西行","第一位徒弟","誓不成佛不罢休"],"vocab":{"words":[{"t":"拜师西行","m":"悟空拜唐僧为师，从此踏上护送取经之路。"},{"t":"第一位徒弟","m":"悟空是取经队伍收的第一位徒弟，也是大师兄。"},{"t":"誓不成佛不罢休","m":"立下誓言，体现悟空从此有了明确目标和决心。"}],"ju":[{"t":"悟空拜唐僧为师，自此护送西行——取经队伍有了第一位徒弟。","from":"第十四回　心猿归正　六贼无踪","m":"一个\"拜\"字写尽身份转变，从阶下囚到徒弟，命运转折意味深长。"},{"t":"弟子愿保师父西去，誓不成佛不罢休！","from":"第十四回　心猿归正　六贼无踪","m":"誓言掷地有声，写出大圣放下狂傲、立志修行的心志转变。"}],"rhet":[{"t":"语言生动","m":"用\"誓不成佛不罢休\"的坚定语气，写活悟空从反抗者到修行者的转变。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

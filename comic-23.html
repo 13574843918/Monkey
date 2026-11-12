@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇</b>　民间知名度：<span class="hm">★★★★★（三借芭蕉扇）</span>　常考程度：<span class="hm">★★★★★</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>火焰山八百里烈焰，阻住去路。铁扇公主（罗刹女）因儿子红孩儿被收做善财童子，恨透悟空，死不肯借芭蕉扇。悟空三借：变虫钻肚、骗得假扇、请天兵降牛魔王，终得真扇灭火。一难之中，藏着"旧怨"与"智取"。</p><p>读这一站，重点看<b>"反复"的结构</b>与<b>"智"胜"力"</b>：越难的事，越不能只靠蛮干。</p><p class="q">带问题读：① 火焰山为什么难？难在火，还是难在"人"？② 悟空用了哪些"智"？③ "三借"的反复为什么好看？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">此山八百里火焰，无雨无路，唯芭蕉扇可灭。</p><p class="qt">— 第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇</p><p class="qm">土地点明灭火唯一钥匙，八百里火海全靠一把扇，为借扇设下难题。</p></div><div class="qrow"><p class="qq">红孩儿之仇未报，休想借扇！</p><p class="qt">— 第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇</p><p class="qm">铁扇公主一句话道出前因，旧怨成了借扇最大障碍，故事前后勾连。</p></div><div class="qrow"><p class="qq">悟空变作小虫钻入公主腹中翻腾，逼出芭蕉扇——却是一把假扇！</p><p class="qt">— 第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇</p><p class="qm">变虫是智、假扇是诈，一来一回反转不断，借扇之难更进一层。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>夸张：</b>写火焰山八百里烈焰、飞鸟难越，极言山火之险，把取经路上的难关拉高，让读者为借扇捏汗。</li><li><b>设置悬念：</b>开头只说是唯芭蕉扇可灭，却迟迟不写怎么借，把钥匙悬在远处，吸引读者往下读。</li><li><b>反复·三借：</b>借扇一调再调，先硬借、后智取、再请兵，层层递进，把智胜力的主题越写越足。</li><li><b>前后照应：</b>由红孩儿之仇引出铁扇公主的恨，旧怨成新难，一处因处处果，故事前后勾连。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>写一段最难的一次借：</b>用第三格变虫假扇的写法，写一次你努力却失败的经历，二百字左右，突出心理变化。</li><li><b>补写铁扇公主的恨：</b>假设你是铁扇公主，写一段内心独白，说说为何恨悟空、为何又不得不献扇。</li><li><b>改写结尾对话：</b>把真扇到手一幕改写成土地与悟空的三句对话，保留人物口吻，写出山火将熄的欣喜。</li><li><b>为三借画情节图：</b>用表格梳理悟空三次借扇的办法与结果，体会反复结构如何层层推进。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>芭蕉扇的真与假：</b>查一查原著里芭蕉扇的来历与威力，说说作者为何要设计假扇这一反转。</li><li><b>牛魔王与悟空：</b>二人本是结拜兄弟却成仇敌，想想旧友反目的原因，说说对关系的看法。</li><li><b>从火焰山看五行：</b>火焰山与八卦炉、五行山有何关联？找找书中与火相关的劫难，说说火的作用。</li><li><b>三借与三打白骨精：</b>对比三借芭蕉扇与三打白骨精两处三的写法，说说作者为何偏爱用三来组织故事。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄。这一回把"智"用到极致：变虫、骗扇、借天兵。说明<b>真本事，是脑子加金箍棒</b>。</p></div><div class="card"><h3>铁扇公主（罗刹女）</h3><p>牛魔王之妻，掌芭蕉扇。因红孩儿被收而记仇不肯借扇。她是<b>"被旧怨困住"的人</b>，仇障了眼。</p></div><div class="card"><h3>牛魔王</h3><p>悟空旧日结拜兄长，今为铁扇之夫、火焰山障。代表<b>纠缠的旧关系</b>，最终被天兵降伏。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 难在火，也在人</h3><p>火焰山的根，是"红孩儿旧怨"。很多困难，表面是事，底子是"关系"。</p><h3>② 智取胜蛮力</h3><p>三借三变，悟空靠的是变化与心机，不是一味狠打。遇事先想"巧劲"。</p><h3>③ 团结破难关</h3><p>请天兵才降牛魔王。一个人的上限有限，善用外力与伙伴，难事可成。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>火焰山为什么难？难在火，还是难在“人”？</b><br><span class="ans">表面难在八百里烈焰，实则难在“人”：铁扇公主因红孩儿之仇不肯借扇，牛魔王又从中作梗。火是表象，人心旧怨才是真正的拦路虎。</span></li><li><b>悟空用了哪些“智”？</b><br><span class="ans">变虫钻入铁扇公主肚中、骗来假扇、请天兵收服牛魔王再得真扇。他不只靠金箍棒硬打，更多是用计、借力，以“智”胜“力”。</span></li><li><b>“三借”的反复为什么好看？</b><br><span class="ans">一借得假扇，二借遭牛魔王反制，三借请来帮手。三次反复一波三折，把得扇之难写得步步升级，比一次成功更抓人。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"三"的结构：</b>三借、三打、三调……《西游记》爱用"三"。想想：为什么是三，不是一或十？</li><li><b>追前情：</b>读火焰山，先回想"收红孩儿"。不连前情，就懂不了"仇"。</li><li><b>学"反转"：</b>假扇那一下最妙。写作文也可学：让情节"上坡又下坡"。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-22.html"><span class="dir">← 上一站</span><b>真假美猴王</b><small>第 22 站</small></a><a class="next" href="comic-24.html"><span class="dir">下一站 →</span><b>祭赛国碧波潭</b><small>第 24 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-23-1.png","span":true,"size":"cover","pos":"center","caption":"火焰山八百里烈焰，飞鸟难越——取经路上的又一道天堑。","bubbles":[{"who":"土地","text":"此山八百里火焰，无雨无路，唯芭蕉扇可灭。","side":"l"}],"study":{"intro":"起笔先写\"难\"本身：八百里火，连鸟都过不去。再借土地之口点出唯一解法——芭蕉扇，引出\"借扇\"主线。","appreciate":"作者写难关，先<b>夸张其险</b>（八百里、飞鸟难越），再把\"钥匙\"悬在远处。读者立刻明白：这回的戏，在\"怎么借到扇\"。","think":["为什么作者要把火焰山写得\"八百里、飞鸟难越\"那么夸张？","\"唯一解法\"被别人握着，这种设定制造了什么张力？"],"phrases":["八百里烈焰","飞鸟难越","天堑"]}},{"img":"assets/scenes/comic-23-2.png","size":"cover","pos":"center","caption":"铁扇公主执芭蕉扇，怒斥悟空，一扇将他扇出万里。","bubbles":[{"who":"铁扇公主","text":"红孩儿之仇未报，休想借扇！","side":"r"}],"sfx":{"t":"呼——","x":"66%","y":"22%"},"study":{"intro":"第一次借扇：遭拒还被扇飞。难点不在火，而在\"人\"——罗刹女记着红孩儿的仇。","appreciate":"这一格写<b>\"关系债\"</b>：火焰山难，根子在之前的\"红孩儿之难\"。故事前后勾连，一处因，处处果。读时学会追\"前情\"。","think":["火焰山难，到底难在火还是难在\"仇\"？","\"红孩儿之仇\"说明取经路上的难常常是怎么来的？"],"phrases":["执扇怒斥","红孩儿之仇","扇出万里"]}},{"img":"assets/scenes/comic-23-3.png","size":"cover","pos":"center","caption":"悟空变作小虫钻入公主腹中翻腾，逼出芭蕉扇——却是一把假扇！","bubbles":[{"who":"孙悟空","text":"嫂嫂，扇子在哪儿？快拿出来！","side":"l"}],"sfx":{"t":"噗！","x":"14%","y":"20%"},"study":{"intro":"智取一环。悟空不硬抢，变小虫钻肚逼扇——机智满分，却上了当：拿到的是假扇。情节\"上坡又下坡\"，最抓人。","appreciate":"这里用<b>\"计中计\"</b>：悟空的\"变虫\"是智，罗刹女的\"假扇\"是诈。一来一回，比单纯打架精彩十倍。读时体会\"反转\"的快乐。","think":["悟空\"变虫钻肚\"妙在哪？为什么比硬抢高明？","\"拿到假扇\"这一反转，对读者有什么效果？"],"phrases":["变作小虫","钻入腹中","假扇"]}},{"img":"assets/scenes/comic-23-4.png","size":"cover","pos":"center","caption":"悟空请来天兵，降伏牛魔王；铁扇终献真扇，八百里山火顿熄。","bubbles":[{"who":"孙悟空","text":"这回，真扇到手，山火必灭！","side":"r"}],"study":{"intro":"收尾：单打独斗不够，悟空请天兵助阵，降牛魔王、得真扇、灭火。难关，靠\"智+众力\"才破。","appreciate":"结局点出<b>\"团结破难\"</b>：一个人的本事有边，借来的力量无边。也呼应\"关系\"——先前结的怨，最终仍要靠化解而非硬碰。","think":["\"请天兵\"这一笔，说明悟空懂得了什么？","火焰山终灭，靠的是\"力\"还是\"智与和\"？"],"phrases":["请来天兵","降伏牛魔王","山火顿熄"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-23-1.png","span":true,"size":"cover","pos":"center","caption":"火焰山八百里烈焰，飞鸟难越——取经路上的又一道天堑。","bubbles":[{"who":"土地","text":"此山八百里火焰，无雨无路，唯芭蕉扇可灭。","side":"l"}],"study":{"intro":"起笔先写\"难\"本身：八百里火，连鸟都过不去。再借土地之口点出唯一解法——芭蕉扇，引出\"借扇\"主线。","appreciate":"作者写难关，先<b>夸张其险</b>（八百里、飞鸟难越），再把\"钥匙\"悬在远处。读者立刻明白：这回的戏，在\"怎么借到扇\"。","think":["为什么作者要把火焰山写得\"八百里、飞鸟难越\"那么夸张？","\"唯一解法\"被别人握着，这种设定制造了什么张力？"],"phrases":["八百里烈焰","飞鸟难越","天堑"],"vocab":{"words":[{"t":"八百里烈焰","m":"火焰绵延八百里，火势猛烈，形容山火范围极大、温度极高。"},{"t":"飞鸟难越","m":"连飞鸟都难以飞越，极言火焰山险恶难渡，无人能过。"},{"t":"天堑","m":"天然的壕沟险阻，比喻难以跨越的天然障碍，此处指火焰山。"}],"ju":[{"t":"火焰山八百里烈焰，飞鸟难越——取经路上的又一道天堑。","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"开篇以夸张笔法写出山势之险，把灭火的钥匙悬在远处，让读者替取经人捏一把汗。"},{"t":"此山八百里火焰，无雨无路，唯芭蕉扇可灭。","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"土地一句话点明灭火的关键，为后文借扇埋下伏笔，交代干净利落。"}],"rhet":[{"t":"夸张","m":"以八百里、飞鸟难越夸大山火之险，突出取经路的又一道难关，读来气势逼人。"}]}}},{"img":"assets/scenes/comic-23-2.png","size":"cover","pos":"center","caption":"铁扇公主执芭蕉扇，怒斥悟空，一扇将他扇出万里。","bubbles":[{"who":"铁扇公主","text":"红孩儿之仇未报，休想借扇！","side":"r"}],"sfx":{"t":"呼——","x":"66%","y":"22%"},"study":{"intro":"第一次借扇：遭拒还被扇飞。难点不在火，而在\"人\"——罗刹女记着红孩儿的仇。","appreciate":"这一格写<b>\"关系债\"</b>：火焰山难，根子在之前的\"红孩儿之难\"。故事前后勾连，一处因，处处果。读时学会追\"前情\"。","think":["火焰山难，到底难在火还是难在\"仇\"？","\"红孩儿之仇\"说明取经路上的难常常是怎么来的？"],"phrases":["执扇怒斥","红孩儿之仇","扇出万里"],"vocab":{"words":[{"t":"执扇怒斥","m":"手里握着芭蕉扇，气愤地大声责骂，写铁扇公主对悟空充满敌意。"},{"t":"红孩儿之仇","m":"指红孩儿被观音收作善财童子，铁扇公主记恨悟空，结下的旧怨。"},{"t":"扇出万里","m":"一扇就把悟空扇到万里之外，极言铁扇公主法力强大。"}],"ju":[{"t":"铁扇公主执芭蕉扇，怒斥悟空，一扇将他扇出万里。","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"短短一句把人物动作、情绪与法力写足，画面感强，把借扇之难推到顶点。"},{"t":"红孩儿之仇未报，休想借扇！","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"一句话道出前因，旧怨成了借扇的最大障碍，使本难有了关系债，故事前后勾连。"}],"rhet":[{"t":"语言生动","m":"用执扇、怒斥、扇出万里等词，把铁扇公主的恨与强写得活灵活现。"}]}}},{"img":"assets/scenes/comic-23-3.png","size":"cover","pos":"center","caption":"悟空变作小虫钻入公主腹中翻腾，逼出芭蕉扇——却是一把假扇！","bubbles":[{"who":"孙悟空","text":"嫂嫂，扇子在哪儿？快拿出来！","side":"l"}],"sfx":{"t":"噗！","x":"14%","y":"20%"},"study":{"intro":"智取一环。悟空不硬抢，变小虫钻肚逼扇——机智满分，却上了当：拿到的是假扇。情节\"上坡又下坡\"，最抓人。","appreciate":"这里用<b>\"计中计\"</b>：悟空的\"变虫\"是智，罗刹女的\"假扇\"是诈。一来一回，比单纯打架精彩十倍。读时体会\"反转\"的快乐。","think":["悟空\"变虫钻肚\"妙在哪？为什么比硬抢高明？","\"拿到假扇\"这一反转，对读者有什么效果？"],"phrases":["变作小虫","钻入腹中","假扇"],"vocab":{"words":[{"t":"变作小虫","m":"悟空施展变化之术，变成小虫子，以便潜入铁扇公主体内。"},{"t":"钻入腹中","m":"钻进敌人肚子里翻腾，是悟空制敌的常用手段，此处逼对方就范。"},{"t":"假扇","m":"铁扇公主给的假芭蕉扇，扇火火不灭反而更旺，是计中计。"}],"ju":[{"t":"悟空变作小虫钻入公主腹中翻腾，逼出芭蕉扇——却是一把假扇！","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"变虫是智、假扇是诈，一来一回反转连连，比硬拼好看得多。"},{"t":"嫂嫂，扇子在哪儿？快拿出来！","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"一句口语化的追问，写出悟空得势时的急切与得意，性格鲜明。"}],"rhet":[{"t":"语言生动","m":"用变虫、翻腾、逼出等动作词，把斗智的紧张场面写得扣人心弦。"}]}}},{"img":"assets/scenes/comic-23-4.png","size":"cover","pos":"center","caption":"悟空请来天兵，降伏牛魔王；铁扇终献真扇，八百里山火顿熄。","bubbles":[{"who":"孙悟空","text":"这回，真扇到手，山火必灭！","side":"r"}],"study":{"intro":"收尾：单打独斗不够，悟空请天兵助阵，降牛魔王、得真扇、灭火。难关，靠\"智+众力\"才破。","appreciate":"结局点出<b>\"团结破难\"</b>：一个人的本事有边，借来的力量无边。也呼应\"关系\"——先前结的怨，最终仍要靠化解而非硬碰。","think":["\"请天兵\"这一笔，说明悟空懂得了什么？","火焰山终灭，靠的是\"力\"还是\"智与和\"？"],"phrases":["请来天兵","降伏牛魔王","山火顿熄"],"vocab":{"words":[{"t":"请来天兵","m":"悟空搬来天兵天将助阵，说明单靠一人难以降伏牛魔王。"},{"t":"降伏牛魔王","m":"把牛魔王降服拿下，使铁扇公主失去倚仗，只得献出真扇。"},{"t":"山火顿熄","m":"芭蕉扇一扇，八百里火焰立刻熄灭，取经道路终于打通。"}],"ju":[{"t":"悟空请来天兵，降伏牛魔王；铁扇终献真扇，八百里山火顿熄。","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"结局由借外力到化旧怨层层推进，山火顿熄收束全回，干净有力。"},{"t":"这回，真扇到手，山火必灭！","from":"第五十九回　唐三藏路阻火焰山　孙行者一调芭蕉扇","m":"一句自信的宣告，写出悟空历经波折后的底气，呼应智取主题。"}],"rhet":[{"t":"语言生动","m":"以降伏、顿熄等词写结局的畅快，收束有力，让读者跟着舒一口气。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

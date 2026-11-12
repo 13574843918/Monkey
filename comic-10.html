@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第二十四回　万寿山大仙留故友　五庄观行者窃人参</b>　民间知名度：<span class="hm">★★★★☆（镇元大仙）</span>　常考程度：<span class="hm">★★★★☆</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>万寿山五庄观，地仙之祖镇元大仙出门前留两枚人参果给唐僧，那果子遇金而落、遇土而入，形似孩童。悟空偷果、八戒怂恿、师徒分吃，被观中童子骂破。悟空一气推倒人参果树，闯下大祸。为救树，悟空遍访仙真，终请观音以甘露复活宝树，并与镇元结为兄弟。</p><p>读这一站，看<b>"闯祸—担责—弥补"</b>：真正的成长，是把捅的篓子自己补上。</p><p class="q">带着问题读：① 悟空为何推树？② 树能活，靠的是谁？③ "结为兄弟"结局妙在哪？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">五庄观内，人参果树灵光氤氲，树上结着形似孩童的仙果。</p><p class="qt">— 第二十四回　万寿山大仙留故友　五庄观行者窃人参</p><p class="qm">仙果灵光氤氲、形似孩童，为下文偷果惹祸埋下伏笔，一处景物藏着一场大祸。</p></div><div class="qrow"><p class="qq">俺老孙推了这树，看你能奈我何！</p><p class="qt">— 第二十四回　万寿山大仙留故友　五庄观行者窃人参</p><p class="qm">一句狂言写出悟空刚烈脾气，也为后文四处求人救树的转变作反衬。</p></div><div class="qrow"><p class="qq">净瓶甘露，还你活树。</p><p class="qt">— 第二十四回　万寿山大仙留故友　五庄观行者窃人参</p><p class="qm">观音慈悲法力化解大祸，点出"犯过能补、得人相助"的成长主题。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>设置悬念：</b>先写人参果三千年一熟、吃一个得长生，把果子写得越神，读者越好奇，也越懂悟空为何心动、后文为何闯祸。</li><li><b>误会推进：</b>八戒怂恿、童子怒骂，悟空一气推树，层层误会把小事推成大事，情节紧凑又有波折。</li><li><b>欲扬先抑：</b>先写悟空偷果、推树的顽劣，再写他满天下求人救树、肯认错补救，前后对比写出成长。</li><li><b>首尾呼应：</b>开篇写宝树灵光、仙果不凡，结尾写甘露复活宝树、结为兄弟，祸起于树、和亦于树，结构圆整。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>人物形象分析：</b>结合本回情节，分析孙悟空从闯祸到担责、弥补的成长变化，把握其冲动与担当的两面。</li><li><b>情节结构梳理：</b>用"起祸—闯祸—救祸—和好"四步梳理本回，说说作者如何把小事层层放大又圆满化解。</li><li><b>景物描写的作用：</b>找出本回写人参果树、五庄观环境的句子，说说这些景物描写对渲染气氛、推动情节的作用。</li><li><b>心理描写补写：</b>发挥想象，写一写悟空推倒果树后、独自面对满地狼藉时的心理活动，用第一人称，80字左右。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>镇元大仙是谁：</b>查阅资料，了解地仙之祖镇元大仙在神仙谱系中的位置，说说他为何地位尊贵却对悟空格外宽厚。</li><li><b>人参果与蟠桃：</b>对比人参果和蟠桃的来历、功效，说说《西游记》中"吃果长生"的设定有何深意。</li><li><b>"闯祸与担责"讨论：</b>结合悟空推树救树的故事，联系生活，讨论：做错事后，逃避和补救分别会带来什么？</li><li><b>观音救树的情节：</b>读原著第二十五、二十六回，看观音如何用净瓶甘露救活宝树，体会"救人救到底"的慈悲。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄。这一回他犯了个"情绪大错"——推树。但可贵在他<b>不逃不赖，遍访仙真补过</b>。错而能补，才是真汉子。</p></div><div class="card"><h3>镇元大仙</h3><p>地仙之祖，人参果树之主。本事极大、架子也大，却因悟空救树之举化敌为友，<b>豁达可交</b>。</p></div><div class="card"><h3>观音菩萨</h3><p>以净瓶甘露复活宝树的关键人物。再次体现<b>"关键时刻的救场者"</b>身份——但前提是悟空先去求。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 小错勿叠大错</h3><p>偷吃事小，推树事大。为遮羞而犯更大的错，最蠢也最常见。</p><h3>② 闯祸要会补</h3><p>悟空没跑，而是去找法子。会认错、会求助、会补救，胜过从不犯错。</p><h3>③ 化敌可为友</h3><p>镇元与悟空从对立到结拜。肯补过的人，连对手都能变成兄弟。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>悟空为何推树？</b><br><span class="ans">悟空因偷吃人参果被童子辱骂，一时怒气上涌，觉得"你骂我，我便推树出气"，为遮小错而犯大错。这写的是他性子急、受不得气，也提醒我们：冲动是魔鬼，小错不认会成大祸。</span></li><li><b>树能活，靠的是谁？</b><br><span class="ans">树能活，靠的是观音菩萨的净瓶甘露。悟空闯祸后没有逃避，而是四处求仙问真，最终请来观音救活宝树。这说明犯错了不可怕，肯补救、找对方法，就能挽回。</span></li><li><b>"结为兄弟"结局妙在哪？</b><br><span class="ans">这个结局妙在"以和收场"：悟空推了人家的树，镇元不仅不记仇，还与他结为兄弟。坏事变成好事，既化解恩怨，又写出悟空"敢认错、能补救"的成长，读来温暖又圆满。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"因果链"：</b>偷→骂→怒→推→祸→补，一环扣一环。读时画这条链。</li><li><b>分"本性"与"一时"：</b>悟空是脾气错不是坏。看人看事，别一棒子打死。</li><li><b>学"补救思维"：</b>遇错先想"怎么补"，不先想"怎么赖"，这是大本事。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-09.html"><span class="dir">← 上一站</span><b>四圣试禅心</b><small>第 9 站</small></a><a class="next" href="comic-baihuling.html"><span class="dir">下一站 →</span><b>白虎岭 · 三打白骨精</b><small>第 11 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-10-1.png","span":true,"size":"cover","pos":"center","caption":"五庄观内，人参果树灵光氤氲，树上结着形似孩童的仙果。","bubbles":[{"who":"清风","text":"此果三千年一熟，吃一个便得长生。","side":"l"}],"study":{"intro":"先写\"宝\"与\"禁\"：人参果是稀世奇珍，主人不在，童子看守。宝物 + 无人看紧，便是祸的导火索。","appreciate":"作者用<b>\"奇物设局\"</b>：把果子写得越神，读者越懂悟空为何心动、后文为何大祸。景里藏因果。","think":["为什么作者把人参果写得这么神？","\"宝物无人紧看\"常引出什么故事？"],"phrases":["五庄观","人参果树","形似孩童"]}},{"img":"assets/scenes/comic-10-2.png","size":"cover","pos":"center","caption":"悟空偷果、八戒怂恿，师徒分食；童子识破，怒骂不止。","bubbles":[{"who":"猪八戒","text":"猴哥，这果子甚甜，再寻两个！","side":"r"}],"study":{"intro":"闯祸开端：偷吃本不小，被骂后悟空面子上挂不住。注意八戒\"怂恿\"的作用——他常是惹祸的催化剂。","appreciate":"这一格写<b>\"脾气惹祸\"</b>：悟空不是坏，是\"被激\"后失控。读人物，要分\"本性\"和\"一时火\"。","think":["悟空推树，是本性坏还是一时气？","八戒的\"怂恿\"在故事里起什么作用？"],"phrases":["悟空偷果","八戒怂恿","分食被骂"]}},{"img":"assets/scenes/comic-10-3.png","size":"cover","pos":"center","caption":"悟空怒推人参果树，树倒果落，五庄观一片狼藉——大祸酿成。","bubbles":[{"who":"孙悟空","text":"俺老孙推了这树，看你能奈我何！","side":"l"}],"sfx":{"t":"咔嚓——","x":"54%","y":"16%"},"study":{"intro":"高潮：一推成祸。树是镇元之宝，推倒了等于捅了马蜂窝。这一推，把\"小错\"升级成\"大难\"。","appreciate":"这里写<b>\"错上错\"</b>：偷吃是小过，推树是大祸。提醒我们：为遮一个小错而犯更大的错，最得不偿失。","think":["\"推树\"这一下，把事情弄糟了多少？","为了面子犯大错，生活里有没有类似？"],"phrases":["怒推宝树","树倒果落","大祸酿成"]}},{"img":"assets/scenes/comic-10-4.png","size":"cover","pos":"center","caption":"观音以甘露复活宝树，镇元大仙转怒为喜，与悟空结为兄弟。","bubbles":[{"who":"观音菩萨","text":"净瓶甘露，还你活树。","side":"r","kind":"god"}],"study":{"intro":"收尾：悟空四处求人终请来观音，树活了，仇解了，还交朋友。闯的祸，靠\"负责+求助\"补上了。","appreciate":"结局点出<b>\"补过即成长\"</b>：悟空没逃，而是满天下找法子救树。会认错、会补救，比从不犯错更可贵。","think":["树能活，关键在悟空做了什么？","\"结为兄弟\"的结尾，比\"谢罪\"高明在哪？"],"phrases":["观音医树","宝树复活","结为兄弟"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-10-1.png","span":true,"size":"cover","pos":"center","caption":"五庄观内，人参果树灵光氤氲，树上结着形似孩童的仙果。","bubbles":[{"who":"清风","text":"此果三千年一熟，吃一个便得长生。","side":"l"}],"study":{"intro":"先写\"宝\"与\"禁\"：人参果是稀世奇珍，主人不在，童子看守。宝物 + 无人看紧，便是祸的导火索。","appreciate":"作者用<b>\"奇物设局\"</b>：把果子写得越神，读者越懂悟空为何心动、后文为何大祸。景里藏因果。","think":["为什么作者把人参果写得这么神？","\"宝物无人紧看\"常引出什么故事？"],"phrases":["五庄观","人参果树","形似孩童"],"vocab":{"words":[{"t":"五庄观","m":"镇元大仙的道场，地仙之祖居住的仙家洞府，清幽而庄严。"},{"t":"人参果树","m":"三千年一熟的神树，果似孩童，闻香能活三百六十岁。"},{"t":"形似孩童","m":"人参果长得像小娃娃，故又称\"长生果\"，惹人垂涎。"}],"ju":[{"t":"五庄观内，人参果树灵光氤氲，树上结着形似孩童的仙果。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"环境描写，氤氲灵光暗示此果不凡，为下文偷果惹祸埋下伏笔。"},{"t":"此果三千年一熟，吃一个便得长生。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"借童子之口道出果子珍贵，既设悬念，又说明悟空为何心动。"}],"rhet":[{"t":"语言生动","m":"用\"灵光氤氲\"\"形似孩童\"把仙果写得活灵活现，引人想象，为下文作铺垫。"}]}}},{"img":"assets/scenes/comic-10-2.png","size":"cover","pos":"center","caption":"悟空偷果、八戒怂恿，师徒分食；童子识破，怒骂不止。","bubbles":[{"who":"猪八戒","text":"猴哥，这果子甚甜，再寻两个！","side":"r"}],"study":{"intro":"闯祸开端：偷吃本不小，被骂后悟空面子上挂不住。注意八戒\"怂恿\"的作用——他常是惹祸的催化剂。","appreciate":"这一格写<b>\"脾气惹祸\"</b>：悟空不是坏，是\"被激\"后失控。读人物，要分\"本性\"和\"一时火\"。","think":["悟空推树，是本性坏还是一时气？","八戒的\"怂恿\"在故事里起什么作用？"],"phrases":["悟空偷果","八戒怂恿","分食被骂"],"vocab":{"words":[{"t":"悟空偷果","m":"悟空因好奇贪念盗摘人参果，惹来后患，可见其顽皮任性。"},{"t":"八戒怂恿","m":"八戒嘴馋，撺掇悟空再偷果子，是祸事扩大的推手。"},{"t":"分食被骂","m":"师徒分食仙果被童子识破，遭怒骂，矛盾迅速升级。"}],"ju":[{"t":"悟空偷果、八戒怂恿，师徒分食；童子识破，怒骂不止。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"一句概括祸端由来，偷果、怂恿、分食层层推进，节奏紧凑。"},{"t":"猴哥，这果子甚甜，再寻两个！","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"八戒贪吃的一句话，生动写出其馋嘴本性，也推动情节走向失控。"}],"rhet":[{"t":"语言生动","m":"口语化对话写八戒贪嘴，\"甚甜\"\"再寻两个\"贴合人物，令人忍俊不禁。"}]}}},{"img":"assets/scenes/comic-10-3.png","size":"cover","pos":"center","caption":"悟空怒推人参果树，树倒果落，五庄观一片狼藉——大祸酿成。","bubbles":[{"who":"孙悟空","text":"俺老孙推了这树，看你能奈我何！","side":"l"}],"sfx":{"t":"咔嚓——","x":"54%","y":"16%"},"study":{"intro":"高潮：一推成祸。树是镇元之宝，推倒了等于捅了马蜂窝。这一推，把\"小错\"升级成\"大难\"。","appreciate":"这里写<b>\"错上错\"</b>：偷吃是小过，推树是大祸。提醒我们：为遮一个小错而犯更大的错，最得不偿失。","think":["\"推树\"这一下，把事情弄糟了多少？","为了面子犯大错，生活里有没有类似？"],"phrases":["怒推宝树","树倒果落","大祸酿成"],"vocab":{"words":[{"t":"怒推宝树","m":"悟空一气之下推倒人参果树，把小过酿成大祸。"},{"t":"树倒果落","m":"树倒果落、满地狼藉，直接写出闯祸现场的惨状。"},{"t":"大祸酿成","m":"一时怒起酿成大祸，为后文请医救树埋下伏笔。"}],"ju":[{"t":"悟空怒推人参果树，树倒果落，五庄观一片狼藉——大祸酿成。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"动作加场景，把\"闯祸\"写得很重，\"狼藉\"一词极具画面感。"},{"t":"俺老孙推了这树，看你能奈我何！","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"一句狂言写尽悟空刚烈不服的脾气，也照见其不成熟的性格。"}],"rhet":[{"t":"语言生动","m":"以\"推、倒、落\"连续动词写破坏之烈，\"看你能奈我何\"更显倔强，形象鲜明。"}]}}},{"img":"assets/scenes/comic-10-4.png","size":"cover","pos":"center","caption":"观音以甘露复活宝树，镇元大仙转怒为喜，与悟空结为兄弟。","bubbles":[{"who":"观音菩萨","text":"净瓶甘露，还你活树。","side":"r","kind":"god"}],"study":{"intro":"收尾：悟空四处求人终请来观音，树活了，仇解了，还交朋友。闯的祸，靠\"负责+求助\"补上了。","appreciate":"结局点出<b>\"补过即成长\"</b>：悟空没逃，而是满天下找法子救树。会认错、会补救，比从不犯错更可贵。","think":["树能活，关键在悟空做了什么？","\"结为兄弟\"的结尾，比\"谢罪\"高明在哪？"],"phrases":["观音医树","宝树复活","结为兄弟"],"vocab":{"words":[{"t":"观音医树","m":"观音以净瓶甘露救活宝树，是化解这场大祸的关键。"},{"t":"宝树复活","m":"被推倒的人参果树重新活过来，灾祸得以圆满化解。"},{"t":"结为兄弟","m":"镇元大仙转怒为喜，与悟空结拜，坏事反成好事。"}],"ju":[{"t":"观音以甘露复活宝树，镇元大仙转怒为喜，与悟空结为兄弟。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"结局写救树与和好，一\"喜\"一\"兄弟\"，把大祸化为美谈。"},{"t":"净瓶甘露，还你活树。","from":"第二十四回　万寿山大仙留故友　五庄观行者窃人参","m":"观音寥寥数语，慈悲法力尽显，是全回转危为安的枢纽。"}],"rhet":[{"t":"语言生动","m":"用\"复活\"\"转怒为喜\"\"结为兄弟\"层层递进，写尽矛盾化解的圆满余味。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

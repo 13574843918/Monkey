@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第二十至二十一回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>黄风岭的黄风大圣原是灵山脚下一只黄毛貂鼠，偷了如来灯油下界为妖，能吹"三昧神风"，刮得悟空睁不开火眼金睛。悟空请来灵吉菩萨，菩萨用飞龙宝杖与定风珠降住妖风，收了貂鼠。这一站讲的是一个道理：<b>克风的，不是更大的风，而是"定"</b>。</p><p>读这一站，留意"风"的比喻——它像不像生活中那些乱人心神的诱惑与慌乱？</p><p class="q">带着问题读：① 为什么悟空怕的不是妖而是"风"？② 灵吉菩萨靠什么破风？③ "定风"对你有什么启发？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄。这一回他头回"被风克住"，说明<b>再强也有不对症的时候</b>，于是学会去请专克此风的菩萨。</p></div><div class="card"><h3>黄风大圣（黄毛貂鼠）</h3><p>灵山偷灯油的貂鼠下界为妖，能吹三昧神风。代表<b>乱人心神的"无形之敌"</b>。</p></div><div class="card"><h3>灵吉菩萨</h3><p>持飞龙宝杖、掌定风珠的菩萨，专破黄风。是<b>"对症降妖"的智者</b>——合适的人，办合适的事。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 无形之敌最乱心</h3><p>"风"看不见却能掀翻一切。生活里慌乱、流言、诱惑，都像风，要先认出它。</p><h3>② 找对"定风珠"</h3><p>悟空请灵吉，是找对钥匙。遇乱不硬扛，找能"定"住你的人或法。</p><h3>③ 风过路还在</h3><p>风波会过去。成长不是不遇风，而是风里也能等来平静。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>为什么悟空怕的不是妖而是“风”？</b><br><span class="ans">妖还能看见、能打，风却无形，专迷人心眼。火眼金睛都睁不开，有力使不出，悟空才被逼退。</span></li><li><b>灵吉菩萨靠什么破风？</b><br><span class="ans">靠飞龙宝杖和定风珠。定风珠专克风，一祭出就稳住狂风，再收黄毛貂鼠，对症下药。</span></li><li><b>“定风”对你有什么启发？</b><br><span class="ans">遇事慌乱像被风吹，越急越乱。先静下心来，找到对的办法，才能稳住局面。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"比喻"：</b>把"风"当"乱心之物"读，神话立刻有了现实味。</li><li><b>学"对症"：</b>遇难题别只想到"硬打"，想想灵吉的"对症下药"。</li><li><b>列"专克表"：</b>哪些菩萨专克哪种妖？做成小表，读《西游记》如读"天庭通讯录"。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-06.html"><span class="dir">← 上一站</span><b>高老庄</b><small>第 6 站</small></a><a class="next" href="comic-08.html"><span class="dir">下一站 →</span><b>流沙河</b><small>第 8 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-07-1.png","span":true,"size":"cover","pos":"center","caption":"黄风岭黄沙漫天，狂风呼啸，取经队伍逆风前行，步履维艰。","bubbles":[{"who":"猪八戒","text":"这风刮得人睁不开眼！","side":"r"}],"study":{"intro":"先写\"风\"的厉害：不是妖面对面，而是环境先把人整垮。风，是这一难的\"主角\"。","appreciate":"作者用<b>环境当反派</b>：看不见的妖最可怕。把\"风\"写得有性格，读者就懂了——乱的根源常是无形的。","think":["为什么这一难先写风、后写妖？","生活里有没有\"看不见却乱你心\"的\"风\"？"],"phrases":["黄风岭","黄沙漫天","逆风前行"]}},{"img":"assets/scenes/comic-07-2.png","size":"cover","pos":"center","caption":"黄风大圣（黄毛貂鼠）口吐三昧神风，悟空火眼难睁，连退数步。","bubbles":[{"who":"黄风大圣","text":"吃我三昧神风！","side":"l","kind":"demon"}],"sfx":{"t":"呼——","x":"66%","y":"22%"},"study":{"intro":"冲突核心：妖不靠棒、不靠牙，靠\"风\"乱你心神。悟空的火眼金睛第一次\"失效\"，因为敌的是\"气\"不是\"形\"。","appreciate":"这一格写<b>\"无形之敌\"</b>：最厉害的攻击往往看不见。读神话，要把\"风\"读成\"扰乱心神的东西\"。","think":["悟空什么妖都不怕，为何怕风？","\"乱心神\"比\"伤身体\"更可怕，你同意吗？"],"phrases":["黄毛貂鼠","三昧神风","火眼难睁"]}},{"img":"assets/scenes/comic-07-3.png","size":"cover","pos":"center","caption":"悟空请来灵吉菩萨，菩萨持飞龙宝杖，祭出定风珠稳住狂风。","bubbles":[{"who":"灵吉菩萨","text":"小小妖风，安得乱我佛门清净！","side":"r","kind":"god"}],"study":{"intro":"转折：请对了的神。灵吉菩萨专克此风——会请人，也是一种本事。","appreciate":"这里点出<b>\"对症下药的智慧\"</b>：悟空打不过风，不是不厉害，是\"不对路\"。遇难题，找对钥匙比硬扛重要。","think":["为什么是灵吉菩萨来破风？","你遇\"乱心\"之事，是硬扛还是找\"定风珠\"？"],"phrases":["请来灵吉","飞龙宝杖","定风珠"]}},{"img":"assets/scenes/comic-07-4.png","size":"cover","pos":"center","caption":"妖风既定，黄毛貂鼠被收，取经路重归平静。","bubbles":[],"study":{"intro":"收束于\"风停\"。风波过去，路还在。这一难告诉我们：乱一阵没关系，关键是有人能\"定\"住。","appreciate":"结尾用<b>平静反衬</b>：刚才还飞沙走石，此刻安然。一张一弛，故事有呼吸；人也一样，慌过要能静下来。","think":["为什么\"风停\"这一格让人松口气？","你有没有自己的\"定风珠\"（让人安静的人/事）？"],"phrases":["妖风既定","貂鼠被收","重归平静"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-07-1.png","span":true,"size":"cover","pos":"center","caption":"黄风岭黄沙漫天，狂风呼啸，取经队伍逆风前行，步履维艰。","bubbles":[{"who":"猪八戒","text":"这风刮得人睁不开眼！","side":"r"}],"study":{"intro":"先写\"风\"的厉害：不是妖面对面，而是环境先把人整垮。风，是这一难的\"主角\"。","appreciate":"作者用<b>环境当反派</b>：看不见的妖最可怕。把\"风\"写得有性格，读者就懂了——乱的根源常是无形的。","think":["为什么这一难先写风、后写妖？","生活里有没有\"看不见却乱你心\"的\"风\"？"],"phrases":["黄风岭","黄沙漫天","逆风前行"],"vocab":{"words":[{"t":"黄风岭","m":"取经路上的一座山岭，常年黄沙漫天，狂风不断。"},{"t":"黄沙漫天","m":"风卷黄沙遮天蔽日，让人睁不开眼。"},{"t":"逆风前行","m":"取经队伍顶着狂风走，每走一步都很艰难。"}],"ju":[{"t":"黄风岭黄沙漫天，狂风呼啸，取经队伍逆风前行，步履维艰。","from":"原著第二十至二十一回","m":"用环境当反派，风一吹，看不见的妖比明刀明枪更可怕。"},{"t":"这风刮得人睁不开眼！","from":"原著第二十至二十一回","m":"八戒一句抱怨，把狂风写得很具体，读者也感同身受。"}],"rhet":[{"t":"环境描写","m":"黄沙狂风扑面，把无形的危险写得可感可触。"}]}}},{"img":"assets/scenes/comic-07-2.png","size":"cover","pos":"center","caption":"黄风大圣（黄毛貂鼠）口吐三昧神风，悟空火眼难睁，连退数步。","bubbles":[{"who":"黄风大圣","text":"吃我三昧神风！","side":"l","kind":"demon"}],"sfx":{"t":"呼——","x":"66%","y":"22%"},"study":{"intro":"冲突核心：妖不靠棒、不靠牙，靠\"风\"乱你心神。悟空的火眼金睛第一次\"失效\"，因为敌的是\"气\"不是\"形\"。","appreciate":"这一格写<b>\"无形之敌\"</b>：最厉害的攻击往往看不见。读神话，要把\"风\"读成\"扰乱心神的东西\"。","think":["悟空什么妖都不怕，为何怕风？","\"乱心神\"比\"伤身体\"更可怕，你同意吗？"],"phrases":["黄毛貂鼠","三昧神风","火眼难睁"],"vocab":{"words":[{"t":"黄毛貂鼠","m":"黄风大圣的原形，原是灵山脚下偷灯油的小妖。"},{"t":"三昧神风","m":"妖怪吹出的妖风，能迷人心眼，连悟空也难挡。"},{"t":"火眼难睁","m":"悟空的火眼金睛被风吹得睁不开，连连后退。"}],"ju":[{"t":"黄风大圣（黄毛貂鼠）口吐三昧神风，悟空火眼难睁，连退数步。","from":"原著第二十至二十一回","m":"最厉害的攻击看不见，连悟空都被吹退，写足无形之敌。"},{"t":"吃我三昧神风！","from":"原著第二十至二十一回","m":"妖怪一句话，狂风就扑来，凶险来得又急又猛。"}],"rhet":[{"t":"语言生动","m":"“口吐”“难睁”“连退”连用，把被风逼退的狼狈写活了。"}]}}},{"img":"assets/scenes/comic-07-3.png","size":"cover","pos":"center","caption":"悟空请来灵吉菩萨，菩萨持飞龙宝杖，祭出定风珠稳住狂风。","bubbles":[{"who":"灵吉菩萨","text":"小小妖风，安得乱我佛门清净！","side":"r","kind":"god"}],"study":{"intro":"转折：请对了的神。灵吉菩萨专克此风——会请人，也是一种本事。","appreciate":"这里点出<b>\"对症下药的智慧\"</b>：悟空打不过风，不是不厉害，是\"不对路\"。遇难题，找对钥匙比硬扛重要。","think":["为什么是灵吉菩萨来破风？","你遇\"乱心\"之事，是硬扛还是找\"定风珠\"？"],"phrases":["请来灵吉","飞龙宝杖","定风珠"],"vocab":{"words":[{"t":"请来灵吉","m":"悟空请来灵吉菩萨，请他对付这阵妖风。"},{"t":"飞龙宝杖","m":"灵吉菩萨的法宝，能降伏黄风怪。"},{"t":"定风珠","m":"专门定风的宝珠，一祭出就稳住了狂风。"}],"ju":[{"t":"悟空请来灵吉菩萨，菩萨持飞龙宝杖，祭出定风珠稳住狂风。","from":"原著第二十至二十一回","m":"打不过风就请对的人来，找对钥匙比硬扛重要。"},{"t":"小小妖风，安得乱我佛门清净！","from":"原著第二十至二十一回","m":"菩萨淡定一句，与之前狂风对比，破风之势已成。"}],"rhet":[{"t":"语言生动","m":"“持宝杖”“祭定风珠”写来从容，稳住了狂风也稳住了读者。"}]}}},{"img":"assets/scenes/comic-07-4.png","size":"cover","pos":"center","caption":"妖风既定，黄毛貂鼠被收，取经路重归平静。","bubbles":[],"study":{"intro":"收束于\"风停\"。风波过去，路还在。这一难告诉我们：乱一阵没关系，关键是有人能\"定\"住。","appreciate":"结尾用<b>平静反衬</b>：刚才还飞沙走石，此刻安然。一张一弛，故事有呼吸；人也一样，慌过要能静下来。","think":["为什么\"风停\"这一格让人松口气？","你有没有自己的\"定风珠\"（让人安静的人/事）？"],"phrases":["妖风既定","貂鼠被收","重归平静"],"vocab":{"words":[{"t":"妖风既定","m":"定风珠一发威，妖风立刻平息。"},{"t":"貂鼠被收","m":"黄毛貂鼠现原形，被灵吉菩萨收走。"},{"t":"重归平静","m":"黄风岭恢复安静，取经路重新畅通。"}],"ju":[{"t":"妖风既定，黄毛貂鼠被收，取经路重归平静。","from":"原著第二十至二十一回","m":"刚才还飞沙走石，此刻安然，一张一弛，故事有了呼吸。"}],"rhet":[{"t":"反衬","m":"用此刻的平静反衬刚才的狂风，让“定”的可贵更突出。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

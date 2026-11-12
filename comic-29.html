@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第七十二回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>盘丝洞，七个蜘蛛精在濯垢泉洗浴，吐丝结网困住唐僧。悟空破丝入洞，蜘蛛精逃往师兄多目怪（蜈蚣精）处。后文毗蓝婆菩萨——昴日星官之母——以绣花针破尽蛛网妖丝。这一站讲"丝网缠身，一针可解"。</p><p>读这一站，看<b>"柔网"</b>：丝不硬，却最缠人。</p><p class="q">带着问题读：① 蛛丝为何难破？② 为什么请毗蓝婆？③ "一针破网"给你什么启发？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>七个蜘蛛精</h3><p>盘丝洞女妖，吐丝结网困人。代表<b>"柔韧缠缚的麻烦"</b>——不凶不猛，却最费解。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄。这回他被"软丝"克制，再次证明：有些困，棒破不了，得靠巧。</p></div><div class="card"><h3>毗蓝婆菩萨</h3><p>昴日星官之母，以绣花针破尽妖丝。是<b>"以小破缠"的巧手</b>——针小，克丝足矣。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 柔网最缠人</h3><p>丝不硬却韧，棒斩不断根。最耗力的，常是"软磨"的事。</p><h3>② 以小可破缠</h3><p>一根针解千丝。对的方法不必大，恰好就够。</p><h3>③ 缠者必有其解</h3><p>再密的网也有对应的针。别被"绕"吓住，去找解法。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>蛛丝为何难破？</b><br><span class="ans">因为丝又黏又韧，越缠越密。金箍棒力大却难斩断软丝，硬的东西好破，软东西反而难缠。</span></li><li><b>为什么请毗蓝婆？</b><br><span class="ans">因为毗蓝婆是昴日星官之母，绣花针正克蛛丝。悟空力战难破，便请对路的菩萨来一针破之。</span></li><li><b>"一针破网"给你什么启发？</b><br><span class="ans">遇到纠缠难解的问题，不必蛮干硬拼，要找对克它的那个点。方法对，一根针也能破千丝。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>勾连前文：</b>毗蓝婆是昴日星官之母（见蝎子精回）。读时串起"亲属线"。</li><li><b>读"柔困"：</b>丝网、情关、雅惑，都是"柔难"。归一类读，味道更足。</li><li><b>想"我的针"：</b>你被什么"软事"缠着？那根能解的"针"是什么？</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-28.html"><span class="dir">← 上一站</span><b>朱紫国</b><small>第 28 站</small></a><a class="next" href="comic-30.html"><span class="dir">下一站 →</span><b>黄花观</b><small>第 30 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-29-1.png","span":true,"size":"cover","pos":"center","caption":"盘丝岭濯垢泉，七位女子（蜘蛛精）在泉中洗浴，丝网悄然铺开。","bubbles":[{"who":"蜘蛛精","text":"这唐僧送上门，且用丝困他。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"柔陷阱\"：泉暖丝柔，毫无杀气。最缠人的网，常起于最舒服的地方。","appreciate":"作者用<b>\"以柔缚人\"</b>设局：不绑你手，而用丝裹你身。读时想：什么\"舒服的关系\"也曾缠住过你？","think":["为什么用\"丝\"不用\"锁\"？","生活里有没有\"柔柔地缠住你\"的事？"],"phrases":["盘丝洞","濯垢泉","七蛛洗浴"]}},{"img":"assets/scenes/comic-29-2.png","size":"cover","pos":"center","caption":"蛛丝结网裹住唐僧，密密匝匝，悟空挥棒也难以尽断。","bubbles":[{"who":"孙悟空","text":"这黏丝好生难断！","side":"l"}],"sfx":{"t":"嘶啦——","x":"58%","y":"20%"},"study":{"intro":"中招：丝软却韧，棒斩不断根。悟空第一次\"有力使不出\"。","appreciate":"这一格写<b>\"韧缠之困\"</b>：硬东西好破，软东西难断。读时想：什么\"软问题\"最耗你力气？","think":["为什么丝比锁难破？","你有没有被\"软磨硬泡\"式的事拖垮过？"],"phrases":["丝网裹僧","密匝难断","有力难施"]}},{"img":"assets/scenes/comic-29-3.png","size":"cover","pos":"center","caption":"悟空追至，毗蓝婆菩萨（昴日星官之母）前来，以一枚绣花针破尽妖丝。","bubbles":[{"who":"毗蓝婆菩萨","text":"区区蛛丝，老身一针可破。","side":"r","kind":"god"}],"study":{"intro":"转折：请对了的\"针\"。蛛丝再密，怕一根克它的针——毗蓝婆的针，正合此用。","appreciate":"这里写<b>\"以小破缠\"</b>：不必大动干戈，一根针解千丝。对的方法，常常很小很巧。","think":["为什么\"一针\"能破\"千丝\"？","你缠住的事，是不是也只需\"一根针\"？"],"phrases":["请毗蓝婆","绣花针","一针破丝"]}},{"img":"assets/scenes/comic-29-4.png","size":"cover","pos":"center","caption":"蛛网尽破，七蛛被收，唐僧脱困，盘丝岭复清。","bubbles":[{"who":"猪八戒","text":"这网一破，浑身轻松！","side":"r"}],"study":{"intro":"收尾：网破人脱，山复清。柔网之难，终毁于一针之巧。","appreciate":"结局点出<b>\"缠者必有其解\"</b>：再密的丝，也有对应的针。别被\"绕\"吓住，去找那根\"针\"。","think":["\"网破人脱\"为什么轻松？","你正被什么\"丝\"缠着？你的\"针\"找到了吗？"],"phrases":["蛛网尽破","七蛛被收","脱困复清"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-29-1.png","span":true,"size":"cover","pos":"center","caption":"盘丝岭濯垢泉，七位女子（蜘蛛精）在泉中洗浴，丝网悄然铺开。","bubbles":[{"who":"蜘蛛精","text":"这唐僧送上门，且用丝困他。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"柔陷阱\"：泉暖丝柔，毫无杀气。最缠人的网，常起于最舒服的地方。","appreciate":"作者用<b>\"以柔缚人\"</b>设局：不绑你手，而用丝裹你身。读时想：什么\"舒服的关系\"也曾缠住过你？","think":["为什么用\"丝\"不用\"锁\"？","生活里有没有\"柔柔地缠住你\"的事？"],"phrases":["盘丝洞","濯垢泉","七蛛洗浴"],"vocab":{"words":[{"t":"盘丝洞","m":"七个蜘蛛精盘踞的洞府，洞中多丝网，故名。"},{"t":"濯垢泉","m":"山中的温泉，蜘蛛精常在泉中洗浴，水光如镜。"},{"t":"七蛛洗浴","m":"七个蜘蛛精在泉里洗澡，看似悠闲，暗藏杀机。"}],"ju":[{"t":"盘丝岭濯垢泉，七位女子（蜘蛛精）在泉中洗浴，丝网悄然铺开。","from":"原著第七十二回","m":"写景暗藏凶险，泉中洗浴的悠闲与丝网铺开的杀机相对照。"},{"t":"这唐僧送上门，且用丝困他。","from":"原著第七十二回","m":"写蜘蛛精的盘算，一句送上门显出她们早有预谋。"}],"rhet":[{"t":"语言生动","m":"用悄然写丝网铺开，不动声色却让人感到危险逼近。"}]}}},{"img":"assets/scenes/comic-29-2.png","size":"cover","pos":"center","caption":"蛛丝结网裹住唐僧，密密匝匝，悟空挥棒也难以尽断。","bubbles":[{"who":"孙悟空","text":"这黏丝好生难断！","side":"l"}],"sfx":{"t":"嘶啦——","x":"58%","y":"20%"},"study":{"intro":"中招：丝软却韧，棒斩不断根。悟空第一次\"有力使不出\"。","appreciate":"这一格写<b>\"韧缠之困\"</b>：硬东西好破，软东西难断。读时想：什么\"软问题\"最耗你力气？","think":["为什么丝比锁难破？","你有没有被\"软磨硬泡\"式的事拖垮过？"],"phrases":["丝网裹僧","密匝难断","有力难施"],"vocab":{"words":[{"t":"丝网裹僧","m":"蜘蛛精吐丝结网，把唐僧层层包裹起来。"},{"t":"密匝难断","m":"丝又密又韧，悟空的金箍棒也难一下子斩断。"},{"t":"有力难施","m":"明明有本事，却被软丝缠住，使不上力气。"}],"ju":[{"t":"蛛丝结网裹住唐僧，密密匝匝，悟空挥棒也难以尽断。","from":"原著第七十二回","m":"用密密匝匝写丝之密，难以尽断写悟空也奈何不得，写出软东西的厉害。"},{"t":"这黏丝好生难断！","from":"原著第七十二回","m":"写悟空也犯了难，一句惊呼显出这丝网着实难缠。"}],"rhet":[{"t":"语言生动","m":"以黏、密写丝，把无形之缠写得触手可及。"}]}}},{"img":"assets/scenes/comic-29-3.png","size":"cover","pos":"center","caption":"悟空追至，毗蓝婆菩萨（昴日星官之母）前来，以一枚绣花针破尽妖丝。","bubbles":[{"who":"毗蓝婆菩萨","text":"区区蛛丝，老身一针可破。","side":"r","kind":"god"}],"study":{"intro":"转折：请对了的\"针\"。蛛丝再密，怕一根克它的针——毗蓝婆的针，正合此用。","appreciate":"这里写<b>\"以小破缠\"</b>：不必大动干戈，一根针解千丝。对的方法，常常很小很巧。","think":["为什么\"一针\"能破\"千丝\"？","你缠住的事，是不是也只需\"一根针\"？"],"phrases":["请毗蓝婆","绣花针","一针破丝"],"vocab":{"words":[{"t":"请毗蓝婆","m":"悟空去请毗蓝婆菩萨前来降妖，她是昴日星官之母。"},{"t":"绣花针","m":"一枚细小的针，却是破蛛丝妖网的克星法宝。"},{"t":"一针破丝","m":"只一针便破尽蛛丝妖网，以小巧破纠缠。"}],"ju":[{"t":"悟空追至，毗蓝婆菩萨（昴日星官之母）前来，以一枚绣花针破尽妖丝。","from":"原著第七十二回","m":"写一枚绣花针对尽妖丝，小与大对比，突出以巧破难。"},{"t":"区区蛛丝，老身一针可破。","from":"原著第七十二回","m":"写菩萨的从容，一句一针可破举重若轻。"}],"rhet":[{"t":"语言生动","m":"区区与一针呼应，轻描淡写却最有分量。"}]}}},{"img":"assets/scenes/comic-29-4.png","size":"cover","pos":"center","caption":"蛛网尽破，七蛛被收，唐僧脱困，盘丝岭复清。","bubbles":[{"who":"猪八戒","text":"这网一破，浑身轻松！","side":"r"}],"study":{"intro":"收尾：网破人脱，山复清。柔网之难，终毁于一针之巧。","appreciate":"结局点出<b>\"缠者必有其解\"</b>：再密的丝，也有对应的针。别被\"绕\"吓住，去找那根\"针\"。","think":["\"网破人脱\"为什么轻松？","你正被什么\"丝\"缠着？你的\"针\"找到了吗？"],"phrases":["蛛网尽破","七蛛被收","脱困复清"],"vocab":{"words":[{"t":"蛛网尽破","m":"妖丝妖网全部被破掉，再也不能缠人。"},{"t":"七蛛被收","m":"七个蜘蛛精都被降伏收服，盘丝洞不再为害。"},{"t":"脱困复清","m":"唐僧脱出丝网，盘丝岭又恢复清朗太平。"}],"ju":[{"t":"蛛网尽破，七蛛被收，唐僧脱困，盘丝岭复清。","from":"原著第七十二回","m":"尽破、被收、复清连用，干净利落写出祸患全消。"},{"t":"这网一破，浑身轻松！","from":"原著第七十二回","m":"用八戒的体会写解脱之快，语气活泼，让读者也舒一口气。"}],"rhet":[{"t":"语言生动","m":"借八戒之口写轻松，把破网后的畅快写得真切。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

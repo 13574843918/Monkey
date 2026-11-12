@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>西游记 · 白虎岭 · 三打白骨精（漫画分镜 · 阅读导读）</title>
+<title>西游记 · 白虎岭 · 三打白骨精（重点精读 · 漫画分镜 · 阅读导读）</title>
 <style>
   :root{
     --ink:#1c1714; --paper:#f4ead2; --paper2:#ead9b6;
@@ -35,7 +35,7 @@
   /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +50,27 @@
     font-size:13px;line-height:1.1;text-align:center;transform:rotate(-6deg);
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
+
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
 
   /* 整回导读 */
   .lead{
@@ -127,17 +148,30 @@
   /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
+
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
 
   /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -151,6 +185,54 @@
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
+
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
 
   /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
@@ -185,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -201,16 +284,35 @@
       <b>西游记 · 白虎岭</b><br>
       第 11 站 · 原著第二十七至三十一回<br>
       取经路上第一场"信任危机"<br>
-      <span style="color:var(--red)">漫画分镜 + 阅读导读</span>
+      <span style="color:var(--red)">重点精读 · 漫画分镜 + 阅读导读</span>
     </div>
     <div class="seal">西游<br>导读</div>
   </div>
+
+  <!-- 重点精读徽章 + 回目出处 -->
+  <div class="feature-bar">
+    <span class="feature-badge">★ 重点精读</span>
+    <div class="huimu">
+      原著回目：<b>第二十七回　尸魔三戏唐三藏　圣僧恨逐美猴王</b><br>
+      民间知名度：<span class="hm">★★★★★（家喻户晓）</span>　常考程度：<span class="hm">★★★★★</span>
+    </div>
+  </div>
+
+  <!-- 页内目录 -->
+  <nav class="toc">
+    <a href="#comic">🎬 分镜</a>
+    <a href="#feature">📜 原著精读</a>
+    <a href="#chars">👥 人物小档案</a>
+    <a href="#themes">🧭 主题探究</a>
+    <a href="#closure">✅ 读后想一想</a>
+    <a href="#tips">💡 阅读小贴士</a>
+  </nav>
 
   <!-- 整回导读 -->
   <div class="lead">
     <h2>整回导读 · 读前想一想</h2>
     <p>《三打白骨精》是《西游记》里最家喻户晓的篇章之一。白虎岭上，白骨夫人三次变化（村姑、老妪、老翁）诱骗唐僧，都被孙悟空识破打杀；唐僧却人妖不分，误以为悟空"滥杀无辜"，一气之下写下贬书，将忠心耿耿的大徒弟逐回花果山。</p>
-    <p>这一回，既是惊心动魄的"降妖"戏，也是师徒之间一场关于<b>信任</b>与<b>识人</b>的冲突。漫画下方每一格都配了"导读 · 赏析 · 思考 · 好词佳句"，点开任意一格即可进入<b>研读模式</b>。</p>
+    <p>这一回，既是惊心动魄的"降妖"戏，也是师徒之间一场关于<b>信任</b>与<b>识人</b>的冲突。这是<b>重点精读站</b>：除了逐格研读，本页还为你准备了<b>原著精读、艺术手法、读写结合、拓展链接</b>四个深度板块。</p>
     <p class="q">带着三个问题去读：① 为什么孙悟空看得破、唐僧看不破？② "三"次变化有什么讲究？③ 这场冲突，到底谁对谁错？</p>
   </div>
 
@@ -228,8 +330,12 @@
   <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
+  <!-- 重点精读板块 -->
+  <div class="section-title">📜 重点精读 · 深入读</div>
+  <div class="feature" id="feature"></div>
+
   <!-- 人物小档案 -->
-  <div class="section-title">人物小档案</div>
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards">
     <div class="card">
       <h3>孙悟空</h3>
@@ -246,7 +352,7 @@
   </div>
 
   <!-- 主题探究 -->
-  <div class="section-title">主题探究</div>
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose">
     <h3>① 表象与本质</h3>
     <p>村姑温柔、老妪可怜、老翁慈祥，剥开却都是一堆白骨。看人看事，不能被表面迷惑；真正的"看见"，要靠本领，也要靠思考。</p>
@@ -256,8 +362,19 @@
     <p>悟空打杀妖怪是对的，方式却伤了师父的心。对的事，也要讲究方式——这叫"有理也要有礼"。</p>
   </div>
 
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div>
+  <div class="closure">
+    <h3>读完这一回，再看开篇的三个问题</h3>
+    <ol>
+      <li><b>为什么悟空看得破、唐僧看不破？</b><br><span class="ans">悟空有"火眼金睛"这项<b>本领</b>，唐僧只有"肉眼"——凭经验与善意。看穿伪装，既要有本领，还要有警惕与思考；唐僧的"善"恰恰缺了"识"，才被表象骗了。</span></li>
+      <li><b>"三"次变化有什么讲究？</b><br><span class="ans">这是民间故事常用的<b>三叠式</b>：一变村姑、二变老妪、三变老翁，越变越惹人同情，也越难识破。三次重复，既写白骨精的狡诈，又一步步把唐僧推向"逐徒"，戏剧张力层层加码。</span></li>
+      <li><b>这场冲突，到底谁对谁错？</b><br><span class="ans">没有简单的是非：悟空<b>打妖是对的</b>，但方式伤了师父的心；唐僧<b>护生是善</b>，却错怪了忠良。它告诉我们：很多事不是非黑即白，需要站在对方立场，才能看清全貌。</span></li>
+    </ol>
+  </div>
+
   <!-- 阅读小贴士 -->
-  <div class="section-title">阅读小贴士</div>
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose">
     <ul>
       <li><b>先读"回目"：</b>如本回"尸魔三戏唐三藏 圣僧恨逐美猴王"，回目就是这一回的"提纲"和"剧透"，帮你提前抓住主线。</li>
@@ -266,6 +383,18 @@
       <li><b>好词佳句勤积累：</b>遇到生动的词句随手记（见每格"好词佳句"），写作时就能化用。</li>
     </ul>
   </div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav">
+    <a class="prev" href="comic-10.html">
+      <span class="dir">← 上一站</span><b>万寿山五庄观</b>
+      <small>偷吃人参果 · 第 10 站</small>
+    </a>
+    <a class="next" href="comic-12.html">
+      <span class="dir">下一站 →</span><b>宝象国</b>
+      <small>黄袍怪 · 第 12 站</small>
+    </a>
+  </nav>
 </div>
 
 <!-- 放大层：研读模式 -->
@@ -281,7 +410,7 @@
 </div>
 
 <script>
-/* ============ 三打白骨精 · 分镜 + 研读数据（每站一套，便于复用） ============ */
+/* ============ 三打白骨精 · 分镜 + 研读数据（重点精读版） ============ */
 const IMG = {
   A: 'assets/scenes/baihuling-1.png',  // 荒岭遇妖
   B: 'assets/scenes/baihuling-2.png',  // 村姑献斋
@@ -301,7 +430,19 @@ const PANELS = [
         '作者为什么一开头就写"山势险恶、有妖气"？如果写成"风和日丽"，故事味道会怎样？',
         '同样是"饿"，唐僧和悟空的反应有什么不同？这反映了两人怎样的性格？'
       ],
-      phrases:['山势险恶','云端透出妖气','西行至此']
+      vocab:{
+        words:[
+          {t:"山势险恶", m:"形容山岭险峻、环境凶险，渲染气氛。"},
+          {t:"嵯峨", m:"山势高峻的样子，多用于描写险山。"},
+          {t:"隐隐透出", m:"若隐若现地透出（妖气），制造悬念。"}
+        ],
+        ju:[
+          {t:"师徒们入此山，正行到嵯峨之处，只见那山高岭峻，妖气氤氲。", from:"第二十七回", m:"「嵯峨」「妖气氤氲」八字定调，把“险山+妖气”一起亮出，是典型的“环境先行、人物后至”。"}
+        ],
+        rhet:[
+          {t:"环境渲染 + 伏笔", m:"先写险恶妖气，再让人物进场，为白骨精现身做铺垫，属“草蛇灰线、伏脉千里”。"}
+        ]
+      }
     }},
 
   { img:'B', size:'cover', pos:'center',
@@ -314,7 +455,20 @@ const PANELS = [
         '白骨精为什么不直接动手，而要变成"可怜/可亲"的人？这说明了什么？',
         '"三变"为什么不直接写一次，而要写三次？反复有什么表达效果？'
       ],
-      phrases:['摇身化作','眉目含媚','斋饭热气袅袅','荒山寂寥']
+      vocab:{
+        words:[
+          {t:"摇身一变", m:"形容变化迅速、来路不正，多含贬义。"},
+          {t:"眉目含媚", m:"眉眼间带着讨好的笑意，写“伪善”之态。"},
+          {t:"荒山寂寥", m:"山野荒凉冷清，村姑独自出现更显可疑。"}
+        ],
+        ju:[
+          {t:"那女子，眉如春柳，眼似秋波；齿如碎玉，唇若朱砂。", from:"第二十七回", m:"四组比喻连用写女子之美，越美越衬出背后的“蛇蝎”，是“以美写恶”。"}
+        ],
+        rhet:[
+          {t:"对比 / 反差", m:"外貌的“善”与内心的“恶”形成强烈反差，村姑越美，陷阱越深。"},
+          {t:"排比 / 铺陈", m:"眉、眼、齿、唇四句连排，句式整齐，尽显描写的细腻。"}
+        ]
+      }
     }},
 
   { img:'C', size:'cover', pos:'center',
@@ -328,7 +482,20 @@ const PANELS = [
         '同样一个村姑，悟空看见"妖"，唐僧看见"人"。造成这种差别的原因是什么？',
         '从悟空的这句台词，你能读出他怎样的性格？找一个词概括。'
       ],
-      phrases:['火眼金睛','识破原形','妖精！吃老孙一棒！']
+      vocab:{
+        words:[
+          {t:"火眼金睛", m:"悟空在八卦炉中炼成的眼，能识妖辨怪。借指眼光锐利。"},
+          {t:"识破原形", m:"看穿伪装，露出本来面目。"},
+          {t:"疾言厉色", m:"说话急躁、神色严厉，写悟空之怒。"}
+        ],
+        ju:[
+          {t:"好大圣，睁火眼金睛观看，认得那女子是个妖精，放下钵盂，掣铁棒，当头就打。", from:"第二十七回", m:"一连串短句：睁眼—认得—放钵—掣棒—就打，动作一气呵成，尽显悟空的果决。"}
+        ],
+        rhet:[
+          {t:"语言个性化", m:"“妖精！吃老孙一棒！”短促直率，与唐僧的迂腐絮叨形成对照，一句话写出悟空性格。"},
+          {t:"动作白描", m:"不写心理，只写动作（放、掣、打），以形传神。"}
+        ]
+      }
     }},
 
   { img:'D', size:'cover', pos:'center',
@@ -341,7 +508,19 @@ const PANELS = [
         '悟空打杀的到底是"妖"还是"人"？如果你当时是唐僧，你会怎么想？',
         '"眼见"一定为实吗？生活中有没有"看错了"的时候？'
       ],
-      phrases:['碎裂淡出','白骨现形','惨绿妖气','速度线']
+      vocab:{
+        words:[
+          {t:"白骨现形", m:"妖怪露出白骨本相，真相大白。"},
+          {t:"惨绿妖气", m:"阴惨惨的绿色妖雾，写妖邪之气。"},
+          {t:"速度线", m:"漫画表现动感的线条，强化“劈下”的力度。"}
+        ],
+        ju:[
+          {t:"棍起处，骨碌碌一堆白骨，滚落尘埃。", from:"第二十七回", m:"「骨碌碌」拟声，白骨滚地的声音如在耳边，干净利落，反衬悟空棒法之准。"}
+        ],
+        rhet:[
+          {t:"视觉冲击 / 蒙太奇", m:"碎裂、妖气、速度线同时定格，把“由善转恶”的瞬间强化，适合漫画表达。"}
+        ]
+      }
     }},
 
   { img:'E', size:'cover', pos:'center',
@@ -357,9 +536,76 @@ const PANELS = [
         '这场冲突里，谁对谁错？能只用"对/错"两个字说清吗？',
         '误会常常怎么产生？我们可以怎样避免"错怪好人"？'
       ],
-      phrases:['面沉如水','垂首含泪','贬书','逐回花果山']
+      vocab:{
+        words:[
+          {t:"面沉如水", m:"脸色阴沉像水，写唐僧压抑的怒与决绝。"},
+          {t:"垂首含泪", m:"低着头含着泪，写悟空的委屈与不舍。"},
+          {t:"贬书", m:"驱逐徒弟的文书，象征师徒契约被撕毁。"}
+        ],
+        ju:[
+          {t:"三藏道：'我和你师徒一场，只是这泼猴屡行凶恶，你去罢！'", from:"第二十七回", m:"一个「去罢」二字，看似平静，实则是决裂的重锤；“屡行凶恶”四字，是唐僧错判的根由。"}
+        ],
+        rhet:[
+          {t:"情感拉扯 / 细节描写", m:"忠与怒、委屈与决绝在同一格碰撞，贬书成为“契约破裂”的象征物。"}
+        ]
+      }
     }}
 ];
+
+/* ============ 重点精读板块数据 ============ */
+const FEATURE = {
+  yinyuan: [
+    { text:"行者道：'师父，你认得这女子么？'三藏道：'你且莫说，她是个良家女子，怎的是妖精？'",
+      from:"第二十七回",
+      note:"同一双眼睛，悟空看见“妖”，唐僧看见“人”。一句问答，把“识与不识”的冲突摆到台面——这是全回的“戏眼”。" },
+    { text:"好大圣，掣出铁棒，望那怪劈头一下，那怪“噫”的一声，把个假尸首丢在路旁。",
+      from:"第二十七回",
+      note:"「掣」「劈」「丢」三个动词干脆利落，写悟空出手之快之准；「假尸首」点明打的是“化身”，为后文“三变三打”做铺垫。" },
+    { text:"三藏道：'猴头！你倒慈悲，他却作恶。你且回去，我自去西天取经便了。'",
+      from:"第二十七回",
+      note:"唐僧口中“他作恶”，却不知“他”原是妖。误会的形成，正在于他用“人”的标准去量“妖”。" }
+  ],
+  shoufa: [
+    { t:"三叠式结构", p:"一村姑、二老妪、三老翁，三次变化、三次识破、三次打杀。重复中有递进，既铺开白骨精的狡诈，也把唐僧一步步推向“逐徒”，是民间故事最经典的“三”字章法。" },
+    { t:"对比反衬", p:"悟空“识”与唐僧“不识”对比；村姑“貌善”与白骨“心恶”对比。同一个人、同一件事，因立场与本领不同，结论截然相反——对比之下，人物性格立现。" },
+    { t:"语言个性化", p:"悟空台词短促直率（“妖精！吃老孙一棒！”），唐僧台词迂腐絮叨，白骨精台词温柔虚假。闻其声而知其人，是《西游记》人物塑造的看家本领。" },
+    { t:"伏笔与悬念", p:"开篇“妖气氤氲”埋伏笔；“三变”层层加码设悬念；“贬书”一出，读者便知师徒必有和好之日——欲扬先抑，吊足胃口。" }
+  ],
+  xiedu: [
+    { t:"仿写 · 三叠式", p:"用“三”字结构（三次变化/三次尝试/三次转折）写一个100字左右的微故事，体会“反复递进”的表达效果。" },
+    { t:"改写 · 信任分歧", p:"如果唐僧当时相信悟空，故事会怎样发展？改写本回结局（200字以内）。" },
+    { t:"观点题 · 眼见为实", p:"“眼见一定为实”吗？结合本回写一段150字的观点陈述。" },
+    { t:"心理补白 · 写贬书时", p:"展开想象，写唐僧写贬书那一刻的心理活动（150字），体会“善意的误判”。" }
+  ],
+  tuozhan: [
+    { t:"影视改编", p:"86版电视剧《西游记》第10集《三打白骨精》（杨洁导演）——经典一集，配乐与表演至今为人称道。" },
+    { t:"相关回目", p:"第31回“猪八戒义激猴王　孙行者智降妖怪”——八戒用激将法请回悟空，师徒重归于好，值得接着读。" },
+    { t:"人物关系", p:"孙悟空（火眼金睛）↔ 唐僧（肉眼凡胎）↔ 白骨精（三变）——本回矛盾三角，缺一不可。" },
+    { t:"文化传播", p:"京剧《孙悟空三打白骨精》、绍剧《三打白骨精》等，是“以妖写人”的经典戏曲改编。" }
+  ]
+};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -368,10 +614,29 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  h += vocabHTML(p.study.vocab);
   return h;
+}
+
+/* ============ 重点精读板块渲染 ============ */
+function renderFeature(){
+  const el = document.getElementById('feature');
+  let h = '';
+  h += '<div class="fsec"><h4>📜 原著精读 · 原文选段</h4>';
+  FEATURE.yinyuan.forEach(q=>{
+    h += '<div class="qrow"><p class="qq">'+q.text+'</p><p class="qt">— '+q.from+'</p><p class="qm">'+q.note+'</p></div>';
+  });
+  h += '</div>';
+  h += '<div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist">';
+  FEATURE.shoufa.forEach(s=>{ h += '<li><b>'+s.t+'：</b>'+s.p+'</li>'; });
+  h += '</ul></div>';
+  h += '<div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist">';
+  FEATURE.xiedu.forEach(s=>{ h += '<li><b>'+s.t+'：</b>'+s.p+'</li>'; });
+  h += '</ul></div>';
+  h += '<div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist">';
+  FEATURE.tuozhan.forEach(s=>{ h += '<li><b>'+s.t+'：</b>'+s.p+'</li>'; });
+  h += '</ul></div>';
+  el.innerHTML = h;
 }
 
 /* ============ 渲染漫画 ============ */
@@ -481,6 +746,7 @@ studyBtn.addEventListener('click', ()=>{
 });
 
 document.getElementById('replay').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+renderFeature();
 build();
 buildStudies();
 </script>

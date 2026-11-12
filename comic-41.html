@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">原著回目</span><div class="huimu">原著回目：<b>原著第九十八回</b></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>临近灵山，来到凌云渡。接引佛祖撑来一只无底船，悟空引唐僧踏上——唐僧的"凡胎"落入水中，就此脱去肉身、换了法身。无妖、无战，只有一次静悄悄的"渡"。这一站讲"放下执念，才能到岸"。</p><p>读这一站，看<b>"最后的渡"</b>：最难的关，不是打，是"舍"。</p><p class="q">带着问题读：① 船无底为何能渡人？② 凡胎落水象征什么？③ 你有什么"凡胎"该放下？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>唐僧</h3><p>取经人。这一站他完成最后的"脱胎"：凡身落水、法身初成。说明<b>到岸前，先得舍下"凡胎"</b>。</p></div><div class="card"><h3>孙悟空</h3><p>大师兄，也是"引渡者"。他引师父上船，像一路引着他成长。到此处，师徒都已不同。</p></div><div class="card"><h3>接引佛祖</h3><p>凌云渡撑无底船的佛。代表<b>"终点处的接引与成全"</b>——不考你打，只渡你过。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 无底船能渡</h3><p>船无底却渡人，因它渡的是"执"不是"身"。放得下，才到得了。</p><h3>② 舍即渡</h3><p>凡胎落水不是失去，是卸下。总有一件"凡胎"要舍得沉。</p><h3>③ 到岸即放下</h3><p>凌云渡不考棒法，只考敢不敢舍。舍了，彼岸就在脚下。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>船无底为何能渡人？</b><br><span class="ans">因为此渡不靠船底承重，而靠放下二字。唐僧肯舍凡胎、登船而渡，心无挂碍，无底船便稳稳渡他。看似矛盾，实写放得下才到得了岸。</span></li><li><b>凡胎落水象征什么？</b><br><span class="ans">象征唐僧脱去凡间的肉身与执念，放下尘世之累，换得清净法身。落水不是灾难，而是舍去旧我，是取经路上最要紧的一关——舍得放下，才能到岸。</span></li><li><b>你有什么凡胎该放下？</b><br><span class="ans">比如贪玩、懒惰、害怕困难、放不下的面子或小脾气。就像唐僧要舍凡胎才能到灵山，我们也要舍得这些凡胎，放下执念，才能轻装成长、走到自己的彼岸。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"无妖之终"：</b>这站与前站(42大雷音寺)相连，是"到岸"的两笔。连读体会"收"的写法。</li><li><b>想"无底船"：</b>你生活里有没有"看似载不动、放下反倒成"的事？</li><li><b>写"我的凡胎"：</b>列一件该"沉下水"的执念，就是一篇好随笔。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-40.html"><span class="dir">← 上一站</span><b>铜台府地灵县</b><small>第 40 站</small></a><a class="next" href="comic-42.html"><span class="dir">下一站 →</span><b>大雷音寺</b><small>第 42 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-41-1.png","span":true,"size":"cover","pos":"center","caption":"凌云渡口云雾空灵，接引佛祖撑一叶扁舟等候，对岸隐隐灵山金光。","bubbles":[{"who":"接引佛祖","text":"圣僧来也，此船渡汝过凌云。","side":"r","kind":"god"}],"study":{"intro":"起笔写\"静渡\"：没有妖风血雨，只有一叶舟、一位接引者。临近终点，节奏忽然慢下来。","appreciate":"作者用<b>\"以静写终\"</b>：前面八十一难轰轰烈烈，最后用\"一只船\"收束。大戏落幕，常是轻轻一笔。","think":["为什么终点这一难这么\"静\"？","你完成大事时，最后的时刻是喧闹还是平静？"],"phrases":["凌云渡","接引佛祖","一叶扁舟"]}},{"img":"assets/scenes/comic-41-2.png","size":"cover","pos":"center","caption":"悟空引唐僧踏上无底船——看似无底，却能稳稳载人。","bubbles":[{"who":"孙悟空","text":"师父，上船！这一渡，便脱了凡胎。","side":"l"}],"study":{"intro":"转折的\"道具\"：无底之船。看似不能渡，偏能渡——因为它渡的不是\"身\"，是\"执\"。","appreciate":"这一格写<b>\"矛盾即禅机\"</b>：船无底却能渡人，看似无理，实写\"放得下才到得了\"。读神话，要懂反着看的理。","think":["船无底为何能渡人？它渡的到底是什么？","你有什么\"看似载不动、其实放得下\"的事？"],"phrases":["无底船","悟空引渡","看似不能"]}},{"img":"assets/scenes/comic-41-3.png","size":"cover","pos":"center","caption":"唐僧凡胎落水，顺流漂远——肉身之累就此脱去，法身初成。","bubbles":[{"who":"唐僧","text":"这……凡身竟随水去了。","side":"r"}],"study":{"intro":"高潮（也是\"放下\"）：凡胎落水，不是死，是\"卸\"。一路的怕、贪、肉眼凡胎，都随水漂走。","appreciate":"这里写<b>\"舍即渡\"</b>：不肯落水，便靠不了岸。成长路上，总有一件\"凡胎\"要舍得沉下去。","think":["凡胎落水，是失去还是解脱？","你有什么\"凡胎\"（执念）该让它沉下去？"],"phrases":["凡胎落水","肉身之累","法身初成"]}},{"img":"assets/scenes/comic-41-4.png","size":"cover","pos":"center","caption":"小船稳稳靠岸，唐僧立于灵山脚下的彼岸，取经将成。","bubbles":[{"who":"接引佛祖","text":"到了，上岸去罢。","side":"r","kind":"god"}],"study":{"intro":"收尾：无妖、无战，只是\"到了\"。最难的一渡，原来是\"肯上船、肯落水\"。","appreciate":"结局点出<b>\"到岸即放下\"</b>：凌云渡不考棒、不考法，只考你敢不敢舍。舍了凡胎，彼岸就在脚下。","think":["\"到了\"为何比\"赢了\"更安静？","你奔向的目标，是不是也差\"一次放下\"的距离？"],"phrases":["稳稳靠岸","立于彼岸","取经将成"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-41-1.png","span":true,"size":"cover","pos":"center","caption":"凌云渡口云雾空灵，接引佛祖撑一叶扁舟等候，对岸隐隐灵山金光。","bubbles":[{"who":"接引佛祖","text":"圣僧来也，此船渡汝过凌云。","side":"r","kind":"god"}],"study":{"intro":"起笔写\"静渡\"：没有妖风血雨，只有一叶舟、一位接引者。临近终点，节奏忽然慢下来。","appreciate":"作者用<b>\"以静写终\"</b>：前面八十一难轰轰烈烈，最后用\"一只船\"收束。大戏落幕，常是轻轻一笔。","think":["为什么终点这一难这么\"静\"？","你完成大事时，最后的时刻是喧闹还是平静？"],"phrases":["凌云渡","接引佛祖","一叶扁舟"],"vocab":{"words":[{"t":"凌云渡","m":"灵山脚下的一条渡口，唐僧在此脱去凡胎、登临彼岸。"},{"t":"接引佛祖","m":"接引众生的佛祖，撑无底船来接唐僧渡河。"},{"t":"一叶扁舟","m":"一只小小的船，看似轻小，却能载人渡过凌云渡。"}],"ju":[{"t":"凌云渡口云雾空灵，接引佛祖撑一叶扁舟等候，对岸隐隐灵山金光。","from":"原著第九十八回","m":"环境描写，雾、舟、金光相映，写尽渡口的空灵与庄严。"},{"t":"圣僧来也，此船渡汝过凌云。","from":"原著第九十八回","m":"语言描写，佛祖一句渡汝过凌云，平静从容，点出最后一程的接引。"}],"rhet":[{"t":"语言生动","m":"用云雾、金光画出一幅宁静佛境，与前面降妖的激烈形成鲜明对照。"}]}}},{"img":"assets/scenes/comic-41-2.png","size":"cover","pos":"center","caption":"悟空引唐僧踏上无底船——看似无底，却能稳稳载人。","bubbles":[{"who":"孙悟空","text":"师父，上船！这一渡，便脱了凡胎。","side":"l"}],"study":{"intro":"转折的\"道具\"：无底之船。看似不能渡，偏能渡——因为它渡的不是\"身\"，是\"执\"。","appreciate":"这一格写<b>\"矛盾即禅机\"</b>：船无底却能渡人，看似无理，实写\"放得下才到得了\"。读神话，要懂反着看的理。","think":["船无底为何能渡人？它渡的到底是什么？","你有什么\"看似载不动、其实放得下\"的事？"],"phrases":["无底船","悟空引渡","看似不能"],"vocab":{"words":[{"t":"无底船","m":"船底看似没有，却能稳稳渡人，暗藏禅机。"},{"t":"悟空引渡","m":"悟空扶引师父上船，送他走完取经最后一步。"},{"t":"看似不能","m":"无底船看似不能载人，实则暗合放下才渡得之理。"}],"ju":[{"t":"悟空引唐僧踏上无底船——看似无底，却能稳稳载人。","from":"原著第九十八回","m":"概述渡船，看似无底却能载人，把矛盾即禅机一笔点出。"},{"t":"师父，上船！这一渡，便脱了凡胎。","from":"原著第九十八回","m":"语言描写，悟空催促师父，一句脱了凡胎道破此渡的意义。"}],"rhet":[{"t":"语言生动","m":"看似无底，却能载人设下矛盾悬念，反常识的写法，更引人深思。"}]}}},{"img":"assets/scenes/comic-41-3.png","size":"cover","pos":"center","caption":"唐僧凡胎落水，顺流漂远——肉身之累就此脱去，法身初成。","bubbles":[{"who":"唐僧","text":"这……凡身竟随水去了。","side":"r"}],"study":{"intro":"高潮（也是\"放下\"）：凡胎落水，不是死，是\"卸\"。一路的怕、贪、肉眼凡胎，都随水漂走。","appreciate":"这里写<b>\"舍即渡\"</b>：不肯落水，便靠不了岸。成长路上，总有一件\"凡胎\"要舍得沉下去。","think":["凡胎落水，是失去还是解脱？","你有什么\"凡胎\"（执念）该让它沉下去？"],"phrases":["凡胎落水","肉身之累","法身初成"],"vocab":{"words":[{"t":"凡胎落水","m":"唐僧的凡间肉身落水漂走，脱去尘世之身。"},{"t":"肉身之累","m":"凡身的种种牵挂与局限，就此卸下。"},{"t":"法身初成","m":"脱去凡胎，换上清净法身，修行初成。"}],"ju":[{"t":"唐僧凡胎落水，顺流漂远——肉身之累就此脱去，法身初成。","from":"原著第九十八回","m":"概述落水，漂远、脱累、法成，把舍即渡一层层写清。"},{"t":"这……凡身竟随水去了。","from":"原著第九十八回","m":"语言描写，唐僧又惊又悟，省略号写出他放下时的恍然。"}],"rhet":[{"t":"语言生动","m":"顺流漂远写凡胎之去，一去不回，把舍得放下写得轻而决绝。"}]}}},{"img":"assets/scenes/comic-41-4.png","size":"cover","pos":"center","caption":"小船稳稳靠岸，唐僧立于灵山脚下的彼岸，取经将成。","bubbles":[{"who":"接引佛祖","text":"到了，上岸去罢。","side":"r","kind":"god"}],"study":{"intro":"收尾：无妖、无战，只是\"到了\"。最难的一渡，原来是\"肯上船、肯落水\"。","appreciate":"结局点出<b>\"到岸即放下\"</b>：凌云渡不考棒、不考法，只考你敢不敢舍。舍了凡胎，彼岸就在脚下。","think":["\"到了\"为何比\"赢了\"更安静？","你奔向的目标，是不是也差\"一次放下\"的距离？"],"phrases":["稳稳靠岸","立于彼岸","取经将成"],"vocab":{"words":[{"t":"稳稳靠岸","m":"无底船平稳靠岸，渡完最后一程。"},{"t":"立于彼岸","m":"唐僧登上灵山彼岸，离真经一步之遥。"},{"t":"取经将成","m":"历经八十一难，取经大业即将圆满。"}],"ju":[{"t":"小船稳稳靠岸，唐僧立于灵山脚下的彼岸，取经将成。","from":"原著第九十八回","m":"收束句，靠岸、立岸、将成，写尽历尽艰辛后即将圆满的安宁。"},{"t":"到了，上岸去罢。","from":"原著第九十八回","m":"语言描写，佛祖一句上岸去罢，轻淡如水，恰是大幕将落时的一笔。"}],"rhet":[{"t":"语言生动","m":"上岸去罢四字收束全难，以静写终，把轰轰烈烈的取经轻轻落定。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });

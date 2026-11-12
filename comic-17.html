@@ -32,9 +32,10 @@
   .missing-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     color:#fff3d6;font-size:13px;z-index:3;text-shadow:0 1px 3px rgba(0,0,0,.6);padding:0 20px;text-align:center;line-height:1.6;}
 
+  /* 报头 */
   .masthead{
     display:flex;align-items:flex-end;gap:16px;justify-content:center;
-    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:18px;
+    border-bottom:3px double var(--line);padding-bottom:14px;margin-bottom:12px;
   }
   .title-v{
     writing-mode:vertical-rl;text-orientation:upright;
@@ -50,6 +51,28 @@
     box-shadow:inset 0 0 0 2px #fff;background:rgba(181,48,42,.06);
   }
 
+  /* 重点精读徽章条 + 回目出处 */
+  .feature-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:0 0 14px;padding:9px 14px;border-radius:8px;
+    background:linear-gradient(90deg,#f6e7bd,#f0d9a0);
+    border:2px solid var(--gold);box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+  .feature-badge{
+    background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:14px;white-space:nowrap;box-shadow:1px 1px 0 rgba(0,0,0,.2);
+  }
+  .huimu{font-size:14px;color:#7a5210;line-height:1.5;}
+  .huimu b{color:var(--ink);}
+  .huimu .hm{color:var(--jade);font-weight:700;}
+
+  /* 页内目录 */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .toc a{font-size:12.5px;color:var(--jade);text-decoration:none;border:1px solid var(--jade);
+    border-radius:14px;padding:3px 11px;transition:background .15s,color .15s;}
+  .toc a:hover{background:var(--jade);color:#fff;}
+
+  /* 整回导读 */
   .lead{
     background:linear-gradient(180deg,#fffaf0,#f6ead0);
     border:2px solid var(--line);border-left:7px solid var(--red);
@@ -60,6 +83,7 @@
   .lead p{margin:0 0 8px;}
   .lead .q{color:var(--jade);font-weight:700;}
 
+  /* 漫画网格 */
   .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .panel{position:relative;border:4px solid var(--line);background:#17120e;
     box-shadow:4px 5px 0 rgba(0,0,0,.18);overflow:hidden;aspect-ratio:3 / 2;cursor:zoom-in;}
@@ -72,10 +96,12 @@
   .panel .badge{position:absolute;top:8px;right:8px;z-index:6;background:var(--red);color:#fff;
     font-size:12px;padding:2px 9px;border-radius:12px;box-shadow:1px 1px 0 rgba(0,0,0,.3);}
 
+  /* 旁白框 */
   .caption{position:absolute;top:8px;left:8px;max-width:74%;
     background:rgba(20,16,12,.82);color:#f6ecd6;font-size:13px;line-height:1.55;
     padding:6px 9px;border-left:3px solid var(--gold);z-index:4;}
 
+  /* 对白气泡 */
   .bubble{position:absolute;z-index:5;max-width:62%;
     background:#fffdf6;border:2.5px solid var(--line);border-radius:14px;
     padding:8px 11px;font-size:13.5px;line-height:1.5;color:#211a14;
@@ -96,6 +122,7 @@
   .bubble.t::after{border-top-color:transparent;border-bottom-color:var(--line);top:-16px;bottom:auto;left:24px;}
   .bubble.t::before{border-top-color:transparent;border-bottom-color:#fffdf6;top:-11px;bottom:auto;left:26px;}
 
+  /* 拟声 */
   .sfx{position:absolute;z-index:6;font-size:34px;font-weight:900;color:var(--red);
     transform:rotate(-12deg);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.25);
     letter-spacing:2px;font-family:"Heiti SC","SimHei",sans-serif;pointer-events:none;}
@@ -108,6 +135,7 @@
 
   .note{font-size:12.5px;color:#6b5a44;text-align:center;margin-top:14px;line-height:1.7;}
 
+  /* 研读笔记（主页面展开） */
   .studies{display:none;margin-top:18px;}
   .studies.open{display:block;}
   .study-card{border:2px solid var(--line);border-radius:8px;background:#fffaf0;
@@ -117,18 +145,33 @@
   .study-card .head img{width:54px;height:36px;object-fit:cover;border:2px solid var(--gold);border-radius:4px;}
   .study-card .body{padding:14px 18px;}
 
+  /* 研读区块通用 */
   .sec{margin-bottom:13px;}
   .sec:last-child{margin-bottom:0;}
-  .sec h4{margin:0 0 5px;font-size:15px;color:var(--red);
+  .sec h4{margin:0 0 6px;font-size:15px;color:var(--red);
     border-left:4px solid var(--gold);padding-left:8px;letter-spacing:1px;}
   .sec p{margin:0;line-height:1.8;font-size:14px;}
   .sec ul{margin:4px 0 0;padding-left:20px;}
   .sec li{line-height:1.75;margin:3px 0;font-size:14px;}
-  .ph{display:inline-block;background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
-    padding:1px 7px;margin:2px 4px 2px 0;font-size:13px;color:#8a5a12;}
 
+  /* 分类语料卡：好词 / 佳句 / 修辞 */
+  .vw{margin:4px 0 0 !important;padding-left:18px !important;list-style:none;}
+  .vw li{margin:5px 0 !important;font-size:13.5px !important;line-height:1.7 !important;
+    padding-left:14px;position:relative;}
+  .vw li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--gold);font-size:10px;}
+  .vw b{color:var(--ink);background:#fbeccf;border:1px solid var(--gold);border-radius:5px;
+    padding:0 7px;margin-right:2px;font-size:13px;}
+  .vw .wm{color:#6b5a44;}
+  .vq{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border-left:3px solid var(--gold);
+    border-radius:4px;}
+  .vq p{margin:0;font-size:14px;color:#3a2c16;line-height:1.7;}
+  .vq cite{display:block;font-style:normal;font-size:12px;color:var(--jade);margin-top:3px;}
+  .vq .vm{display:block;font-size:13px;color:#6b5a44;margin-top:3px;line-height:1.65;}
+  .rhet li b{background:#e9f2ec;border-color:var(--jade);}
+
+  /* 人物小档案 */
   .section-title{font-size:19px;color:var(--red);letter-spacing:3px;margin:34px 0 14px;
-    border-bottom:2px solid var(--line);padding-bottom:6px;}
+    border-bottom:2px solid var(--line);padding-bottom:6px;scroll-margin-top:14px;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:2px solid var(--line);border-radius:8px;padding:14px 15px;background:#fffaf0;
     box-shadow:3px 4px 0 rgba(0,0,0,.1);}
@@ -136,12 +179,62 @@
     border-bottom:1px dashed var(--gold);padding-bottom:6px;}
   .card p{margin:0;font-size:13.5px;line-height:1.8;}
 
+  /* 主题探究 / 阅读贴士 */
   .prose{border:2px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#fffaf0,#f6ead0);
     padding:16px 20px;line-height:1.9;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
   .prose h3{color:var(--jade);margin:14px 0 6px;font-size:15.5px;}
   .prose h3:first-child{margin-top:0;}
   .prose ul{margin:4px 0;padding-left:22px;} .prose li{margin:4px 0;}
 
+  /* 重点精读板块 */
+  .feature{border:3px solid var(--gold);border-radius:10px;background:
+    linear-gradient(180deg,#fffdf4,#f8eecd);padding:18px 20px;box-shadow:4px 5px 0 rgba(0,0,0,.12);}
+  .feature .fh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:20px;
+    color:var(--red);letter-spacing:3px;border-bottom:2px dashed var(--gold);padding-bottom:8px;}
+  .feature .fh::before{content:"★";color:var(--gold);font-size:18px;}
+  .fsec{margin-bottom:16px;}
+  .fsec:last-child{margin-bottom:0;}
+  .fsec h4{margin:0 0 8px;font-size:16px;color:var(--red);
+    border-left:5px solid var(--gold);padding-left:10px;letter-spacing:1px;background:#fbeccf;
+    border-radius:0 4px 4px 0;padding-top:2px;padding-bottom:2px;}
+  .qrow{margin:0 0 12px;padding:0 0 12px;border-bottom:1px dashed #d8c391;}
+  .qrow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .qq{margin:0;font-size:15px;color:#3a2c16;line-height:1.85;text-align:center;
+    font-family:"KaiTi","STKaiti",serif;}
+  .qq::before{content:"「";color:var(--gold);} .qq::after{content:"」";color:var(--gold);}
+  .qt{display:block;text-align:center;font-size:12.5px;color:var(--jade);margin:4px 0 0;}
+  .qm{margin:6px 0 0;font-size:13.5px;color:#6b5a44;line-height:1.75;}
+  .flist{margin:0;padding-left:0;list-style:none;}
+  .flist li{margin:8px 0;line-height:1.75;font-size:14px;padding-left:18px;position:relative;}
+  .flist li::before{content:"➤";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px;}
+  .flist b{color:var(--red);}
+  .fnote{font-size:12.5px;color:#8a5a12;background:#fdf3dd;border:1px dashed var(--gold);
+    border-radius:6px;padding:8px 12px;margin:4px 0 0;line-height:1.7;}
+
+  /* 读后想一想（闭环） */
+  .closure{border:2px solid var(--jade);border-radius:8px;background:#f0f7f2;
+    padding:16px 20px;line-height:1.85;font-size:14.5px;box-shadow:3px 4px 0 rgba(0,0,0,.1);}
+  .closure h3{margin:0 0 10px;font-size:16px;color:var(--jade);letter-spacing:2px;
+    border-bottom:1px dashed var(--jade);padding-bottom:6px;}
+  .closure ol{margin:0;padding-left:22px;}
+  .closure li{margin:8px 0;line-height:1.8;}
+  .closure li b{color:var(--jade);}
+  .closure .ans{color:#6b5a44;font-size:13.5px;}
+
+  /* 前后站导航 */
+  .station-nav{display:flex;gap:14px;justify-content:space-between;margin-top:34px;
+    padding-top:16px;border-top:2px double var(--line);}
+  .station-nav a{flex:1;max-width:46%;text-decoration:none;border:2px solid var(--red);
+    border-radius:8px;padding:10px 14px;background:#fffaf0;transition:background .15s,color .15s;}
+  .station-nav a:hover{background:var(--red);color:#fff;}
+  .station-nav a:hover small{color:#f4ead2;}
+  .station-nav a .dir{display:block;font-size:12px;color:var(--jade);margin-bottom:2px;letter-spacing:1px;}
+  .station-nav a b{font-size:15px;color:var(--ink);}
+  .station-nav a small{display:block;font-size:12px;color:#6b5a44;margin-top:3px;}
+  .station-nav a.next{text-align:right;}
+  .station-nav a.next .dir{color:var(--red);}
+
+  /* 放大层（研读模式） */
   .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.92);display:none;
     align-items:flex-start;justify-content:center;z-index:50;padding:24px;overflow:auto;}
   .lightbox.open{display:flex;}
@@ -174,6 +267,7 @@
     .lb-figure img{max-height:38vh;}
     .lb-study{max-height:none;}
     .lb-nav{width:42px;height:42px;font-size:24px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
+    .station-nav{flex-direction:column;} .station-nav a{max-width:100%;}
   }
   @media(prefers-reduced-motion:no-preference){
     .panel{transition:transform .15s ease;}
@@ -190,6 +284,13 @@
     <div class="seal">西游导读</div>
   </div>
 
+  <!-- 重点精读徽章 + 回目出处（普通站注入空） -->
+  <div class="feature-bar"><span class="feature-badge">★ 重点精读</span><div class="huimu">原著回目：<b>第四十四回　法身元运逢车力　心正妖邪度脊关</b>　民间知名度：<span class="hm">★★★★☆（斗法）</span>　常考程度：<span class="hm">★★★★☆</span></div></div>
+
+  <!-- 页内目录 -->
+  <nav class="toc"><a href="#comic">🎬 分镜</a><a href="#feature">📜 原著精读</a><a href="#chars">👥 人物小档案</a><a href="#themes">🧭 主题探究</a><a href="#closure">✅ 读后想一想</a><a href="#tips">💡 阅读小贴士</a></nav>
+
+  <!-- 整回导读 -->
   <div class="lead"><h2>整回导读 · 读前想一想</h2><p>车迟国，虎力、鹿力、羊力三位大仙以"求雨"等方术迷惑国王，做了国师，欺压僧人。悟空带八戒、沙僧与三妖公开斗法：求雨、坐禅、隔板猜物、剖腹、下油锅，一一胜之，三妖现出本相（虎鹿羊）死去。这一站是"真本事对假方术"。</p><p>读这一站，看<b>"一场场比试"</b>：把大故事拆成一连串小擂台，最是好看。</p><p class="q">带着问题读：① 三国师凭什么唬住国王？② 悟空怎么一一破法？③ "求真"和"求权"区别在哪？</p></div>
 
   <div class="comic" id="comic"></div>
@@ -203,18 +304,32 @@
     也可点上方「展开逐格研读笔记」，在页面下方一次性读完各格的研读内容。
   </div>
 
+  <!-- 主页面研读笔记 -->
   <div class="studies" id="studies"></div>
 
-  <div class="section-title">人物小档案</div>
+  <!-- 重点精读板块（普通站注入空） -->
+  <div class="section-title" id="feature">📜 重点精读 · 深入读</div><div class="feature"><div class="fsec"><h4>📜 原著精读 · 原文选段</h4><div class="qrow"><p class="qq">我国师能呼风唤雨，陛下当信我等。</p><p class="qt">— 第四十四回　法身元运逢车力　心正妖邪度脊关</p><p class="qm">以方术邀宠、以官威压人，“呼风唤雨”本是虚，却能骗过一国君主，讽刺甚深。</p></div><div class="qrow"><p class="qq">老官儿们，雨听俺的，下！</p><p class="qt">— 第四十四回　法身元运逢车力　心正妖邪度脊关</p><p class="qm">悟空呼喝风雨如唤自家仆从，豪气中见本领，与三妖装神弄鬼恰成对照。</p></div><div class="qrow"><p class="qq">原来国师竟是畜类，错信矣！</p><p class="qt">— 第四十四回　法身元运逢车力　心正妖邪度脊关</p><p class="qm">国王一句“错信”，道破以貌取人的教训，也点出伪饰终难长久。</p></div></div><div class="fsec"><h4>🖌️ 艺术手法</h4><ul class="flist"><li><b>对比烘托：</b>悟空的正牌本事与三妖的冒牌方术两相对照，高下立判，让求真必真、假必露形更加鲜明。</li><li><b>连环设擂：</b>一回之内安排求雨、坐禅、猜物、剖腹、油锅多场比试，层层加码，悬念与趣味不断。</li><li><b>语言讽刺：</b>借虎力“陛下当信”与国王“错信矣”前后呼应，以人物之言写其愚昧，讽刺辛辣有力。</li><li><b>铺垫照应：</b>前文写三妖役使僧人做苦工，为后文悟空解救僧人、一举破妖出气埋下伏笔，因果照应。</li></ul></div><div class="fsec"><h4>✍️ 读写结合 · 练一练</h4><ul class="flist"><li><b>给三国师“画像”：</b>用两三个词概括虎力、鹿力、羊力的共同特点，并找出本回中最能表现他们虚伪的句子。</li><li><b>“求真”小议：</b>围绕“求真和求权区别在哪”，写一段200字左右的短文，要求观点明确、有事例。</li><li><b>改写一场比试：</b>选择“求雨”或“剖腹”，用现代白话改写这场比试，注意保留紧张气氛与人物语气。</li><li><b>“伪必露形”启示：</b>结合三妖现出本相的下场，谈谈生活中“伪装”为何靠不住，写一篇小议论文。</li></ul></div><div class="fsec"><h4>🌐 拓展链接 · 再看西游</h4><ul class="flist"><li><b>虎鹿羊为何现形：</b>查一查车迟国斗法的不同版本，比较虎鹿羊三妖在原著与影视中的结局差异。</li><li><b>古代的“求雨”：</b>了解古人求雨的习俗与相关祭祀，说说它与现代气象科学的区别，整理成小卡片。</li><li><b>“国师”是个什么官：</b>查一查“国师”在古代的含义，思考为什么妖都爱当“国师”，与同学交流。</li><li><b>改编“斗法”为连环画：</b>把本回四场比试画成四格漫画，每格配一句解说词，突出每场的胜负转折与人物表情。</li></ul></div></div>
+
+  <!-- 人物小档案 -->
+  <div class="section-title" id="chars">👥 人物小档案</div>
   <div class="cards"><div class="card"><h3>孙悟空</h3><p>大师兄，也是"擂台王"。求雨、坐禅、油锅全上，靠真本事破假方术。说明<b>真金不怕火炼</b>。</p></div><div class="card"><h3>虎力 / 鹿力 / 羊力大仙</h3><p>车迟国三国师，本相虎鹿羊，以方术窃权欺僧。代表<b>"披官衣的伪权威"</b>。</p></div><div class="card"><h3>车迟国王</h3><p>被方术迷惑、役使僧人的国王。是<b>"盲信权力者"</b>的典型——醒悟后终归正道。</p></div></div>
 
-  <div class="section-title">主题探究</div>
+  <!-- 主题探究 -->
+  <div class="section-title" id="themes">🧭 主题探究</div>
   <div class="prose"><h3>① 伪必露形</h3><p>虎鹿羊再像人也是兽。靠装得来的地位，一场真比试就垮。</p><h3>② 真本事胜假术</h3><p>悟空接的是正牌天庭。求真，才求得到；求权，求来的是空。</p><h3>③ 分项见爽感</h3><p>一难拆多台，赢一场是一场。好故事会"分段给甜头"。</p></div>
 
-  <div class="section-title">阅读小贴士</div>
+  <!-- 读后想一想（闭环） -->
+  <div class="section-title" id="closure">✅ 读后想一想 · 回扣开篇</div><div class="closure"><h3>读完这一回，再看开篇的问题</h3><ol><li><b>三国师凭什么唬住国王？</b><br><span class="ans">三妖会呼风唤雨等方术，又自封国师、身居高位，用表面神通和官位架势迷惑国王，令其深信。</span></li><li><b>悟空怎么一一破法？</b><br><span class="ans">悟空接来正牌天庭调度风雨，又在坐禅、猜物、剖腹、油锅各场中以真本事破解，使三妖破绽尽露。</span></li><li><b>“求真”和“求权”区别在哪？</b><br><span class="ans">求真靠真本事，赢了心安理得；求权靠装神弄鬼，终会现形。悟空求的是一路畅通，三妖求的是虚权。</span></li></ol></div>
+
+  <!-- 阅读小贴士 -->
+  <div class="section-title" id="tips">💡 阅读小贴士</div>
   <div class="prose"><ul><li><b>读"擂台结构"：</b>把每场比试当一小关，列个清单，读着像闯关。</li><li><b>辨"官与理"：</b>三国师有权无理。看人别被"职位"晃了眼。</li><li><b>学"分段写"：</b>写作文讲一件事，也可拆成几步，步步有看点。</li></ul></div>
+
+  <!-- 前后站导航 -->
+  <nav class="station-nav"><a class="prev" href="comic-16.html"><span class="dir">← 上一站</span><b>黑水河</b><small>第 16 站</small></a><a class="next" href="comic-18.html"><span class="dir">下一站 →</span><b>通天河</b><small>第 18 站</small></a></nav>
 </div>
 
+<!-- 放大层：研读模式 -->
 <div class="lightbox" id="lb">
   <button class="lb-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
   <button class="lb-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
@@ -227,7 +342,29 @@
 </div>
 
 <script>
-const DATA = {"panels":[{"img":"assets/scenes/comic-17-1.png","span":true,"size":"cover","pos":"center","caption":"车迟国，三位国师（虎鹿羊三妖）立于高台，国王跪拜，僧人被役使做苦工。","bubbles":[{"who":"虎力大仙","text":"我国师能呼风唤雨，陛下当信我等。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"邪压正\"：国师掌权、僧人受苦。妖靠\"方术+权位\"双保险惑众，局面一边倒。","appreciate":"作者用<b>\"以势惑众\"</b>设局：妖不止会法术，还会\"当官\"。提醒读者——披着官衣的歪理，最易骗人。","think":["三国师为何能唬住一国？","\"有权\"就等于\"有理\"吗？"],"phrases":["车迟国","三位国师","欺僧役使"]}},{"img":"assets/scenes/comic-17-2.png","size":"cover","pos":"center","caption":"第一擂台：求雨。悟空暗中搅乱，雷公电母听悟空调度，妖师求不来雨。","bubbles":[{"who":"孙悟空","text":"老官儿们，雨听俺的，下！","side":"l"}],"sfx":{"t":"哗啦——","x":"54%","y":"16%"},"study":{"intro":"斗法开场：求雨。妖师的\"令牌\"失效，因为风雨本归天庭，悟空打通了\"上层\"。假术遇真权，露馅。","appreciate":"这一格写<b>\"假钥匙开不了真锁\"</b>：三国师的法术是冒牌，悟空接的是正牌天庭。求真，才求得到。","think":["为什么妖师求不来雨，悟空能？","\"真\"和\"像真的\"差别在哪？"],"phrases":["第一擂台","求雨","风雨听调"]}},{"img":"assets/scenes/comic-17-3.png","size":"cover","pos":"center","caption":"接连比试：坐禅、隔板猜物、剖腹、下油锅，悟空皆胜，三妖渐露破绽。","bubbles":[{"who":"猪八戒","text":"油锅俺老猪都不怕，何况你！","side":"r"}],"sfx":{"t":"咕嘟嘟","x":"58%","y":"22%"},"study":{"intro":"连台好戏：作者把大难拆成数个\"小项目\"，一项项比，节奏快、爽感强。这种\"分项赛\"结构，是《西游记》的拿手好戏。","appreciate":"这里写<b>\"擂台式结构\"</b>：一回里塞多场比试，像连续剧。读时跟着\"赢一场是一场\"，最是过瘾。","think":["为什么作者要把一难拆成好几场比试？","你写作文，能不能也用\"分项\"来讲清一件事？"],"phrases":["坐禅猜物","剖腹油锅","悟空皆胜"]}},{"img":"assets/scenes/comic-17-4.png","size":"cover","pos":"center","caption":"三妖现出虎鹿羊本相死去，国王醒悟，僧人得释，车迟重见天日。","bubbles":[{"who":"车迟国王","text":"原来国师竟是畜类，错信矣！","side":"l"}],"study":{"intro":"收尾：假面具撕下，国王认错，僧人解放。邪靠\"装\"撑着，一旦现形，土崩瓦解。","appreciate":"结局点出<b>\"伪必露形\"</b>：虎鹿羊再像人，终究是兽。靠伪装得来的地位，经不起一场真比试。","think":["\"现出本相\"为什么大快人心？","你见过\"装得很像\"却最终露馅的事吗？"],"phrases":["现出本相","国王醒悟","僧人得释"]}}]};
+const DATA = {"panels":[{"img":"assets/scenes/comic-17-1.png","span":true,"size":"cover","pos":"center","caption":"车迟国，三位国师（虎鹿羊三妖）立于高台，国王跪拜，僧人被役使做苦工。","bubbles":[{"who":"虎力大仙","text":"我国师能呼风唤雨，陛下当信我等。","side":"r","kind":"demon"}],"study":{"intro":"起笔写\"邪压正\"：国师掌权、僧人受苦。妖靠\"方术+权位\"双保险惑众，局面一边倒。","appreciate":"作者用<b>\"以势惑众\"</b>设局：妖不止会法术，还会\"当官\"。提醒读者——披着官衣的歪理，最易骗人。","think":["三国师为何能唬住一国？","\"有权\"就等于\"有理\"吗？"],"phrases":["车迟国","三位国师","欺僧役使"],"vocab":{"words":[{"t":"车迟国","m":"西行路上的国家，国王被三国师迷惑，尊道灭佛。"},{"t":"三位国师","m":"虎力、鹿力、羊力三位大仙，实为虎鹿羊三妖。"},{"t":"欺僧役使","m":"三妖以国师身份欺压僧人，役使僧人做苦工。"}],"ju":[{"t":"车迟国，三位国师（虎鹿羊三妖）立于高台，国王跪拜，僧人被役使做苦工。","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"把“高台拜师”与“僧人做苦工”并置，尊卑立判，暗讽妖以势惑人。"},{"t":"我国师能呼风唤雨，陛下当信我等。","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"“呼风唤雨”是虚，“当信”是实，一句道破妖以方术窃国。"}],"rhet":[{"t":"语言生动","m":"以“跪拜”“役使”写压迫，一高一低两个镜头，把妖势欺人写得形象。"}]}}},{"img":"assets/scenes/comic-17-2.png","size":"cover","pos":"center","caption":"第一擂台：求雨。悟空暗中搅乱，雷公电母听悟空调度，妖师求不来雨。","bubbles":[{"who":"孙悟空","text":"老官儿们，雨听俺的，下！","side":"l"}],"sfx":{"t":"哗啦——","x":"54%","y":"16%"},"study":{"intro":"斗法开场：求雨。妖师的\"令牌\"失效，因为风雨本归天庭，悟空打通了\"上层\"。假术遇真权，露馅。","appreciate":"这一格写<b>\"假钥匙开不了真锁\"</b>：三国师的法术是冒牌，悟空接的是正牌天庭。求真，才求得到。","think":["为什么妖师求不来雨，悟空能？","\"真\"和\"像真的\"差别在哪？"],"phrases":["第一擂台","求雨","风雨听调"],"vocab":{"words":[{"t":"第一擂台","m":"双方比试的第一场，求雨定胜负。"},{"t":"求雨","m":"三国师与悟空比试祈雨，悟空暗中调度风雨。"},{"t":"风雨听调","m":"雷公电母听从悟空调遣，妖师求不来雨。"}],"ju":[{"t":"第一擂台：求雨。悟空暗中搅乱，雷公电母听悟空调度，妖师求不来雨。","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"“暗中搅乱”写出悟空之智，正牌对冒牌，胜负早有定数。"},{"t":"老官儿们，雨听俺的，下！","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"悟空呼喝风雨，气势豪迈，尽显其齐天本领与洒脱。"}],"rhet":[{"t":"语言生动","m":"用“雨听俺的”口语化表达，人物语气鲜活，显出悟空自信豪爽。"}]}}},{"img":"assets/scenes/comic-17-3.png","size":"cover","pos":"center","caption":"接连比试：坐禅、隔板猜物、剖腹、下油锅，悟空皆胜，三妖渐露破绽。","bubbles":[{"who":"猪八戒","text":"油锅俺老猪都不怕，何况你！","side":"r"}],"sfx":{"t":"咕嘟嘟","x":"58%","y":"22%"},"study":{"intro":"连台好戏：作者把大难拆成数个\"小项目\"，一项项比，节奏快、爽感强。这种\"分项赛\"结构，是《西游记》的拿手好戏。","appreciate":"这里写<b>\"擂台式结构\"</b>：一回里塞多场比试，像连续剧。读时跟着\"赢一场是一场\"，最是过瘾。","think":["为什么作者要把一难拆成好几场比试？","你写作文，能不能也用\"分项\"来讲清一件事？"],"phrases":["坐禅猜物","剖腹油锅","悟空皆胜"],"vocab":{"words":[{"t":"坐禅猜物","m":"坐禅与隔板猜物，连场比试的名称。"},{"t":"剖腹油锅","m":"剖腹验心与下油锅，比试越发惊险。"},{"t":"悟空皆胜","m":"一连多场比试，悟空全部取胜。"}],"ju":[{"t":"接连比试：坐禅、隔板猜物、剖腹、下油锅，悟空皆胜，三妖渐露破绽。","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"“渐露破绽”四字是点睛，越比越露馅，写足假法必败。"},{"t":"油锅俺老猪都不怕，何况你！","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"八戒的“不怕”是壮胆也是激将，插科打诨中透出底气。"}],"rhet":[{"t":"语言生动","m":"一回之内连设多场比试，像连环擂台，节奏紧凑、读来过瘾。"}]}}},{"img":"assets/scenes/comic-17-4.png","size":"cover","pos":"center","caption":"三妖现出虎鹿羊本相死去，国王醒悟，僧人得释，车迟重见天日。","bubbles":[{"who":"车迟国王","text":"原来国师竟是畜类，错信矣！","side":"l"}],"study":{"intro":"收尾：假面具撕下，国王认错，僧人解放。邪靠\"装\"撑着，一旦现形，土崩瓦解。","appreciate":"结局点出<b>\"伪必露形\"</b>：虎鹿羊再像人，终究是兽。靠伪装得来的地位，经不起一场真比试。","think":["\"现出本相\"为什么大快人心？","你见过\"装得很像\"却最终露馅的事吗？"],"phrases":["现出本相","国王醒悟","僧人得释"],"vocab":{"words":[{"t":"现出本相","m":"三妖现出虎鹿羊原形，骗局彻底揭穿。"},{"t":"国王醒悟","m":"国王明白受骗，痛悔错信妖邪。"},{"t":"僧人得释","m":"被囚僧人获释，车迟国重见天日。"}],"ju":[{"t":"三妖现出虎鹿羊本相死去，国王醒悟，僧人得释，车迟重见天日。","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"“本相”“醒悟”“得释”三词递进，写出拨云见日。"},{"t":"原来国师竟是畜类，错信矣！","from":"第四十四回　法身元运逢车力　心正妖邪度脊关","m":"国王惊呼“畜类”“错信”，悔悟之情跃然纸上，点出伪必露形。"}],"rhet":[{"t":"语言生动","m":"以国王的悔叹收束，“错信”二字点题，警醒读者莫被表象迷惑。"}]}}}]};
+
+/* ============ 分类语料卡 HTML ============ */
+function vocabHTML(v){
+  if(!v) return '';
+  let h = '';
+  if(v.words && v.words.length){
+    h += '<div class="sec"><h4>📚 好词</h4><ul class="vw">';
+    v.words.forEach(w=>{ h += '<li><b>'+w.t+'</b> <span class="wm">'+w.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  if(v.ju && v.ju.length){
+    h += '<div class="sec"><h4>✒️ 佳句</h4>';
+    v.ju.forEach(j=>{ h += '<blockquote class="vq"><p>“'+j.t+'”</p><cite>— '+j.from+'</cite><span class="vm">'+j.m+'</span></blockquote>'; });
+    h += '</div>';
+  }
+  if(v.rhet && v.rhet.length){
+    h += '<div class="sec"><h4>🎨 修辞</h4><ul class="vw rhet">';
+    v.rhet.forEach(r=>{ h += '<li><b>'+r.t+'</b> <span class="wm">'+r.m+'</span></li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
 
 /* ============ 研读卡 HTML ============ */
 function studyHTML(p){
@@ -236,9 +373,13 @@ function studyHTML(p){
   h += '<div class="sec"><h4>💡 思考</h4><ul>';
   p.study.think.forEach(t=>{ h += '<li>'+t+'</li>'; });
   h += '</ul></div>';
-  h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
-  p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
-  h += '</p></div>';
+  if(p.study.vocab){
+    h += vocabHTML(p.study.vocab);
+  } else if(p.study.phrases){
+    h += '<div class="sec"><h4>✨ 好词佳句</h4><p>';
+    p.study.phrases.forEach(ph=>{ h += '<span class="ph">'+ph+'</span>'; });
+    h += '</p></div>';
+  }
   return h;
 }
 
@@ -252,7 +393,6 @@ function build(){
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.style.backgroundImage = `url("${p.img}")`;
-    /* 整图完整呈现：统一 contain，不再按 cover 裁切，任何比例的分镜图都不会缺边 */
     shot.style.backgroundSize = 'contain';
     shot.style.backgroundPosition = 'center';
     el.appendChild(shot);
@@ -303,10 +443,9 @@ function buildStudies(){
   DATA.panels.forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'study-card';
-    const cap = (p.caption||'').length > 18 ? (p.caption||'').slice(0,18)+'…' : (p.caption||'');
     card.innerHTML =
       '<div class="head"><img src="'+p.img+'" alt="">'+
-      '<b>第 '+(i+1)+' 格 · '+ cap +'</b></div>'+
+      '<b>第 '+(i+1)+' 格 · '+ (p.caption||'').slice(0,18) +'…</b></div>'+
       '<div class="body">'+ studyHTML(p) +'</div>';
     box.appendChild(card);
   });
